@@ -1,0 +1,127 @@
+---
+layout: post
+title: "[Flutter] go_router로 라우팅 구성하기 (기본, 파라미터, redirect)"
+date: 2026-04-29 18:00:00 +0900
+category: Flutter
+permalink: /flutter/go-router
+---
+
+# [Flutter] go_router로 라우팅 구성하기 (기본, 파라미터, redirect)
+
+Flutter 라우팅은 규모가 커지면 "딥링크", "로그인 가드", "네비게이션 중복" 같은 문제가 생기기 쉽습니다. `go_router`는 라우팅 구성을 선언적으로 관리할 수 있어서 앱이 커질수록 이점이 큽니다.
+
+## 1) 설치
+
+```yaml
+dependencies:
+  go_router: ^14.0.0
+```
+
+## 2) 가장 기본적인 라우터
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+final router = GoRouter(
+  routes: [
+    GoRoute(
+      path: "/",
+      builder: (context, state) => const HomePage(),
+    ),
+    GoRoute(
+      path: "/settings",
+      builder: (context, state) => const SettingsPage(),
+    ),
+  ],
+);
+
+class App extends StatelessWidget {
+  const App({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(routerConfig: router);
+  }
+}
+```
+
+이동:
+
+```dart
+context.go("/settings");
+```
+
+## 3) Path Parameter (예: /users/:id)
+
+```dart
+GoRoute(
+  path: "/users/:id",
+  builder: (context, state) {
+    final id = state.pathParameters["id"]!;
+    return UserPage(userId: id);
+  },
+),
+```
+
+이동:
+
+```dart
+context.go("/users/42");
+```
+
+## 4) Query Parameter (예: /search?q=flutter)
+
+```dart
+GoRoute(
+  path: "/search",
+  builder: (context, state) {
+    final q = state.uri.queryParameters["q"] ?? "";
+    return SearchPage(query: q);
+  },
+),
+```
+
+이동:
+
+```dart
+context.go("/search?q=flutter");
+```
+
+## 5) redirect로 로그인 가드 만들기
+
+로그인 상태에 따라 특정 페이지 접근을 막고 싶다면 `redirect`를 씁니다.
+
+```dart
+class AuthState {
+  final bool isLoggedIn;
+  const AuthState(this.isLoggedIn);
+}
+
+final authState = ValueNotifier(const AuthState(false));
+
+final router = GoRouter(
+  refreshListenable: authState,
+  redirect: (context, state) {
+    final loggedIn = authState.value.isLoggedIn;
+    final goingToLogin = state.matchedLocation == "/login";
+
+    if (!loggedIn && !goingToLogin) return "/login";
+    if (loggedIn && goingToLogin) return "/";
+    return null;
+  },
+  routes: [
+    GoRoute(path: "/login", builder: (context, state) => const LoginPage()),
+    GoRoute(path: "/", builder: (context, state) => const HomePage()),
+  ],
+);
+```
+
+## 정리
+
+- 기본 라우팅: `GoRoute(path, builder)`
+- 파라미터: `state.pathParameters`, `state.uri.queryParameters`
+- 인증 가드: `redirect` + `refreshListenable`
+
+규모가 더 커지면 `ShellRoute`로 탭 구조를 정리하거나, "중첩 네비게이션"을 깔끔하게 구성하는 쪽으로 확장하는 게 좋아요.
+
