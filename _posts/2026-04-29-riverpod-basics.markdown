@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Flutter] Riverpod 기본 사용법 (Provider, Consumer, 상태 갱신)"
-date: 2026-04-29 10:00:00 +0900
+date: 2026-04-29 00:00:00 +0900
 category: Flutter
 permalink: /flutter/riverpod-basics
 ---
@@ -177,4 +177,3 @@ class ProfilePage extends ConsumerWidget {
 - `StateNotifierProvider`: 상태 변경 규칙이 있는 로직
 
 다음 글에서는 "네트워크 요청 + 캐시 + 에러 처리" 같이 실전 패턴을 Riverpod으로 어떻게 구조화하는지(예: `AsyncValue`)로 이어가면 좋아요.
-

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Flutter] go_router로 라우팅 구성하기 (기본, 파라미터, redirect)"
-date: 2026-04-29 18:00:00 +0900
+date: 2026-04-29 00:20:00 +0900
 category: Flutter
 permalink: /flutter/go-router
 ---
@@ -124,4 +124,3 @@ final router = GoRouter(
 - 인증 가드: `redirect` + `refreshListenable`
 
 규모가 더 커지면 `ShellRoute`로 탭 구조를 정리하거나, "중첩 네비게이션"을 깔끔하게 구성하는 쪽으로 확장하는 게 좋아요.
-

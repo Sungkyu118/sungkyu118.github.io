@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Flutter] Dio Interceptor로 토큰 붙이기, 로그 남기기"
-date: 2026-04-29 13:00:00 +0900
+date: 2026-04-29 00:10:00 +0900
 category: Flutter
 permalink: /flutter/dio-interceptor
 ---
@@ -127,4 +127,3 @@ class UnauthorizedInterceptor extends Interceptor {
 - `onError`: 공통 에러 처리
 
 다음 글로는 "리프레시 토큰으로 자동 재시도" 패턴을 한 번 제대로 정리해두면, 앱 전체 네트워크 레이어가 훨씬 안정적으로 굴러가요.
-
