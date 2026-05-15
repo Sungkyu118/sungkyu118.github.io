@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] 위젯 테스트 기본: pumpWidget, find, tap, expect"
+title: "위젯 테스트 기본: pumpWidget, find, tap, expect"
 date: 2026-05-15 00:10:00 +0900
 category: Flutter
 permalink: /flutter/flutter-widget-test-basics
 ---
 
-# [Flutter] 위젯 테스트 기본: pumpWidget, find, tap, expect
+# 위젯 테스트 기본: pumpWidget, find, tap, expect
 
 Flutter는 UI가 복잡해질수록 "수동 테스트" 비용이 급격히 올라갑니다. 위젯 테스트는 화면의 핵심 동작을 코드로 고정해두는 가장 가성비 좋은 방법 중 하나예요.
 
@@ -105,4 +105,3 @@ await tester.pumpAndSettle();
 - `Key` 기반 찾기가 안정적이다
 
 다음 글로는 "로그인 폼 테스트(텍스트 입력 + 버튼 활성화 + 에러 메시지)" 같은 패턴을 한 번 더 잡아두면 실전에서 바로 써먹기 좋아요.
-

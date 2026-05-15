@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] 성능 기본기: 불필요한 rebuild 줄이기 (const, 분리, Selector)"
+title: "성능 기본기: 불필요한 rebuild 줄이기 (const, 분리, Selector)"
 date: 2026-05-15 00:00:00 +0900
 category: Flutter
 permalink: /flutter/flutter-performance-rebuilds
 ---
 
-# [Flutter] 성능 기본기: 불필요한 rebuild 줄이기 (const, 분리, Selector)
+# 성능 기본기: 불필요한 rebuild 줄이기 (const, 분리, Selector)
 
 Flutter에서 체감 성능 문제는 의외로 "너무 많은 위젯이 자주 rebuild 된다"에서 시작하는 경우가 많습니다. 이 글은 **큰 설계 변경 없이도 바로 적용 가능한** 리빌드 최적화 기본기를 정리합니다.
 
@@ -133,4 +133,3 @@ Riverpod을 쓰는 경우에도 `ref.watch(provider.select((s) => s.someField))`
 - 상태관리에서 부분 구독(Selector/select) 사용
 
 이 기본기만 챙겨도, 앱이 커져도 "느려지는 시점"을 꽤 뒤로 미룰 수 있어요.
-

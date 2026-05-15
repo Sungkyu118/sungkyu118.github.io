@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] Riverpod 기본 사용법 (Provider, Consumer, 상태 갱신)"
+title: "Riverpod 기본 사용법 (Provider, Consumer, 상태 갱신)"
 date: 2026-04-29 00:00:00 +0900
 category: Flutter
 permalink: /flutter/riverpod-basics
 ---
 
-# [Flutter] Riverpod 기본 사용법 (Provider, Consumer, 상태 갱신)
+# Riverpod 기본 사용법 (Provider, Consumer, 상태 갱신)
 
 Flutter에서 상태를 관리할 때 Riverpod은 "의존성 주입 + 상태관리"를 깔끔하게 묶어줍니다. 이 글에서는 가장 자주 쓰는 3가지(Provider, StateProvider, StateNotifierProvider)만 빠르게 감 잡는 걸 목표로 정리합니다.
 

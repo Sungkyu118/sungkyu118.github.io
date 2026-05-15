@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] initState 중복 호출 방지: Future 캐싱으로 한 번만 로드하기"
+title: "initState 중복 호출 방지: Future 캐싱으로 한 번만 로드하기"
 date: 2026-05-15 00:40:00 +0900
 category: Flutter
 permalink: /flutter/future-cache-load-once
 ---
 
-# [Flutter] initState 중복 호출 방지: Future 캐싱으로 한 번만 로드하기
+# initState 중복 호출 방지: Future 캐싱으로 한 번만 로드하기
 
 `FutureBuilder`를 쓰다가 "매 빌드마다 API 호출"을 해버리는 실수는 정말 흔합니다. 해결은 간단해요. **Future를 상태로 들고 캐싱**하면 됩니다.
 
@@ -144,4 +144,3 @@ UI는 단순히 `repo.getUser()`를 호출하고, repo가 내부적으로 메모
 - `build()`는 여러 번 호출될 수 있으니, `future:`에 새 Future를 계속 만들지 말기
 - `initState`에서 Future를 생성해 멤버로 보관하면 중복 호출을 막을 수 있음
 - 스케일이 커지면 상태관리/Repository 캐시로 해결하는 게 더 낫다
-

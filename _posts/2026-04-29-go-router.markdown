@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] go_router로 라우팅 구성하기 (기본, 파라미터, redirect)"
+title: "go_router로 라우팅 구성하기 (기본, 파라미터, redirect)"
 date: 2026-04-29 00:20:00 +0900
 category: Flutter
 permalink: /flutter/go-router
 ---
 
-# [Flutter] go_router로 라우팅 구성하기 (기본, 파라미터, redirect)
+# go_router로 라우팅 구성하기 (기본, 파라미터, redirect)
 
 Flutter 라우팅은 규모가 커지면 "딥링크", "로그인 가드", "네비게이션 중복" 같은 문제가 생기기 쉽습니다. `go_router`는 라우팅 구성을 선언적으로 관리할 수 있어서 앱이 커질수록 이점이 큽니다.
 

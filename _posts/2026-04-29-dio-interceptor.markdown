@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] Dio Interceptor로 토큰 붙이기, 로그 남기기"
+title: "Dio Interceptor로 토큰 붙이기, 로그 남기기"
 date: 2026-04-29 00:10:00 +0900
 category: Flutter
 permalink: /flutter/dio-interceptor
 ---
 
-# [Flutter] Dio Interceptor로 토큰 붙이기, 로그 남기기
+# Dio Interceptor로 토큰 붙이기, 로그 남기기
 
 Dio를 쓰다 보면 "모든 요청에 Authorization 헤더를 붙이기" 같은 공통 처리가 필요합니다. 이럴 때 `Interceptor`를 붙여두면 각 API 호출 코드가 깔끔해집니다.
 

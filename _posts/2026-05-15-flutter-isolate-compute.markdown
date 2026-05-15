@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] compute/Isolate로 메인 스레드 프리징 막기 (무거운 작업 분리)"
+title: "compute/Isolate로 메인 스레드 프리징 막기 (무거운 작업 분리)"
 date: 2026-05-15 00:20:00 +0900
 category: Flutter
 permalink: /flutter/flutter-isolate-compute
 ---
 
-# [Flutter] compute/Isolate로 메인 스레드 프리징 막기 (무거운 작업 분리)
+# compute/Isolate로 메인 스레드 프리징 막기 (무거운 작업 분리)
 
 Flutter 앱이 "버튼 누르면 잠깐 멈춤", "스크롤 중 끊김" 같은 느낌이 들 때, 원인 중 하나는 **메인 Isolate(UI 스레드)** 에서 무거운 연산을 돌리는 겁니다.
 
@@ -81,4 +81,3 @@ Future<void> onLoad() async {
 - 복잡해지면 Isolate 직접 제어를 고려
 
 무거운 JSON 처리 때문에 화면이 끊기는 앱이라면, `compute` 하나만으로도 체감이 확 달라지는 경우가 많아요.
-

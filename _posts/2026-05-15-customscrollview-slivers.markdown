@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] CustomScrollView + Sliver로 복합 스크롤 화면 구성하기"
+title: "CustomScrollView + Sliver로 복합 스크롤 화면 구성하기"
 date: 2026-05-15 01:00:00 +0900
 category: Flutter
 permalink: /flutter/customscrollview-slivers
 ---
 
-# [Flutter] CustomScrollView + Sliver로 복합 스크롤 화면 구성하기
+# CustomScrollView + Sliver로 복합 스크롤 화면 구성하기
 
 Flutter에서 "헤더 + 섹션 + 리스트 + 그리드" 같은 복합 스크롤 화면을 만들 때 `ListView`만으로는 한계가 금방 옵니다. 이럴 때 `CustomScrollView`와 `Sliver`를 쓰면 스크롤을 자연스럽게 하나로 묶을 수 있어요.
 
@@ -135,4 +135,3 @@ class ComplexScrollPage extends StatelessWidget {
 - 복합 스크롤은 `CustomScrollView + Sliver*`로 구성하면 레이아웃도 깔끔하고 성능도 좋은 편
 - 일반 위젯은 `SliverToBoxAdapter`로 끼워 넣기
 - 중첩 스크롤을 `shrinkWrap`로 억지로 풀기보단 sliver로 합치기
-

@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] freezed + json_serializable로 모델/JSON 파싱 생산성 올리기"
+title: "freezed + json_serializable로 모델/JSON 파싱 생산성 올리기"
 date: 2026-05-15 00:30:00 +0900
 category: Flutter
 permalink: /flutter/freezed-json-basics
 ---
 
-# [Flutter] freezed + json_serializable로 모델/JSON 파싱 생산성 올리기
+# freezed + json_serializable로 모델/JSON 파싱 생산성 올리기
 
 API를 붙이다 보면 시간이 가장 많이 새는 곳이 "모델 클래스 만들기 + copyWith + equality + JSON 파싱"입니다. `freezed` + `json_serializable` 조합을 쓰면 이 반복 작업을 자동화해서 생산성이 확 올라가요.
 
@@ -169,4 +169,3 @@ flutter pub run build_runner build --delete-conflicting-outputs
 - 모델이 늘어날수록 `freezed`의 이득이 커진다
 - 실전에서는 "파일명/part/타입 캐스팅"에서 가장 자주 삽질한다
 - 작은 앱이면 수동도 가능하지만, 장기적으로는 자동화가 시간을 아껴준다
-

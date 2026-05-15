@@ -1,12 +1,12 @@
 ---
 layout: post
-title: "[Flutter] 반응형 기본: LayoutBuilder로 화면 크기별 UI 나누기"
+title: "반응형 기본: LayoutBuilder로 화면 크기별 UI 나누기"
 date: 2026-05-15 00:50:00 +0900
 category: Flutter
 permalink: /flutter/responsive-layoutbuilder
 ---
 
-# [Flutter] 반응형 기본: LayoutBuilder로 화면 크기별 UI 나누기
+# 반응형 기본: LayoutBuilder로 화면 크기별 UI 나누기
 
 Flutter 앱을 폰/태블릿/웹까지 한 코드로 커버하려면 반응형이 필수입니다. 그중에서도 `LayoutBuilder`는 가장 안전한 기본기예요. "현재 위젯이 실제로 배치된 영역의 크기"를 기준으로 UI를 분기할 수 있습니다.
 
@@ -123,4 +123,3 @@ class _DesktopHome extends StatelessWidget {
 - `LayoutBuilder`는 "영역 크기" 기반 반응형에 강하다
 - 브레이크포인트를 상수로 통일하면 유지보수가 쉬워진다
 - 오버플로우/최소 폭 같은 디테일을 같이 챙겨야 UX가 좋아진다
-
