@@ -2,19 +2,30 @@
 ---
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {% for post in site.posts %}
-    <url>
-        <loc>{{ site.url }}{{ post.url | remove: 'index.html' }}</loc>
-    </url>
-    {% endfor %}
+  {% comment %}
+    Custom sitemap for GitHub Pages + Chirpy.
+    - Use absolute_url to respect url/baseurl.
+    - Provide lastmod to help crawlers prioritize recrawls.
+    - Exclude non-HTML technical pages where appropriate.
+  {% endcomment %}
 
-    {% for page in site.pages %}
-    {% if page.layout != nil %}
-    {% if page.layout != 'feed' %}
-    <url>
-        <loc>{{ site.url }}{{ page.url | remove: 'index.html' }}</loc>
-    </url>
+  {% for post in site.posts %}
+  <url>
+    <loc>{{ post.url | absolute_url | replace: 'index.html', '' }}</loc>
+    <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
+  </url>
+  {% endfor %}
+
+  {% for page in site.pages %}
+    {% if page.layout != nil and page.layout != 'feed' %}
+      {% unless page.url contains '/norobots/' %}
+  <url>
+    <loc>{{ page.url | absolute_url | replace: 'index.html', '' }}</loc>
+    {% if page.date %}
+    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     {% endif %}
+  </url>
+      {% endunless %}
     {% endif %}
-    {% endfor %}
+  {% endfor %}
 </urlset>
