@@ -54,6 +54,15 @@
     {% endunless %}
 
     {% for entry in site.data.contact %}
+      {% comment %}
+        Disabled: Hide selected contact icons in the sidebar without deleting them from `_data/contact.yml`.
+        - twitter
+        - rss
+      {% endcomment %}
+      {% if entry.type == 'twitter' or entry.type == 'rss' %}
+        {% continue %}
+      {% endif %}
+
       {% case entry.type %}
         {% when 'github', 'twitter' %}
           {%- capture url -%}
