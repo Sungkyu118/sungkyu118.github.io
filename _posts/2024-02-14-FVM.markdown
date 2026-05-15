@@ -6,7 +6,7 @@ category: Flutter
 permalink: /flutter/fvm
 ---
 
-# [Flutter] FVM으로 Flutter 버전 관리
+# FVM으로 Flutter 버전 관리
 
 <br>
 Flutter는 버전 업그레이드가 매우 빠른편이며, 개발 상황에 따라 버전이슈가 발생할 여지가 큰 편 (ex. 빌드 실패)

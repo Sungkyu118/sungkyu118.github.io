@@ -7,7 +7,7 @@ permalink: /flutter/settings
 tags: [Flutter]
 ---
 
-# [Flutter] Flutter 개발환경
+# Flutter 개발환경
 
 Flutter 개발을 위해서는 Dart의 SDK(Software Development Kit)와 IDE(Integrated Development Environment)이 필요
 

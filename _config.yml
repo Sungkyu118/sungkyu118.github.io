@@ -14,12 +14,12 @@ timezone: Asia/Seoul
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # ↓ --------------------------
 
-title: 두둥자 # the main title
+title: "Sungkyu's Dev Notes" # the main title
 
-tagline: Tech 블로그 # it will display as the sub-title
+tagline: "developer" # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  A minimal, responsive and feature-rich Jekyll theme for technical writing.
+  Sungkyu's notes on Flutter, Spring WebFlux, and Redis.
 
 # Fill in the protocol & hostname for your site.
 # e.g. 'https://username.github.io', note that it does not end with a '/'.
@@ -34,7 +34,7 @@ twitter:
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
-  name: 두둥자
+  name: "Sungkyu"
   email: kskcjswo@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
@@ -44,7 +44,7 @@ social:
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
 
-google_site_verification: # fill in to your verification string
+google_site_verification: google0f24f643e65a19d0 # Google Search Console verification
 
 # ↑ --------------------------
 # The end of `jekyll-seo-tag` settings
