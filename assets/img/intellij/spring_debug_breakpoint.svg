@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .bg { fill: #0f141a; }
+      .panel { fill: #171e26; stroke: #263241; stroke-width: 2; }
+      .title { fill: #e7eef7; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .mono { fill: #c7d3e0; font-family: Consolas, "Courier New", monospace; font-size: 16px; }
+      .bp { fill: #ff4d4f; }
+      .hint { fill: #91a4b7; font-family: Arial, sans-serif; font-size: 16px; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <rect class="panel" x="80" y="60" width="1040" height="580" rx="8"/>
+  <text class="title" x="120" y="120">Debug - Breakpoint Hit (예시)</text>
+
+  <circle class="bp" cx="130" cy="195" r="8"/>
+  <text class="mono" x="160" y="200">public HelloResponse helloJson() {</text>
+  <text class="mono" x="160" y="228">  return new HelloResponse("hello json");</text>
+  <text class="mono" x="160" y="256">}</text>
+
+  <text class="hint" x="120" y="320">브레이크포인트에서 멈춘 상태에서 Step Over(F8) / Resume(F9)를 사용합니다.</text>
+</svg>
+

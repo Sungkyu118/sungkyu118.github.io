@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .bg { fill: #0f141a; }
+      .panel { fill: #171e26; stroke: #263241; stroke-width: 2; }
+      .title { fill: #e7eef7; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .mono { fill: #c7d3e0; font-family: Consolas, "Courier New", monospace; font-size: 16px; }
+      .ok { fill: #61d37d; font-family: Consolas, "Courier New", monospace; font-size: 16px; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <rect class="panel" x="80" y="60" width="1040" height="580" rx="8"/>
+  <text class="title" x="120" y="120">Run - DemoApplication (예시)</text>
+
+  <text class="mono" x="120" y="180">... Starting DemoApplication using Java 17 ...</text>
+  <text class="mono" x="120" y="210">... Tomcat initialized with port(s): 8080 (http)</text>
+  <text class="mono" x="120" y="240">... Starting service [Tomcat]</text>
+  <text class="mono" x="120" y="270">... Starting Servlet engine: [Apache Tomcat]</text>
+  <text class="ok" x="120" y="320">... Tomcat started on port(s): 8080 (http) with context path ''</text>
+  <text class="ok" x="120" y="350">... Started DemoApplication in 1.234 seconds</text>
+</svg>
+

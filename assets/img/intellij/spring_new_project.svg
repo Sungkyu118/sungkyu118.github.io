@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .bg { fill: #0f141a; }
+      .panel { fill: #171e26; stroke: #263241; stroke-width: 2; }
+      .muted { fill: #91a4b7; font-family: Arial, sans-serif; font-size: 18px; }
+      .title { fill: #e7eef7; font-family: Arial, sans-serif; font-size: 28px; font-weight: 700; }
+      .label { fill: #c7d3e0; font-family: Arial, sans-serif; font-size: 18px; }
+      .value { fill: #e7eef7; font-family: Arial, sans-serif; font-size: 18px; font-weight: 600; }
+      .chip { fill: #223042; stroke: #2f425a; stroke-width: 2; }
+      .btn { fill: #2b6df3; }
+      .btnText { fill: #ffffff; font-family: Arial, sans-serif; font-size: 18px; font-weight: 700; }
+      .field { fill: #10161d; stroke: #2a3645; stroke-width: 2; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <rect class="panel" x="80" y="60" width="1040" height="580" rx="8"/>
+  <text class="title" x="120" y="120">New Project</text>
+  <text class="muted" x="120" y="152">Spring Initializr (예시 화면)</text>
+
+  <text class="label" x="120" y="220">Language</text>
+  <rect class="field" x="260" y="196" width="240" height="38" rx="6"/>
+  <text class="value" x="280" y="222">Java</text>
+
+  <text class="label" x="120" y="280">Build system</text>
+  <rect class="field" x="260" y="256" width="240" height="38" rx="6"/>
+  <text class="value" x="280" y="282">Gradle</text>
+
+  <text class="label" x="120" y="340">JDK</text>
+  <rect class="field" x="260" y="316" width="240" height="38" rx="6"/>
+  <text class="value" x="280" y="342">17</text>
+
+  <text class="label" x="120" y="410">Dependencies</text>
+  <rect class="chip" x="260" y="384" width="160" height="44" rx="22"/>
+  <text class="value" x="292" y="413">Spring Web</text>
+
+  <rect class="btn" x="960" y="566" width="120" height="46" rx="8"/>
+  <text class="btnText" x="994" y="596">Create</text>
+</svg>
+
