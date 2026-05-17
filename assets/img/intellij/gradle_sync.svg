@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+  <defs>
+    <style>
+      .bg { fill: #0f141a; }
+      .panel { fill: #171e26; stroke: #263241; stroke-width: 2; }
+      .title { fill: #e7eef7; font-family: Arial, sans-serif; font-size: 24px; font-weight: 700; }
+      .muted { fill: #91a4b7; font-family: Arial, sans-serif; font-size: 16px; }
+      .bar { fill: #223042; }
+      .fill { fill: #2b6df3; }
+      .mono { fill: #c7d3e0; font-family: Consolas, "Courier New", monospace; font-size: 16px; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <rect class="panel" x="80" y="60" width="1040" height="580" rx="8"/>
+  <text class="title" x="120" y="120">Gradle Sync (예시)</text>
+  <text class="muted" x="120" y="150">의존성 변경 후 Refresh/Sync가 필요합니다.</text>
+  <rect class="bar" x="120" y="200" width="960" height="18" rx="9"/>
+  <rect class="fill" x="120" y="200" width="540" height="18" rx="9"/>
+  <text class="mono" x="120" y="260">Downloading dependencies...</text>
+  <text class="mono" x="120" y="290">Resolving configuration :compileClasspath</text>
+</svg>
+
