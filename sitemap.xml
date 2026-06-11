@@ -5,27 +5,18 @@
   {% comment %}
     Custom sitemap for GitHub Pages + Chirpy.
     - Use absolute_url to respect url/baseurl.
-    - Provide lastmod to help crawlers prioritize recrawls.
-    - Exclude non-HTML technical pages where appropriate.
+    - Keep the sitemap focused on indexable blog posts.
+    - Exclude feeds, JSON, service workers, assets, archives, and pagination pages.
   {% endcomment %}
 
   {% for post in site.posts %}
   <url>
     <loc>{{ post.url | absolute_url | replace: 'index.html', '' }}</loc>
+    {% if post.last_modified_at %}
+    <lastmod>{{ post.last_modified_at | date_to_xmlschema }}</lastmod>
+    {% else %}
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
-  </url>
-  {% endfor %}
-
-  {% for page in site.pages %}
-    {% if page.layout != nil and page.layout != 'feed' %}
-      {% unless page.url contains '/norobots/' %}
-  <url>
-    <loc>{{ page.url | absolute_url | replace: 'index.html', '' }}</loc>
-    {% if page.date %}
-    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
     {% endif %}
   </url>
-      {% endunless %}
-    {% endif %}
   {% endfor %}
 </urlset>
