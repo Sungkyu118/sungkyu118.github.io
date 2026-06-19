@@ -1,27 +1,27 @@
----
+﻿---
 layout: post
-title: "Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지"
+title: "Flutter Widget Test ?낅Ц: 踰꾪듉 ?대┃遺??鍮꾨룞湲??붾㈃源뚯?"
 date: 2026-05-15 00:50:00 +0900
 category: Flutter
 permalink: /flutter/widget-test-basics
 ---
 
-# Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지
+# Flutter Widget Test ?낅Ц: 踰꾪듉 ?대┃遺??鍮꾨룞湲??붾㈃源뚯?
 
-Flutter 테스트는 크게 unit test, widget test, integration test로 나눌 수 있습니다. 그중 widget test는 실제 기기나 에뮬레이터를 띄우지 않고도 위젯이 어떻게 그려지는지, 버튼을 눌렀을 때 텍스트가 바뀌는지, 로딩 상태가 표시되는지 확인할 수 있는 테스트입니다. 화면 단위 로직을 빠르게 검증할 수 있어서 Flutter 프로젝트에서 가장 먼저 익히기 좋은 테스트 방식입니다.
+Flutter ?뚯뒪?몃뒗 ?ш쾶 unit test, widget test, integration test濡??섎닃 ???덉뒿?덈떎. 洹몄쨷 widget test???ㅼ젣 湲곌린???먮??덉씠?곕? ?꾩슦吏 ?딄퀬???꾩젽???대뼸寃?洹몃젮吏?붿?, 踰꾪듉???뚮??????띿뒪?멸? 諛붾뚮뒗吏, 濡쒕뵫 ?곹깭媛 ?쒖떆?섎뒗吏 ?뺤씤?????덈뒗 ?뚯뒪?몄엯?덈떎. ?붾㈃ ?⑥쐞 濡쒖쭅??鍮좊Ⅴ寃?寃利앺븷 ???덉뼱??Flutter ?꾨줈?앺듃?먯꽌 媛??癒쇱? ?듯엳湲?醫뗭? ?뚯뒪??諛⑹떇?낅땲??
 
-테스트를 어렵게 느끼는 이유는 "무엇을 테스트해야 하는지"가 흐릿하기 때문입니다. 처음에는 복잡한 아키텍처를 검증하려고 하기보다, 사용자가 보는 화면과 누르는 행동을 기준으로 작성하면 됩니다. 이 글에서는 카운터, 콜백, 비동기 화면을 예제로 widget test의 기본 흐름을 정리해보겠습니다.
+?뚯뒪?몃? ?대졄寃??먮겮???댁쑀??"臾댁뾿???뚯뒪?명빐???섎뒗吏"媛 ?먮┸?섍린 ?뚮Ц?낅땲?? 泥섏쓬?먮뒗 蹂듭옟???꾪궎?띿쿂瑜?寃利앺븯?ㅺ퀬 ?섍린蹂대떎, ?ъ슜?먭? 蹂대뒗 ?붾㈃怨??꾨Ⅴ???됰룞??湲곗??쇰줈 ?묒꽦?섎㈃ ?⑸땲?? ??湲?먯꽌??移댁슫?? 肄쒕갚, 鍮꾨룞湲??붾㈃???덉젣濡?widget test??湲곕낯 ?먮쫫???뺣━?대낫寃좎뒿?덈떎.
 
-## 기본 테스트 구조
+## 湲곕낯 ?뚯뒪??援ъ“
 
-Flutter 프로젝트를 만들면 `test/widget_test.dart` 파일이 기본으로 생성됩니다. widget test에서는 `testWidgets`를 사용합니다.
+Flutter ?꾨줈?앺듃瑜?留뚮뱾硫?`test/widget_test.dart` ?뚯씪??湲곕낯?쇰줈 ?앹꽦?⑸땲?? widget test?먯꽌??`testWidgets`瑜??ъ슜?⑸땲??
 
 ```dart
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('텍스트가 화면에 표시된다', (tester) async {
+  testWidgets('?띿뒪?멸? ?붾㈃???쒖떆?쒕떎', (tester) async {
     await tester.pumpWidget(
       const MaterialApp(
         home: Scaffold(
@@ -35,11 +35,10 @@ void main() {
 }
 ```
 
-`pumpWidget`은 테스트 환경에 위젯을 그립니다. `find.text`는 화면에서 텍스트를 찾고, `expect`는 기대한 결과와 맞는지 확인합니다. `findsOneWidget`은 정확히 하나의 위젯을 찾았다는 뜻입니다.
+`pumpWidget`? ?뚯뒪???섍꼍???꾩젽??洹몃┰?덈떎. `find.text`???붾㈃?먯꽌 ?띿뒪?몃? 李얘퀬, `expect`??湲곕???寃곌낵? 留욌뒗吏 ?뺤씤?⑸땲?? `findsOneWidget`? ?뺥솗???섎굹???꾩젽??李얠븯?ㅻ뒗 ?살엯?덈떎.
 
-## 버튼 클릭 테스트
-
-카운터 화면을 테스트해보겠습니다.
+## 踰꾪듉 ?대┃ ?뚯뒪??
+移댁슫???붾㈃???뚯뒪?명빐蹂닿쿋?듬땲??
 
 ```dart
 class CounterPage extends StatefulWidget {
@@ -65,10 +64,10 @@ class _CounterPageState extends State<CounterPage> {
 }
 ```
 
-테스트 코드는 다음과 같습니다.
+?뚯뒪??肄붾뱶???ㅼ쓬怨?媛숈뒿?덈떎.
 
 ```dart
-testWidgets('버튼을 누르면 카운트가 증가한다', (tester) async {
+testWidgets('踰꾪듉???꾨Ⅴ硫?移댁슫?멸? 利앷??쒕떎', (tester) async {
   await tester.pumpWidget(
     const MaterialApp(home: CounterPage()),
   );
@@ -82,32 +81,31 @@ testWidgets('버튼을 누르면 카운트가 증가한다', (tester) async {
 });
 ```
 
-`tester.tap`은 사용자가 버튼을 누르는 행동을 흉내 냅니다. 그다음 `tester.pump()`를 호출해야 상태 변경 이후 화면이 다시 그려집니다. 버튼은 눌렀는데 결과가 바뀌지 않는 테스트 실패가 나온다면 `pump` 호출을 빠뜨렸는지 확인해보면 됩니다.
+`tester.tap`? ?ъ슜?먭? 踰꾪듉???꾨Ⅴ???됰룞???됰궡 ?낅땲?? 洹몃떎??`tester.pump()`瑜??몄텧?댁빞 ?곹깭 蹂寃??댄썑 ?붾㈃???ㅼ떆 洹몃젮吏묐땲?? 踰꾪듉? ?뚮??붾뜲 寃곌낵媛 諛붾뚯? ?딅뒗 ?뚯뒪???ㅽ뙣媛 ?섏삩?ㅻ㈃ `pump` ?몄텧??鍮좊쑉?몃뒗吏 ?뺤씤?대낫硫??⑸땲??
 
-## Key를 사용해 안정적으로 찾기
+## Key瑜??ъ슜???덉젙?곸쑝濡?李얘린
 
-텍스트나 아이콘으로 위젯을 찾는 것도 가능하지만, 화면 문구가 바뀌면 테스트가 깨질 수 있습니다. 중요한 버튼이나 입력창에는 `Key`를 붙이는 방식이 안정적입니다.
+?띿뒪?몃굹 ?꾩씠肄섏쑝濡??꾩젽??李얜뒗 寃껊룄 媛?ν븯吏留? ?붾㈃ 臾멸뎄媛 諛붾뚮㈃ ?뚯뒪?멸? 源⑥쭏 ???덉뒿?덈떎. 以묒슂??踰꾪듉?대굹 ?낅젰李쎌뿉??`Key`瑜?遺숈씠??諛⑹떇???덉젙?곸엯?덈떎.
 
 ```dart
 ElevatedButton(
   key: const Key('submitButton'),
   onPressed: onSubmit,
-  child: const Text('저장'),
+  child: const Text('???),
 )
 ```
 
-테스트에서는 다음처럼 찾습니다.
+?뚯뒪?몄뿉?쒕뒗 ?ㅼ쓬泥섎읆 李얠뒿?덈떎.
 
 ```dart
 await tester.tap(find.byKey(const Key('submitButton')));
 await tester.pump();
 ```
 
-Key는 테스트만을 위한 장치라기보다, 위젯 트리에서 특정 위젯을 식별하는 이름표입니다. 남용할 필요는 없지만 사용자 행동의 핵심이 되는 요소에는 붙여두면 테스트가 단단해집니다.
+Key???뚯뒪?몃쭔???꾪븳 ?μ튂?쇨린蹂대떎, ?꾩젽 ?몃━?먯꽌 ?뱀젙 ?꾩젽???앸퀎?섎뒗 ?대쫫?쒖엯?덈떎. ?⑥슜???꾩슂???놁?留??ъ슜???됰룞???듭떖???섎뒗 ?붿냼?먮뒗 遺숈뿬?먮㈃ ?뚯뒪?멸? ?⑤떒?댁쭛?덈떎.
 
-## TextField 입력 테스트
-
-입력창에 값을 넣고 버튼을 눌렀을 때 결과가 표시되는 화면을 만들어봅시다.
+## TextField ?낅젰 ?뚯뒪??
+?낅젰李쎌뿉 媛믪쓣 ?ｊ퀬 踰꾪듉???뚮?????寃곌낵媛 ?쒖떆?섎뒗 ?붾㈃??留뚮뱾?대큶?쒕떎.
 
 ```dart
 class GreetingPage extends StatefulWidget {
@@ -141,10 +139,10 @@ class _GreetingPageState extends State<GreetingPage> {
               key: const Key('greetButton'),
               onPressed: () {
                 setState(() {
-                  message = '안녕하세요, ${controller.text}님';
+                  message = '?덈뀞?섏꽭?? ${controller.text}??;
                 });
               },
-              child: const Text('인사하기'),
+              child: const Text('?몄궗?섍린'),
             ),
             Text(message),
           ],
@@ -155,25 +153,24 @@ class _GreetingPageState extends State<GreetingPage> {
 }
 ```
 
-테스트는 다음처럼 작성합니다.
+?뚯뒪?몃뒗 ?ㅼ쓬泥섎읆 ?묒꽦?⑸땲??
 
 ```dart
-testWidgets('이름을 입력하면 인사 문구가 표시된다', (tester) async {
+testWidgets('?대쫫???낅젰?섎㈃ ?몄궗 臾멸뎄媛 ?쒖떆?쒕떎', (tester) async {
   await tester.pumpWidget(const GreetingPage());
 
-  await tester.enterText(find.byKey(const Key('nameInput')), '성규');
+  await tester.enterText(find.byKey(const Key('nameInput')), '?깃퇋');
   await tester.tap(find.byKey(const Key('greetButton')));
   await tester.pump();
 
-  expect(find.text('안녕하세요, 성규님'), findsOneWidget);
+  expect(find.text('?덈뀞?섏꽭?? ?깃퇋??), findsOneWidget);
 });
 ```
 
-`enterText`는 입력창에 텍스트를 넣는 동작입니다. 실제 키보드를 띄우지 않고도 입력 결과를 테스트할 수 있습니다.
+`enterText`???낅젰李쎌뿉 ?띿뒪?몃? ?ｋ뒗 ?숈옉?낅땲?? ?ㅼ젣 ?ㅻ낫?쒕? ?꾩슦吏 ?딄퀬???낅젰 寃곌낵瑜??뚯뒪?명븷 ???덉뒿?덈떎.
 
-## 비동기 화면 테스트
-
-비동기 로딩 화면은 widget test에서 자주 막히는 부분입니다. 예제를 보겠습니다.
+## 鍮꾨룞湲??붾㈃ ?뚯뒪??
+鍮꾨룞湲?濡쒕뵫 ?붾㈃? widget test?먯꽌 ?먯＜ 留됲엳??遺遺꾩엯?덈떎. ?덉젣瑜?蹂닿쿋?듬땲??
 
 ```dart
 class AsyncMessagePage extends StatefulWidget {
@@ -195,7 +192,7 @@ class _AsyncMessagePageState extends State<AsyncMessagePage> {
   Future<void> _load() async {
     await Future<void>.delayed(const Duration(milliseconds: 300));
     if (!mounted) return;
-    setState(() => message = '로딩 완료');
+    setState(() => message = '濡쒕뵫 ?꾨즺');
   }
 
   @override
@@ -213,10 +210,10 @@ class _AsyncMessagePageState extends State<AsyncMessagePage> {
 }
 ```
 
-테스트에서는 처음에는 로딩이 보이고, 시간이 지난 뒤 완료 문구가 보여야 합니다.
+?뚯뒪?몄뿉?쒕뒗 泥섏쓬?먮뒗 濡쒕뵫??蹂댁씠怨? ?쒓컙??吏?????꾨즺 臾멸뎄媛 蹂댁뿬???⑸땲??
 
 ```dart
-testWidgets('비동기 로딩 후 메시지가 표시된다', (tester) async {
+testWidgets('鍮꾨룞湲?濡쒕뵫 ??硫붿떆吏媛 ?쒖떆?쒕떎', (tester) async {
   await tester.pumpWidget(const AsyncMessagePage());
 
   expect(find.byType(CircularProgressIndicator), findsOneWidget);
@@ -224,15 +221,14 @@ testWidgets('비동기 로딩 후 메시지가 표시된다', (tester) async {
   await tester.pump(const Duration(milliseconds: 300));
   await tester.pump();
 
-  expect(find.text('로딩 완료'), findsOneWidget);
+  expect(find.text('濡쒕뵫 ?꾨즺'), findsOneWidget);
 });
 ```
 
-`pumpAndSettle()`을 쓰면 애니메이션이나 예약된 프레임이 끝날 때까지 기다릴 수 있지만, 무한 애니메이션이 있는 화면에서는 테스트가 끝나지 않을 수 있습니다. `CircularProgressIndicator`처럼 계속 도는 애니메이션이 있으면 필요한 시간만큼 `pump(Duration)`을 사용하는 편이 더 명확할 때가 많습니다.
+`pumpAndSettle()`???곕㈃ ?좊땲硫붿씠?섏씠???덉빟???꾨젅?꾩씠 ?앸궇 ?뚭퉴吏 湲곕떎由????덉?留? 臾댄븳 ?좊땲硫붿씠?섏씠 ?덈뒗 ?붾㈃?먯꽌???뚯뒪?멸? ?앸굹吏 ?딆쓣 ???덉뒿?덈떎. `CircularProgressIndicator`泥섎읆 怨꾩냽 ?꾨뒗 ?좊땲硫붿씠?섏씠 ?덉쑝硫??꾩슂???쒓컙留뚰겮 `pump(Duration)`???ъ슜?섎뒗 ?몄씠 ??紐낇솗???뚭? 留롮뒿?덈떎.
 
-## 테스트하기 쉬운 위젯 만들기
-
-테스트가 어려운 위젯은 보통 의존성이 내부에 숨어 있습니다. 예를 들어 위젯 안에서 직접 API 객체를 만들면 테스트에서 가짜 응답을 주입하기 어렵습니다.
+## ?뚯뒪?명븯湲??ъ슫 ?꾩젽 留뚮뱾湲?
+?뚯뒪?멸? ?대젮???꾩젽? 蹂댄넻 ?섏〈?깆씠 ?대????⑥뼱 ?덉뒿?덈떎. ?덈? ?ㅼ뼱 ?꾩젽 ?덉뿉??吏곸젒 API 媛앹껜瑜?留뚮뱾硫??뚯뒪?몄뿉??媛吏??묐떟??二쇱엯?섍린 ?대졄?듬땲??
 
 ```dart
 class ProfilePage extends StatelessWidget {
@@ -259,10 +255,10 @@ class ProfilePage extends StatelessWidget {
 }
 ```
 
-테스트에서는 가짜 함수를 넣습니다.
+?뚯뒪?몄뿉?쒕뒗 媛吏??⑥닔瑜??ｌ뒿?덈떎.
 
 ```dart
-testWidgets('프로필 이름을 표시한다', (tester) async {
+testWidgets('?꾨줈???대쫫???쒖떆?쒕떎', (tester) async {
   await tester.pumpWidget(
     MaterialApp(
       home: ProfilePage(
@@ -277,8 +273,8 @@ testWidgets('프로필 이름을 표시한다', (tester) async {
 });
 ```
 
-이런 구조는 [VoidCallback 글](/flutter/callback)에서 다룬 콜백 전달과도 같은 원리입니다. 외부 의존성을 주입하면 테스트가 쉬워지고 위젯 재사용성도 좋아집니다.
+?대윴 援ъ“??[VoidCallback 湲](/flutter/callback/)?먯꽌 ?ㅻ， 肄쒕갚 ?꾨떖怨쇰룄 媛숈? ?먮━?낅땲?? ?몃? ?섏〈?깆쓣 二쇱엯?섎㈃ ?뚯뒪?멸? ?ъ썙吏怨??꾩젽 ?ъ궗?⑹꽦??醫뗭븘吏묐땲??
 
-## 정리
+## ?뺣━
 
-Widget test는 실제 사용자의 행동을 작은 단위로 검증하는 도구입니다. `pumpWidget`으로 화면을 그리고, `find`로 위젯을 찾고, `tap`이나 `enterText`로 행동을 수행한 뒤, `expect`로 결과를 확인합니다. 상태 변경 뒤에는 `pump`가 필요하고, 비동기 화면에서는 기다릴 시간을 명확히 제어해야 합니다. 처음부터 모든 화면을 테스트하려고 하기보다 로그인 버튼, 입력 검증, 중요한 상태 전환처럼 실패하면 치명적인 흐름부터 하나씩 추가하는 것이 좋습니다.
+Widget test???ㅼ젣 ?ъ슜?먯쓽 ?됰룞???묒? ?⑥쐞濡?寃利앺븯???꾧뎄?낅땲?? `pumpWidget`?쇰줈 ?붾㈃??洹몃━怨? `find`濡??꾩젽??李얘퀬, `tap`?대굹 `enterText`濡??됰룞???섑뻾???? `expect`濡?寃곌낵瑜??뺤씤?⑸땲?? ?곹깭 蹂寃??ㅼ뿉??`pump`媛 ?꾩슂?섍퀬, 鍮꾨룞湲??붾㈃?먯꽌??湲곕떎由??쒓컙??紐낇솗???쒖뼱?댁빞 ?⑸땲?? 泥섏쓬遺??紐⑤뱺 ?붾㈃???뚯뒪?명븯?ㅺ퀬 ?섍린蹂대떎 濡쒓렇??踰꾪듉, ?낅젰 寃利? 以묒슂???곹깭 ?꾪솚泥섎읆 ?ㅽ뙣?섎㈃ 移섎챸?곸씤 ?먮쫫遺???섎굹??異붽??섎뒗 寃껋씠 醫뗭뒿?덈떎.

@@ -1,21 +1,20 @@
----
+﻿---
 layout: post
-title: "BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기"
+title: "BottomNavigationBar: ?섎떒 ???붾㈃ ?꾪솚???덉젙?곸쑝濡?援ъ꽦?섍린"
 date: 2024-02-23 22:37:00 +0900
 category: Flutter
 permalink: /flutter/navigator
 tags: [BottomNavigationBar, Navigator]
 ---
 
-# BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기
+# BottomNavigationBar: ?섎떒 ???붾㈃ ?꾪솚???덉젙?곸쑝濡?援ъ꽦?섍린
 
-모바일 앱에서 하단 탭은 매우 익숙한 UI입니다. 홈, 검색, 알림, 마이페이지처럼 주요 영역을 빠르게 오갈 수 있게 해줍니다. Flutter에서는 `Scaffold`의 `bottomNavigationBar`와 `BottomNavigationBar`를 조합해 기본적인 하단 탭 구조를 만들 수 있습니다.
+紐⑤컮???깆뿉???섎떒 ??? 留ㅼ슦 ?듭닕??UI?낅땲?? ?? 寃?? ?뚮┝, 留덉씠?섏씠吏泥섎읆 二쇱슂 ?곸뿭??鍮좊Ⅴ寃??ㅺ컝 ???덇쾶 ?댁쨳?덈떎. Flutter?먯꽌??`Scaffold`??`bottomNavigationBar`? `BottomNavigationBar`瑜?議고빀??湲곕낯?곸씤 ?섎떒 ??援ъ“瑜?留뚮뱾 ???덉뒿?덈떎.
 
-중요한 점은 탭을 누를 때마다 새 페이지를 `push`하는 것이 아니라, 현재 선택된 index에 따라 `body`를 바꾸는 방식이 일반적이라는 것입니다. 이 차이를 이해하지 못하면 뒤로가기 스택이 이상해지거나, 탭을 누를 때마다 같은 화면이 계속 쌓이는 문제가 생길 수 있습니다.
+以묒슂???먯? ??쓣 ?꾨? ?뚮쭏?????섏씠吏瑜?`push`?섎뒗 寃껋씠 ?꾨땲?? ?꾩옱 ?좏깮??index???곕씪 `body`瑜?諛붽씀??諛⑹떇???쇰컲?곸씠?쇰뒗 寃껋엯?덈떎. ??李⑥씠瑜??댄빐?섏? 紐삵븯硫??ㅻ줈媛湲??ㅽ깮???댁긽?댁?嫄곕굹, ??쓣 ?꾨? ?뚮쭏??媛숈? ?붾㈃??怨꾩냽 ?볦씠??臾몄젣媛 ?앷만 ???덉뒿?덈떎.
 
-## 가장 기본적인 하단 탭
-
-먼저 `StatefulWidget`으로 선택된 탭 index를 관리합니다.
+## 媛??湲곕낯?곸씤 ?섎떒 ??
+癒쇱? `StatefulWidget`?쇰줈 ?좏깮????index瑜?愿由ы빀?덈떎.
 
 ```dart
 class MainTabPage extends StatefulWidget {
@@ -48,15 +47,15 @@ class _MainTabPageState extends State<MainTabPage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: '홈',
+            label: '??,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.search),
-            label: '검색',
+            label: '寃??,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: '내정보',
+            label: '?댁젙蹂?,
           ),
         ],
       ),
@@ -65,11 +64,11 @@ class _MainTabPageState extends State<MainTabPage> {
 }
 ```
 
-`currentIndex`는 현재 선택된 탭 번호입니다. `onTap`에서 index를 받아 상태를 바꾸면 `body`가 해당 페이지로 변경됩니다.
+`currentIndex`???꾩옱 ?좏깮????踰덊샇?낅땲?? `onTap`?먯꽌 index瑜?諛쏆븘 ?곹깭瑜?諛붽씀硫?`body`媛 ?대떦 ?섏씠吏濡?蹂寃쎈맗?덈떎.
 
-## 탭 페이지 예시
+## ???섏씠吏 ?덉떆
 
-각 탭은 일반 위젯으로 만들면 됩니다.
+媛???? ?쇰컲 ?꾩젽?쇰줈 留뚮뱾硫??⑸땲??
 
 ```dart
 class HomeTab extends StatelessWidget {
@@ -77,7 +76,7 @@ class HomeTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('홈 화면'));
+    return const Center(child: Text('???붾㈃'));
   }
 }
 
@@ -86,7 +85,7 @@ class SearchTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('검색 화면'));
+    return const Center(child: Text('寃???붾㈃'));
   }
 }
 
@@ -95,16 +94,16 @@ class MyTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('내정보 화면'));
+    return const Center(child: Text('?댁젙蹂??붾㈃'));
   }
 }
 ```
 
-처음에는 이렇게 단순하게 시작하고, 각 탭이 커지면 별도 파일로 분리하면 됩니다.
+泥섏쓬?먮뒗 ?대젃寃??⑥닚?섍쾶 ?쒖옉?섍퀬, 媛???씠 而ㅼ?硫?蹂꾨룄 ?뚯씪濡?遺꾨━?섎㈃ ?⑸땲??
 
-## 탭 화면 상태 유지하기
+## ???붾㈃ ?곹깭 ?좎??섍린
 
-위 기본 예제는 탭을 바꿀 때마다 `body`에 보이는 위젯이 교체됩니다. 단순 화면은 괜찮지만, 스크롤 위치나 입력값을 유지하고 싶다면 `IndexedStack`을 사용할 수 있습니다.
+??湲곕낯 ?덉젣????쓣 諛붽? ?뚮쭏??`body`??蹂댁씠???꾩젽??援먯껜?⑸땲?? ?⑥닚 ?붾㈃? 愿쒖갖吏留? ?ㅽ겕濡??꾩튂???낅젰媛믪쓣 ?좎??섍퀬 ?띕떎硫?`IndexedStack`???ъ슜?????덉뒿?덈떎.
 
 ```dart
 Scaffold(
@@ -116,19 +115,19 @@ Scaffold(
     currentIndex: currentIndex,
     onTap: (index) => setState(() => currentIndex = index),
     items: const [
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-      BottomNavigationBarItem(icon: Icon(Icons.search), label: '검색'),
-      BottomNavigationBarItem(icon: Icon(Icons.person), label: '내정보'),
+      BottomNavigationBarItem(icon: Icon(Icons.home), label: '??),
+      BottomNavigationBarItem(icon: Icon(Icons.search), label: '寃??),
+      BottomNavigationBarItem(icon: Icon(Icons.person), label: '?댁젙蹂?),
     ],
   ),
 )
 ```
 
-`IndexedStack`은 모든 child를 유지하고, 현재 index에 해당하는 child만 보여줍니다. 그래서 탭을 이동해도 각 탭의 상태가 유지됩니다. 대신 탭이 많고 각 탭이 무거우면 메모리 사용량이 늘 수 있습니다. 상태 유지가 필요한 화면인지 먼저 판단하는 것이 좋습니다.
+`IndexedStack`? 紐⑤뱺 child瑜??좎??섍퀬, ?꾩옱 index???대떦?섎뒗 child留?蹂댁뿬以띾땲?? 洹몃옒????쓣 ?대룞?대룄 媛???쓽 ?곹깭媛 ?좎??⑸땲?? ?????씠 留롪퀬 媛???씠 臾닿굅?곕㈃ 硫붾え由??ъ슜?됱씠 ?????덉뒿?덈떎. ?곹깭 ?좎?媛 ?꾩슂???붾㈃?몄? 癒쇱? ?먮떒?섎뒗 寃껋씠 醫뗭뒿?덈떎.
 
-## 탭 클릭과 Navigator.push를 구분하기
+## ???대┃怨?Navigator.push瑜?援щ텇?섍린
 
-하단 탭을 누를 때마다 다음처럼 `Navigator.push`를 호출하면 문제가 생길 수 있습니다.
+?섎떒 ??쓣 ?꾨? ?뚮쭏???ㅼ쓬泥섎읆 `Navigator.push`瑜??몄텧?섎㈃ 臾몄젣媛 ?앷만 ???덉뒿?덈떎.
 
 ```dart
 onTap: (index) {
@@ -138,13 +137,13 @@ onTap: (index) {
 }
 ```
 
-이 방식은 탭 전환이 아니라 새 화면을 스택에 쌓는 동작입니다. 사용자가 탭을 여러 번 누르면 같은 화면이 계속 쌓이고, 뒤로가기를 눌렀을 때 이전 탭 상태로 돌아가는 이상한 흐름이 생길 수 있습니다. 하단 탭은 일반적으로 index 상태를 바꿔 body를 교체하는 방식으로 처리합니다.
+??諛⑹떇? ???꾪솚???꾨땲?????붾㈃???ㅽ깮???볥뒗 ?숈옉?낅땲?? ?ъ슜?먭? ??쓣 ?щ윭 踰??꾨Ⅴ硫?媛숈? ?붾㈃??怨꾩냽 ?볦씠怨? ?ㅻ줈媛湲곕? ?뚮??????댁쟾 ???곹깭濡??뚯븘媛???댁긽???먮쫫???앷만 ???덉뒿?덈떎. ?섎떒 ??? ?쇰컲?곸쑝濡?index ?곹깭瑜?諛붽퓭 body瑜?援먯껜?섎뒗 諛⑹떇?쇰줈 泥섎━?⑸땲??
 
-상세 화면처럼 현재 탭 안에서 더 깊이 들어가는 경우에는 `Navigator.push`를 사용해도 됩니다.
+?곸꽭 ?붾㈃泥섎읆 ?꾩옱 ???덉뿉????源딆씠 ?ㅼ뼱媛??寃쎌슦?먮뒗 `Navigator.push`瑜??ъ슜?대룄 ?⑸땲??
 
 ```dart
 ListTile(
-  title: const Text('상품 상세 보기'),
+  title: const Text('?곹뭹 ?곸꽭 蹂닿린'),
   onTap: () {
     Navigator.of(context).push(
       MaterialPageRoute(
@@ -155,11 +154,10 @@ ListTile(
 )
 ```
 
-즉, 탭 전환은 index 변경, 상세 진입은 push라고 구분하면 됩니다.
+利? ???꾪솚? index 蹂寃? ?곸꽭 吏꾩엯? push?쇨퀬 援щ텇?섎㈃ ?⑸땲??
 
-## 아이템이 4개 이상일 때
-
-`BottomNavigationBar`는 item이 4개 이상이면 기본 type이 shifting으로 동작할 수 있습니다. 색상이나 라벨 동작이 예상과 다르면 `type`을 명시합니다.
+## ?꾩씠?쒖씠 4媛??댁긽????
+`BottomNavigationBar`??item??4媛??댁긽?대㈃ 湲곕낯 type??shifting?쇰줈 ?숈옉?????덉뒿?덈떎. ?됱긽?대굹 ?쇰꺼 ?숈옉???덉긽怨??ㅻⅤ硫?`type`??紐낆떆?⑸땲??
 
 ```dart
 BottomNavigationBar(
@@ -167,22 +165,22 @@ BottomNavigationBar(
   currentIndex: currentIndex,
   onTap: (index) => setState(() => currentIndex = index),
   items: const [
-    BottomNavigationBarItem(icon: Icon(Icons.home), label: '홈'),
-    BottomNavigationBarItem(icon: Icon(Icons.search), label: '검색'),
-    BottomNavigationBarItem(icon: Icon(Icons.notifications), label: '알림'),
-    BottomNavigationBarItem(icon: Icon(Icons.person), label: '내정보'),
+    BottomNavigationBarItem(icon: Icon(Icons.home), label: '??),
+    BottomNavigationBarItem(icon: Icon(Icons.search), label: '寃??),
+    BottomNavigationBarItem(icon: Icon(Icons.notifications), label: '?뚮┝'),
+    BottomNavigationBarItem(icon: Icon(Icons.person), label: '?댁젙蹂?),
   ],
 )
 ```
 
-탭이 너무 많아지면 하단 바가 복잡해집니다. 주요 메뉴 3~5개 정도로 유지하고, 나머지는 마이페이지나 더보기 화면으로 보내는 것이 일반적입니다.
+??씠 ?덈Т 留롮븘吏硫??섎떒 諛붽? 蹂듭옟?댁쭛?덈떎. 二쇱슂 硫붾돱 3~5媛??뺣룄濡??좎??섍퀬, ?섎㉧吏??留덉씠?섏씠吏???붾낫湲??붾㈃?쇰줈 蹂대궡??寃껋씠 ?쇰컲?곸엯?덈떎.
 
-## go_router와 함께 확장하기
+## go_router? ?④퍡 ?뺤옣?섍린
 
-간단한 앱은 `BottomNavigationBar`와 index 상태만으로 충분합니다. 하지만 딥링크, 웹 URL, 탭별 Navigator, 로그인 redirect가 필요하면 라우터 기반 구조가 더 적합할 수 있습니다. 이때는 [go_router 글](/flutter/go-router)의 `ShellRoute` 같은 구조로 확장할 수 있습니다.
+媛꾨떒???깆? `BottomNavigationBar`? index ?곹깭留뚯쑝濡?異⑸텇?⑸땲?? ?섏?留??λ쭅?? ??URL, ??퀎 Navigator, 濡쒓렇??redirect媛 ?꾩슂?섎㈃ ?쇱슦??湲곕컲 援ъ“媛 ???곹빀?????덉뒿?덈떎. ?대븣??[go_router 湲](/flutter/go-router/)??`ShellRoute` 媛숈? 援ъ“濡??뺤옣?????덉뒿?덈떎.
 
-처음부터 복잡하게 시작할 필요는 없습니다. 먼저 index 기반 하단 탭을 이해하고, 요구사항이 생겼을 때 라우팅 구조로 옮겨도 충분합니다.
+泥섏쓬遺??蹂듭옟?섍쾶 ?쒖옉???꾩슂???놁뒿?덈떎. 癒쇱? index 湲곕컲 ?섎떒 ??쓣 ?댄빐?섍퀬, ?붽뎄?ы빆???앷꼈?????쇱슦??援ъ“濡???꺼??異⑸텇?⑸땲??
 
-## 정리
+## ?뺣━
 
-`BottomNavigationBar`는 `currentIndex`와 `onTap`을 중심으로 동작합니다. 탭을 누를 때 새 화면을 push하는 것이 아니라 선택된 index를 바꾸고 `body`를 교체하는 것이 기본입니다. 탭별 상태를 유지해야 한다면 `IndexedStack`을 사용하고, 상세 화면으로 들어갈 때는 `Navigator.push`를 사용합니다. 이 구분만 명확히 해도 하단 탭 구조에서 생기는 많은 혼란을 줄일 수 있습니다.
+`BottomNavigationBar`??`currentIndex`? `onTap`??以묒떖?쇰줈 ?숈옉?⑸땲?? ??쓣 ?꾨? ?????붾㈃??push?섎뒗 寃껋씠 ?꾨땲???좏깮??index瑜?諛붽씀怨?`body`瑜?援먯껜?섎뒗 寃껋씠 湲곕낯?낅땲?? ??퀎 ?곹깭瑜??좎??댁빞 ?쒕떎硫?`IndexedStack`???ъ슜?섍퀬, ?곸꽭 ?붾㈃?쇰줈 ?ㅼ뼱媛??뚮뒗 `Navigator.push`瑜??ъ슜?⑸땲?? ??援щ텇留?紐낇솗???대룄 ?섎떒 ??援ъ“?먯꽌 ?앷린??留롮? ?쇰???以꾩씪 ???덉뒿?덈떎.
