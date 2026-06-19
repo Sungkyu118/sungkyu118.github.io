@@ -1,125 +1,197 @@
 ---
 layout: post
-title: "반응형 기본: LayoutBuilder로 화면 크기별 UI 나누기"
-date: 2026-05-15 00:50:00 +0900
+title: "LayoutBuilder로 Flutter 반응형 레이아웃 만들기"
+date: 2026-05-15 01:20:00 +0900
 category: Flutter
 permalink: /flutter/responsive-layoutbuilder
 ---
 
-# 반응형 기본: LayoutBuilder로 화면 크기별 UI 나누기
+# LayoutBuilder로 Flutter 반응형 레이아웃 만들기
 
-Flutter 앱을 폰/태블릿/웹까지 한 코드로 커버하려면 반응형이 필수입니다. 그중에서도 `LayoutBuilder`는 가장 안전한 기본기예요. "현재 위젯이 실제로 배치된 영역의 크기"를 기준으로 UI를 분기할 수 있습니다.
+Flutter 앱은 휴대폰, 태블릿, 웹, 데스크톱까지 다양한 화면에서 실행될 수 있습니다. 처음에는 특정 기기 크기에 맞춰 `SizedBox(width: 360)` 같은 값을 넣어도 화면이 그럭저럭 보일 수 있습니다. 하지만 기기가 바뀌거나 가로 모드가 되거나 웹 브라우저 크기가 달라지면 레이아웃이 쉽게 깨집니다. 반응형 레이아웃은 이런 상황을 대비해 화면 크기에 따라 배치를 바꾸는 방식입니다.
 
-이 글은 아래 4가지를 모두 포함합니다.
+`LayoutBuilder`는 부모가 자식에게 줄 수 있는 크기 제약을 기준으로 UI를 다르게 구성할 수 있게 해줍니다. 단순히 전체 화면 크기만 보는 `MediaQuery`와 달리, 특정 영역 안에서 사용할 수 있는 너비를 기준으로 판단할 수 있다는 점이 장점입니다.
 
-1. 언제/왜 LayoutBuilder를 쓰는지(트레이드오프)
-2. 실전 예제 1개를 끝까지(브레이크포인트 + 레이아웃 전환)
-3. 흔한 실수/디버깅 포인트
-4. 대안 비교(MediaQuery, OrientationBuilder, 반응형 패키지)
+## LayoutBuilder 기본 구조
 
-## 1) 언제/왜 쓰나 (트레이드오프)
-
-### LayoutBuilder가 특히 좋은 상황
-
-- 같은 화면을 폰/태블릿에서 다르게 보여줘야 한다
-- 웹에서 사이드바(좌측 네비) 같은 레이아웃이 필요하다
-- "전체 화면 크기"가 아니라 "현재 영역" 기준으로 반응형을 하고 싶다
-
-### 단점/주의점
-
-- 분기 로직이 여기저기 흩어지면 유지보수가 어려워질 수 있음
-- 브레이크포인트를 팀에서 통일하지 않으면 화면마다 기준이 달라짐
-
-그래서 브레이크포인트는 상수로 모아두는 편이 좋습니다.
-
-## 2) 실전 예제: 브레이크포인트 상수 + 레이아웃 전환
+`LayoutBuilder`는 `builder`에서 `BoxConstraints`를 제공합니다.
 
 ```dart
-class Breakpoints {
-  static const double tablet = 600;
-  static const double desktop = 1024;
+LayoutBuilder(
+  builder: (context, constraints) {
+    final width = constraints.maxWidth;
+
+    if (width < 600) {
+      return const MobileLayout();
+    }
+
+    return const TabletLayout();
+  },
+)
+```
+
+`constraints.maxWidth`는 해당 위젯이 사용할 수 있는 최대 너비입니다. 이것을 기준으로 모바일, 태블릿, 데스크톱 레이아웃을 나눌 수 있습니다.
+
+## MediaQuery와의 차이
+
+`MediaQuery.of(context).size.width`는 보통 전체 화면의 너비를 알려줍니다.
+
+```dart
+final screenWidth = MediaQuery.of(context).size.width;
+```
+
+반면 `LayoutBuilder`는 부모가 이 위젯에게 허용한 너비를 알려줍니다. 예를 들어 데스크톱 화면에서 오른쪽 사이드 패널 안에 들어간 위젯은 전체 화면은 넓어도 실제 사용할 수 있는 영역은 좁을 수 있습니다. 이때는 MediaQuery보다 LayoutBuilder가 더 정확한 판단 기준이 됩니다.
+
+## 모바일과 태블릿 레이아웃 나누기
+
+상품 목록 화면을 예로 들어보겠습니다. 좁은 화면에서는 1열 목록, 넓은 화면에서는 2열 그리드로 보여주고 싶습니다.
+
+```dart
+class ProductResponsivePage extends StatelessWidget {
+  const ProductResponsivePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Products')),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final crossAxisCount = constraints.maxWidth < 600 ? 1 : 2;
+
+          return GridView.builder(
+            padding: const EdgeInsets.all(16),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              childAspectRatio: crossAxisCount == 1 ? 4 : 1.4,
+            ),
+            itemCount: 20,
+            itemBuilder: (context, index) {
+              return Card(
+                child: Center(child: Text('상품 $index')),
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
 }
 ```
 
-화면에서 분기:
+여기서 `childAspectRatio`도 화면 구조에 따라 다르게 주었습니다. 모바일 1열 카드에서는 가로로 긴 카드가 자연스럽고, 태블릿 2열에서는 조금 더 박스형 카드가 어울릴 수 있습니다.
+
+## 데스크톱에서는 사이드바 추가하기
+
+화면이 충분히 넓으면 모바일과 완전히 다른 구조를 사용할 수도 있습니다.
 
 ```dart
-class HomeShell extends StatelessWidget {
-  const HomeShell({super.key});
+class ResponsiveShell extends StatelessWidget {
+  const ResponsiveShell({super.key});
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final w = constraints.maxWidth;
+        if (constraints.maxWidth >= 900) {
+          return Row(
+            children: const [
+              SizedBox(
+                width: 240,
+                child: NavigationRailExample(),
+              ),
+              VerticalDivider(width: 1),
+              Expanded(child: ContentArea()),
+            ],
+          );
+        }
 
-        if (w >= Breakpoints.desktop) {
-          return const _DesktopHome();
-        }
-        if (w >= Breakpoints.tablet) {
-          return const _TabletHome();
-        }
-        return const _MobileHome();
+        return const ContentArea();
       },
     );
   }
 }
 ```
 
-### Row/Column 전환 패턴
+모바일에서는 하단 탭을 쓰고, 데스크톱에서는 사이드바를 쓰는 구조도 가능합니다. 하단 탭 구성은 [BottomNavigationBar 글](/flutter/navigator)에서 다룬 개념과 연결됩니다.
 
-모바일: 세로, 큰 화면: 좌우 분할(사이드바 + 컨텐츠)
+## 고정 크기 남용 피하기
+
+반응형 레이아웃에서 자주 하는 실수는 모든 것을 고정 크기로 맞추는 것입니다.
 
 ```dart
-class _DesktopHome extends StatelessWidget {
-  const _DesktopHome();
+Container(
+  width: 360,
+  height: 200,
+  child: const Text('고정 크기'),
+)
+```
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        SizedBox(width: 280, child: _Sidebar()),
-        VerticalDivider(width: 1),
-        Expanded(child: _Content()),
-      ],
-    );
-  }
+이런 코드는 특정 기기에서는 예쁘게 보이지만, 작은 화면에서는 overflow가 나고 큰 화면에서는 어색하게 남는 공간이 생깁니다. 가능한 경우 `Expanded`, `Flexible`, `FractionallySizedBox`, `ConstrainedBox`를 활용하는 편이 좋습니다.
+
+```dart
+ConstrainedBox(
+  constraints: const BoxConstraints(maxWidth: 720),
+  child: const Padding(
+    padding: EdgeInsets.all(16),
+    child: Text('너무 넓어지지 않는 본문'),
+  ),
+)
+```
+
+웹이나 태블릿에서는 본문이 화면 전체 너비로 늘어나면 읽기 어려울 수 있습니다. 그래서 최대 너비를 제한하고 가운데 정렬하는 패턴이 자주 쓰입니다.
+
+## SafeArea와 스크롤 고려하기
+
+반응형 화면에서는 단순히 너비만 볼 것이 아니라 안전 영역과 스크롤도 고려해야 합니다. 노치, 상태바, 하단 제스처 영역 때문에 콘텐츠가 가려질 수 있습니다.
+
+```dart
+SafeArea(
+  child: LayoutBuilder(
+    builder: (context, constraints) {
+      return SingleChildScrollView(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minHeight: constraints.maxHeight),
+          child: const Center(
+            child: Text('내용'),
+          ),
+        ),
+      );
+    },
+  ),
+)
+```
+
+입력 폼처럼 키보드가 올라올 수 있는 화면은 스크롤 가능하게 만드는 편이 안전합니다. 작은 화면에서 버튼이 키보드에 가려지는 문제를 줄일 수 있습니다.
+
+## Breakpoint를 상수로 관리하기
+
+프로젝트가 커지면 화면마다 `600`, `900` 같은 숫자를 직접 쓰는 대신 breakpoint를 상수로 관리하는 것이 좋습니다.
+
+```dart
+class Breakpoints {
+  static const mobile = 600.0;
+  static const tablet = 900.0;
+}
+
+bool isMobile(BoxConstraints constraints) {
+  return constraints.maxWidth < Breakpoints.mobile;
+}
+
+bool isDesktop(BoxConstraints constraints) {
+  return constraints.maxWidth >= Breakpoints.tablet;
 }
 ```
 
-## 3) 흔한 실수/디버깅 포인트
+이렇게 하면 디자인 기준이 바뀌었을 때 한곳에서 조정할 수 있습니다.
 
-### (1) MediaQuery만 믿고 분기해서 깨짐
+## LayoutBuilder 남용 주의
 
-`MediaQuery.size`는 화면 전체 크기라서, 예를 들어 웹에서 좌측 패널/다이얼로그/분할뷰 안에서는 의도와 다르게 동작할 수 있어요. 영역 기반이면 `LayoutBuilder`가 더 정확합니다.
+`LayoutBuilder`가 편하다고 모든 위젯에 넣을 필요는 없습니다. 대부분의 단순 UI는 `Expanded`, `Wrap`, `Flexible`, `GridView`의 설정만으로도 충분합니다. LayoutBuilder는 "사용 가능한 공간에 따라 구조 자체가 바뀌어야 할 때" 사용하는 것이 좋습니다.
 
-### (2) 브레이크포인트가 화면마다 다름
-
-한 화면은 700에서 태블릿, 다른 화면은 600에서 태블릿이면 UX가 흔들립니다. `Breakpoints` 상수로 통일 추천.
-
-### (3) 텍스트 오버플로우
-
-반응형이라고 레이아웃만 바꾸고 텍스트 줄바꿈/최소 폭을 안 챙기면 `RenderFlex overflow`가 나기 쉽습니다.
-
-- `Expanded/Flexible` 사용
-- 긴 텍스트는 `maxLines`, `overflow: TextOverflow.ellipsis`
-
-## 4) 대안 비교
-
-### MediaQuery
-
-화면 전체 기준으로 분기할 때 간단합니다. 다만 "영역 기반"이 아니라는 점이 가장 큰 차이입니다.
-
-### OrientationBuilder
-
-가로/세로 방향에 따라 분기하는 경우에 좋습니다. 하지만 태블릿/웹처럼 "폭 자체가 큰 환경"에서는 orientation만으로는 부족한 경우가 많아요.
-
-### 반응형 패키지(예: responsive_framework 등)
-
-프로젝트가 커지면 패키지 도입도 고려할 수 있습니다. 다만 처음엔 `LayoutBuilder + Breakpoints`로 충분히 깔끔하게 갈 수 있어요.
+또한 LayoutBuilder의 builder는 레이아웃 과정에서 호출됩니다. 내부에서 무거운 계산이나 API 호출을 하면 안 됩니다. 이 주의점은 [성능 최적화 글](/flutter/performance-rebuilds)의 build 원칙과도 같습니다.
 
 ## 정리
 
-- `LayoutBuilder`는 "영역 크기" 기반 반응형에 강하다
-- 브레이크포인트를 상수로 통일하면 유지보수가 쉬워진다
-- 오버플로우/최소 폭 같은 디테일을 같이 챙겨야 UX가 좋아진다
+`LayoutBuilder`는 부모가 허용한 크기를 기준으로 UI를 바꾸는 위젯입니다. 전체 화면 크기만 보는 MediaQuery보다 특정 영역의 실제 너비에 맞춰 반응형 판단을 할 수 있습니다. 좁은 화면에서는 1열, 넓은 화면에서는 2열이나 사이드바 구조로 바꾸는 식의 레이아웃에 잘 어울립니다. 고정 크기를 남용하지 말고, breakpoint를 일관되게 관리하며, 필요한 곳에만 LayoutBuilder를 사용하는 것이 좋은 반응형 설계의 시작입니다.

@@ -1,146 +1,236 @@
 ---
 layout: post
-title: "initState 중복 호출 방지: Future 캐싱으로 한 번만 로드하기"
-date: 2026-05-15 00:40:00 +0900
+title: "Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기"
+date: 2026-05-15 01:10:00 +0900
 category: Flutter
-permalink: /flutter/future-cache-load-once
+permalink: /flutter/memoization-async-memoizer
 ---
 
-# initState 중복 호출 방지: Future 캐싱으로 한 번만 로드하기
+# Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기
 
-`FutureBuilder`를 쓰다가 "매 빌드마다 API 호출"을 해버리는 실수는 정말 흔합니다. 해결은 간단해요. **Future를 상태로 들고 캐싱**하면 됩니다.
+앱을 만들다 보면 같은 계산이나 같은 API 호출이 여러 번 반복되는 상황이 생깁니다. 사용자는 한 번만 눌렀다고 생각했는데 화면 rebuild 때문에 Future가 다시 생성되거나, 탭을 이동할 때마다 같은 초기화 작업이 반복될 수 있습니다. 이런 문제는 성능을 떨어뜨릴 뿐 아니라 중복 요청, 깜빡임, 데이터 불일치로 이어질 수 있습니다.
 
-이 글은 아래 4가지를 모두 포함합니다.
+Memoization은 이미 계산한 결과를 기억해두고 같은 입력이 들어오면 다시 계산하지 않는 기법입니다. Flutter에서는 동기 계산뿐 아니라 비동기 초기화에도 이 개념이 자주 쓰입니다. 이번 글에서는 간단한 memoization부터 `AsyncMemoizer`로 비동기 작업을 한 번만 실행하는 방법까지 정리해보겠습니다.
 
-1. 언제/왜 이 문제가 생기는지(트레이드오프)
-2. 실전 예제 1개를 끝까지(새로고침까지)
-3. 흔한 실수/디버깅 포인트
-4. 대안 비교(FutureProvider/Riverpod, Stream, 캐시 레이어 등)
+## 같은 계산을 반복하는 문제
 
-## 1) 왜 문제가 생기나 (언제/왜)
-
-Flutter의 `build()`는 "한 번만" 호출되는 함수가 아닙니다.
-
-- `setState`가 불리면 다시 호출
-- 상위 위젯이 rebuild되면 하위도 다시 호출될 수 있음
-- MediaQuery(회전), 테마 변경 등 다양한 이유로 재빌드 가능
-
-그런데 `build()` 안에서 `api.fetchUser()` 같은 Future를 새로 만들어버리면, "재빌드 = 재호출"이 되어버립니다.
-
-## 2) 흔한 실수: build에서 Future 생성
+아래 함수는 숫자가 소수인지 검사합니다.
 
 ```dart
-@override
-Widget build(BuildContext context) {
-  return FutureBuilder<User>(
-    future: api.fetchUser(), // build마다 새 Future 생성
-    builder: ...,
-  );
+bool isPrime(int value) {
+  if (value < 2) return false;
+
+  for (var i = 2; i * i <= value; i++) {
+    if (value % i == 0) return false;
+  }
+
+  return true;
 }
 ```
 
-## 3) 해결(정석): initState에서 Future를 만들어 보관
+작은 숫자라면 문제가 없지만, 큰 숫자를 같은 값으로 계속 검사하면 낭비입니다. 결과를 Map에 저장하면 반복 계산을 줄일 수 있습니다.
 
 ```dart
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class PrimeChecker {
+  final Map<int, bool> _cache = {};
+
+  bool isPrimeMemoized(int value) {
+    final cached = _cache[value];
+    if (cached != null) {
+      return cached;
+    }
+
+    final result = isPrime(value);
+    _cache[value] = result;
+    return result;
+  }
+}
+```
+
+이것이 memoization의 기본 형태입니다. 입력값을 key로 두고 결과를 저장합니다.
+
+## build 안의 Future 생성 문제
+
+Flutter에서 더 자주 만나는 문제는 `FutureBuilder`와 함께 발생합니다.
+
+```dart
+FutureBuilder<User>(
+  future: fetchUser(),
+  builder: (context, snapshot) {
+    if (!snapshot.hasData) {
+      return const CircularProgressIndicator();
+    }
+    return Text(snapshot.data!.name);
+  },
+)
+```
+
+이 코드는 build가 다시 실행될 때마다 `fetchUser()`가 새로 호출될 수 있습니다. 부모 위젯이 rebuild되거나 화면 상태가 바뀌면 같은 API 요청이 반복될 위험이 있습니다. 해결 방법은 Future를 필드에 저장하는 것입니다.
+
+```dart
+class UserPage extends StatefulWidget {
+  const UserPage({super.key});
+
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<UserPage> createState() => _UserPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
-  late Future<User> _future; // refresh를 위해 final은 피하는 편이 편함
+class _UserPageState extends State<UserPage> {
+  late final Future<User> _userFuture;
 
   @override
   void initState() {
     super.initState();
-    _future = api.fetchUser();
-  }
-
-  Future<void> _reload() async {
-    setState(() {
-      _future = api.fetchUser();
-    });
+    _userFuture = fetchUser();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profile"),
-        actions: [
-          IconButton(
-            onPressed: _reload,
-            icon: const Icon(Icons.refresh),
-          ),
-        ],
-      ),
-      body: FutureBuilder<User>(
-        future: _future,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState != ConnectionState.done) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          if (snapshot.hasError) {
-            return Center(child: Text("error: ${snapshot.error}"));
-          }
-          final user = snapshot.data!;
-          return Center(child: Text(user.name));
-        },
-      ),
+    return FutureBuilder<User>(
+      future: _userFuture,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const CircularProgressIndicator();
+        }
+        return Text(snapshot.data!.name);
+      },
     );
   }
 }
 ```
 
-이제 rebuild가 여러 번 일어나도 "Future 자체는 그대로"라서 중복 호출이 발생하지 않습니다.
+이제 build가 여러 번 호출되어도 Future는 `initState`에서 한 번만 생성됩니다.
 
-## 4) 실전 팁: mounted 체크
+## AsyncMemoizer 사용하기
 
-async 작업 후 `setState`를 하려면 화면이 이미 dispose 되었는지 체크하는 습관이 좋습니다.
+`AsyncMemoizer`는 비동기 작업을 한 번만 실행하고 그 결과를 재사용하도록 도와줍니다. `async` 패키지에 포함되어 있습니다.
 
-```dart
-if (!mounted) return;
-setState(() { ... });
+```yaml
+dependencies:
+  async: ^2.11.0
 ```
 
-## 5) 흔한 실수/디버깅 포인트
+사용 예시는 다음과 같습니다.
 
-### (1) refresh 구현하다가 다시 build에서 Future 만들기
+```dart
+import 'package:async/async.dart';
 
-새로고침도 결국 `_future`를 "재할당"하는 패턴으로 통일하는 게 깔끔합니다.
+class AppInitializer {
+  final AsyncMemoizer<void> _memoizer = AsyncMemoizer<void>();
 
-### (2) FutureBuilder가 null data로 터짐
+  Future<void> initialize() {
+    return _memoizer.runOnce(() async {
+      await Future<void>.delayed(const Duration(seconds: 1));
+      print('초기화 완료');
+    });
+  }
+}
+```
 
-`snapshot.data!`는 `hasData`가 보장될 때만 쓰는 게 안전합니다. 예외 케이스가 있으면 `hasData` 체크를 추가하세요.
+`initialize()`를 여러 번 호출해도 내부 작업은 한 번만 실행됩니다. 이미 실행 중이라면 같은 Future를 기다리고, 완료되었다면 완료된 결과를 재사용합니다.
 
-### (3) 요청이 한 번만 간다고 믿었는데 여러 번 감
+## 화면 초기화에 적용하기
 
-원인을 분리해서 봐야 합니다.
+앱 설정을 한 번만 불러오는 화면을 예로 들어보겠습니다.
 
-- Future가 한 번만 생성되는지(로그/브레이크포인트)
-- API 클라이언트 내부에서 재시도/리다이렉트가 있는지
-- interceptor가 중복 호출을 유발하는지
+```dart
+class SettingsLoader {
+  final AsyncMemoizer<Map<String, dynamic>> _memoizer =
+      AsyncMemoizer<Map<String, dynamic>>();
 
-## 6) 대안 비교
+  Future<Map<String, dynamic>> load() {
+    return _memoizer.runOnce(() async {
+      await Future<void>.delayed(const Duration(milliseconds: 500));
+      return {
+        'theme': 'dark',
+        'notification': true,
+      };
+    });
+  }
+}
+```
 
-### Riverpod/Provider로 올리기
+위젯에서는 loader를 주입받아 사용합니다.
 
-화면마다 같은 데이터를 쓰거나, 앱 전체에서 캐시를 공유하고 싶다면 상태관리 레이어로 올리는 게 좋습니다.
+```dart
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({
+    super.key,
+    required this.loader,
+  });
 
-- Riverpod: `FutureProvider`/`AsyncNotifier`
-- Provider: `ChangeNotifier` + repository 캐시
+  final SettingsLoader loader;
 
-### 캐시 레이어(Repository)에서 해결
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<Map<String, dynamic>>(
+      future: loader.load(),
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return const CircularProgressIndicator();
+        }
 
-UI는 단순히 `repo.getUser()`를 호출하고, repo가 내부적으로 메모이제이션(메모리 캐시)을 하는 구조도 흔합니다.
+        final data = snapshot.data!;
+        return Text('theme: ${data['theme']}');
+      },
+    );
+  }
+}
+```
 
-### Stream이 더 맞는 경우
+이 구조에서는 build가 반복되어도 loader 내부의 실제 로딩은 한 번만 수행됩니다.
 
-실시간으로 계속 값이 변하는 데이터(예: 소켓, 위치, 센서)는 Future보다 Stream이 자연스럽습니다.
+## 언제 캐시를 비워야 할까
+
+Memoization은 결과를 기억하는 기술이므로, 데이터가 바뀌는 상황에서는 캐시 무효화가 필요합니다. 예를 들어 사용자 설정을 저장한 뒤에도 이전 설정을 계속 보여주면 안 됩니다.
+
+`AsyncMemoizer`는 한 번 실행한 결과를 계속 재사용하는 성격이 강하므로, 새로고침이 필요한 데이터에는 직접 Future를 다시 만드는 방식이 더 단순할 수 있습니다.
+
+```dart
+class RefreshableUserController extends ChangeNotifier {
+  Future<User>? _future;
+
+  Future<User> load() {
+    return _future ??= fetchUser();
+  }
+
+  void refresh() {
+    _future = fetchUser();
+    notifyListeners();
+  }
+}
+```
+
+이처럼 "정말 한 번만 하면 되는 초기화"인지, "사용자가 새로고침할 수 있는 데이터"인지 구분해야 합니다.
+
+## Riverpod과의 관계
+
+Riverpod을 사용한다면 provider 자체가 캐싱 역할을 해주는 경우가 많습니다. 예를 들어 [Riverpod 기본 글](/flutter/riverpod-basics)의 `FutureProvider`는 provider 생명주기 안에서 Future 상태를 관리합니다. 그래서 모든 곳에 `AsyncMemoizer`를 직접 넣을 필요는 없습니다.
+
+```dart
+final userProvider = FutureProvider<User>((ref) async {
+  return fetchUser();
+});
+```
+
+이 경우 같은 provider를 watch하는 위젯들은 동일한 비동기 상태를 공유할 수 있습니다. 다만 provider가 dispose되거나 invalidate되면 다시 실행될 수 있으므로, 원하는 생명주기에 맞춰 설계해야 합니다.
+
+## 자주 하는 실수
+
+첫 번째는 캐시하면 안 되는 데이터를 캐시하는 것입니다. 검색 결과, 실시간 재고, 알림 목록처럼 자주 바뀌는 데이터는 무조건 오래 기억하면 사용자에게 오래된 정보를 보여줄 수 있습니다.
+
+두 번째는 입력값을 고려하지 않는 것입니다. `userId`가 다른데 같은 결과를 돌려주면 심각한 버그입니다. 입력이 있는 memoization은 key를 반드시 포함해야 합니다.
+
+```dart
+final Map<String, Future<User>> _userCache = {};
+
+Future<User> loadUser(String id) {
+  return _userCache[id] ??= fetchUserById(id);
+}
+```
+
+세 번째는 에러도 캐시될 수 있다는 점입니다. 첫 요청이 실패했는데 그 실패 Future를 계속 재사용하면 재시도해도 계속 실패처럼 보일 수 있습니다. 실패 시 캐시를 비우는 정책이 필요한지 확인해야 합니다.
 
 ## 정리
 
-- `build()`는 여러 번 호출될 수 있으니, `future:`에 새 Future를 계속 만들지 말기
-- `initState`에서 Future를 생성해 멤버로 보관하면 중복 호출을 막을 수 있음
-- 스케일이 커지면 상태관리/Repository 캐시로 해결하는 게 더 낫다
+Memoization은 같은 작업을 반복하지 않도록 결과를 기억하는 기법입니다. Flutter에서는 build 안에서 Future를 계속 새로 만들지 않도록 `initState`에 저장하거나, 정말 한 번만 실행할 비동기 초기화에 `AsyncMemoizer`를 사용할 수 있습니다. 하지만 캐시는 항상 무효화 전략과 함께 생각해야 합니다. 데이터가 바뀔 수 있는지, 입력값이 달라지는지, 실패를 재시도해야 하는지까지 고려해야 안전하게 사용할 수 있습니다.

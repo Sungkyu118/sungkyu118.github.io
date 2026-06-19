@@ -1,175 +1,185 @@
 ---
 layout: post
-title: "flutter_secure_storage로 토큰 안전하게 저장하기 (실전 주의점)"
-date: 2026-05-15 01:10:00 +0900
+title: "flutter_secure_storage로 토큰 안전하게 저장하기"
+date: 2026-05-15 00:40:00 +0900
 category: Flutter
-permalink: /flutter/flutter-secure-storage
+permalink: /flutter/secure-storage
 ---
 
-# flutter_secure_storage로 토큰 안전하게 저장하기 (실전 주의점)
+# flutter_secure_storage로 토큰 안전하게 저장하기
 
-로그인 토큰/세션 정보는 `SharedPreferences`에 그대로 저장하면 안 됩니다. 민감 정보는 플랫폼 보안 저장소(iOS Keychain / Android Keystore)를 활용하는 게 기본이고, Flutter에서는 `flutter_secure_storage`가 가장 흔한 선택입니다.
+로그인 기능이 있는 Flutter 앱에서는 access token, refresh token 같은 민감한 값을 저장해야 하는 경우가 많습니다. 이 값을 단순히 `SharedPreferences`에 저장하면 구현은 쉽지만 보안상 적절하지 않을 수 있습니다. 토큰은 사용자의 인증 권한과 직접 연결되므로 가능한 한 플랫폼에서 제공하는 안전한 저장소를 사용해야 합니다.
 
-이 글은 아래 4가지를 전부 담습니다.
+`flutter_secure_storage`는 Android의 Keystore, iOS의 Keychain 같은 보안 저장소를 활용해 값을 저장할 수 있게 도와주는 패키지입니다. 이번 글에서는 기본 사용법, 토큰 저장 구조, 로그아웃 처리, 자주 발생하는 에러와 주의사항까지 실제 앱 기준으로 정리해보겠습니다.
 
-1. 언제/왜 secure storage가 필요한지(트레이드오프)
-2. 실전 예제 1개를 끝까지(저장/읽기/로그아웃/인터셉터 연결)
-3. 흔한 실수/디버깅 포인트(재설치/기기별 예외/만료 처리)
-4. 대안 비교(SharedPreferences, 플랫폼 직접, 암호화 저장)
+## 설치
 
-## 1) 언제/왜 쓰나 (트레이드오프)
-
-### secure storage가 필요한 상황
-
-- access token / refresh token 저장
-- 자동 로그인 세션 키, 민감한 사용자 식별자 저장
-
-### 단점/주의점
-
-- 완벽한 보안은 아닙니다(루팅/탈옥, 디버깅 가능한 환경에서는 방어가 제한적)
-- 기기/OS/제조사 정책에 따라 예외가 생길 수 있습니다
-- "앱 삭제/재설치"에서 기대와 다른 동작이 나올 수 있습니다(특히 iOS)
-
-결론: 일반적인 모바일 앱의 "토큰 저장 기본기"로는 강력 추천이지만, 보안은 저장만이 아니라 만료/갱신/로그아웃 정책까지 함께 설계해야 합니다.
-
-## 2) 설치
+`pubspec.yaml`에 패키지를 추가합니다.
 
 ```yaml
 dependencies:
   flutter_secure_storage: ^9.0.0
 ```
 
-## 3) 실전 예제: TokenStore + Dio Interceptor 연결
+패키지 버전은 프로젝트 SDK에 맞춰 조정해야 합니다. 여러 명이 함께 개발한다면 [FVM 글](/flutter/fvm)처럼 Flutter 버전을 고정해두면 빌드 환경 차이를 줄일 수 있습니다.
 
-### (1) TokenStore 구현 (테스트/교체 가능하게 주입)
+## 기본 읽기와 쓰기
+
+가장 단순한 사용법은 `write`, `read`, `delete`입니다.
 
 ```dart
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-class TokenStore {
-  TokenStore({FlutterSecureStorage? storage})
-      : _storage = storage ?? const FlutterSecureStorage();
+const secureStorage = FlutterSecureStorage();
 
-  final FlutterSecureStorage _storage;
+Future<void> saveToken(String token) async {
+  await secureStorage.write(key: 'accessToken', value: token);
+}
 
-  static const _kAccess = "access_token";
-  static const _kRefresh = "refresh_token";
+Future<String?> readToken() async {
+  return secureStorage.read(key: 'accessToken');
+}
 
-  Future<void> save({required String access, String? refresh}) async {
-    await _storage.write(key: _kAccess, value: access);
-    if (refresh != null) {
-      await _storage.write(key: _kRefresh, value: refresh);
-    }
+Future<void> deleteToken() async {
+  await secureStorage.delete(key: 'accessToken');
+}
+```
+
+`read`는 값이 없으면 `null`을 반환합니다. 그래서 로그인 여부를 판단할 때는 null 처리를 반드시 해야 합니다.
+
+```dart
+final token = await readToken();
+
+if (token == null || token.isEmpty) {
+  // 로그인 화면으로 이동하거나 비로그인 상태로 처리합니다.
+}
+```
+
+## 토큰 저장소 클래스로 감싸기
+
+앱 곳곳에서 `FlutterSecureStorage`를 직접 호출하면 key 이름이 흩어지고 테스트도 어려워집니다. 보통은 저장소 클래스로 감쌉니다.
+
+```dart
+class TokenStorage {
+  TokenStorage(this.storage);
+
+  final FlutterSecureStorage storage;
+
+  static const _accessTokenKey = 'auth.accessToken';
+  static const _refreshTokenKey = 'auth.refreshToken';
+
+  Future<void> saveTokens({
+    required String accessToken,
+    required String refreshToken,
+  }) async {
+    await storage.write(key: _accessTokenKey, value: accessToken);
+    await storage.write(key: _refreshTokenKey, value: refreshToken);
   }
 
-  Future<String?> readAccessToken() => _storage.read(key: _kAccess);
-  Future<String?> readRefreshToken() => _storage.read(key: _kRefresh);
+  Future<String?> readAccessToken() {
+    return storage.read(key: _accessTokenKey);
+  }
+
+  Future<String?> readRefreshToken() {
+    return storage.read(key: _refreshTokenKey);
+  }
 
   Future<void> clear() async {
-    await _storage.delete(key: _kAccess);
-    await _storage.delete(key: _kRefresh);
+    await storage.delete(key: _accessTokenKey);
+    await storage.delete(key: _refreshTokenKey);
   }
 }
 ```
 
-### (2) Dio 요청마다 Authorization 자동 첨부
+key 이름에 `auth.` 같은 prefix를 붙이면 다른 저장 값과 충돌할 가능성을 줄일 수 있습니다.
+
+## Dio Interceptor와 연결하기
+
+토큰을 저장했다면 API 요청마다 `Authorization` 헤더에 붙여야 합니다. 이 작업은 [Dio Interceptor 글](/flutter/dio-interceptor)에서 다룬 것처럼 인터셉터에 맡기면 좋습니다.
 
 ```dart
-import 'package:dio/dio.dart';
+class SecureTokenStore {
+  SecureTokenStore(this.tokenStorage);
+
+  final TokenStorage tokenStorage;
+
+  Future<String?> readAccessToken() {
+    return tokenStorage.readAccessToken();
+  }
+}
 
 class AuthInterceptor extends Interceptor {
   AuthInterceptor(this.tokenStore);
-  final TokenStore tokenStore;
+
+  final SecureTokenStore tokenStore;
 
   @override
-  void onRequest(RequestOptions options, RequestInterceptorHandler handler) async {
+  Future<void> onRequest(
+    RequestOptions options,
+    RequestInterceptorHandler handler,
+  ) async {
     final token = await tokenStore.readAccessToken();
+
     if (token != null && token.isNotEmpty) {
-      options.headers["Authorization"] = "Bearer $token";
+      options.headers['Authorization'] = 'Bearer $token';
     }
+
     handler.next(options);
   }
 }
 ```
 
-앱 초기화에서 주입:
+저장소와 네트워크 계층을 분리하면 로그인, 로그아웃, 토큰 갱신 흐름을 관리하기 쉬워집니다.
+
+## 자동 로그인 흐름
+
+앱을 시작할 때 저장된 토큰이 있는지 확인해 자동 로그인처럼 처리할 수 있습니다.
 
 ```dart
-final tokenStore = TokenStore();
-final dio = Dio();
-dio.interceptors.add(AuthInterceptor(tokenStore));
+enum AuthStatus {
+  checking,
+  authenticated,
+  unauthenticated,
+}
+
+class AuthController extends ChangeNotifier {
+  AuthController(this.tokenStorage);
+
+  final TokenStorage tokenStorage;
+  AuthStatus status = AuthStatus.checking;
+
+  Future<void> load() async {
+    final token = await tokenStorage.readAccessToken();
+    status = token == null || token.isEmpty
+        ? AuthStatus.unauthenticated
+        : AuthStatus.authenticated;
+    notifyListeners();
+  }
+
+  Future<void> logout() async {
+    await tokenStorage.clear();
+    status = AuthStatus.unauthenticated;
+    notifyListeners();
+  }
+}
 ```
 
-로그아웃:
+이 상태는 [go_router 글](/flutter/go-router)의 redirect와 연결할 수 있습니다. 앱 시작 직후에는 `checking` 상태를 두고 스플래시나 로딩 화면을 보여주면, 토큰을 읽기 전에 로그인 화면이 잠깐 보였다가 홈으로 이동하는 깜빡임을 줄일 수 있습니다.
 
-```dart
-await tokenStore.clear();
-```
+## SharedPreferences와의 차이
 
-## 4) 흔한 실수/디버깅 포인트
+`SharedPreferences`는 설정값, 온보딩 확인 여부, 테마 선택처럼 민감하지 않은 작은 값을 저장하는 데 적합합니다. 반면 토큰, 세션 키, 개인 식별 정보처럼 유출되면 문제가 되는 값은 secure storage를 사용하는 것이 좋습니다.
 
-### (1) iOS: 재설치했는데 토큰이 남아있는 것처럼 보임
+다만 secure storage가 모든 보안 문제를 해결해주는 것은 아닙니다. 루팅된 기기, 탈옥된 기기, 악성 앱, 디버그 로그 유출 같은 위험은 별도로 고려해야 합니다. 토큰 만료 시간을 짧게 가져가고, refresh token 회전, 서버 측 폐기 처리도 함께 설계해야 합니다.
 
-iOS Keychain은 설정/정책에 따라 앱 삭제 후에도 남는 것처럼 느껴지는 케이스가 있습니다. "재설치했는데 자동 로그인"이 의심되면,
+## 자주 만나는 문제
 
-- 로그인 시점에 토큰이 정말로 남아있는지 읽어서 확인(로그)
-- 토큰이 읽히면 서버에서도 세션이 살아있는지 확인
-- 필요하다면 첫 실행/재설치 판단 후 clear 정책을 명확히 적용
+Android에서 백업/복원 과정 때문에 암호화 키가 맞지 않아 읽기 실패가 발생하는 사례가 있습니다. 앱을 재설치하거나 기기를 바꾼 뒤 기존 암호화 데이터가 복원되었지만 Keystore 키는 복원되지 않는 상황입니다. 이런 경우 패키지 문서에서 안내하는 Android backup 설정을 확인해야 합니다.
 
-같은 방식으로 원인을 분리하는 게 좋습니다.
+또 하나는 로그에 토큰을 찍는 실수입니다. 디버깅 중 `print(token)`을 남겨두면 로그 수집 도구나 화면 공유 과정에서 토큰이 노출될 수 있습니다. 네트워크 로그에서도 `Authorization` 헤더는 마스킹하는 것이 안전합니다.
 
-### (2) Android: 특정 기기/OS에서 예외가 남
+토큰을 너무 오래 저장하는 것도 위험합니다. "자동 로그인이 편하니까 refresh token을 영구 저장하자"는 접근은 보안 사고 시 피해를 키울 수 있습니다. 서비스 성격에 따라 만료 정책과 재로그인 정책을 정해야 합니다.
 
-Keystore는 기기 환경(제조사, 백업/복원, 보안 설정 등)과 엮여 예외가 날 수 있습니다. 중요한 건 "예외 발생 시 안전한 fallback"입니다.
+## 정리
 
-- 읽기 실패/예외면 세션을 안전하게 초기화하고 로그인 화면으로 보내기
-- 토큰이 없다고 가정하고 다시 로그인 유도(UX 메시지 준비)
-
-### (3) 토큰 저장만 하고 만료/갱신 설계를 안 함
-
-access token은 보통 만료됩니다. 실무에서는 아래 2가지를 같이 설계합니다.
-
-- refresh token으로 재발급(성공 시 저장 갱신)
-- refresh 실패 시 강제 로그아웃(clear + 로그인 이동)
-
-여기까지 들어가야 "자동 로그인"이 안정적으로 돌아가요.
-
-### (4) 실제로 도움이 되는 로그 예시
-
-이런 로그를 한 번만 찍어둬도 문제 원인 찾기가 빨라집니다.
-
-- 앱 시작 시: access/refresh 존재 여부(값 자체는 찍지 말고 존재만)
-- 401 발생 시: 재시도/갱신 시도 여부
-- 갱신 성공/실패 시: clear 여부
-
-## 5) 대안 비교
-
-### SharedPreferences
-
-민감 정보 저장에는 추천하지 않습니다. "첫 실행 여부" 같은 비민감 플래그에만 쓰는 편이 안전합니다.
-
-### 플랫폼 Keychain/Keystore 직접 사용
-
-세밀한 제어가 가능하지만, 개발/유지 비용이 늘어납니다. 대부분은 `flutter_secure_storage`로 충분합니다.
-
-### 암호화해서 파일 저장
-
-암호화도 결국 키를 안전하게 보관해야 해서, "키 저장" 문제로 돌아옵니다. 보통은 secure storage를 먼저 사용하고, 추가 보호가 필요할 때 계층적으로 접근합니다.
-
-## 6) 테스트 관점 (유용한 포인트)
-
-UI/비즈니스 로직 테스트에서 실제 secure storage를 쓰면 느리고 환경 의존적입니다. 위 예제처럼 `TokenStore({FlutterSecureStorage? storage})`로 주입 가능하게 해두면,
-
-- 테스트에서는 메모리 기반 fake storage로 교체
-- 토큰 저장/삭제/헤더 첨부 로직을 빠르게 검증
-
-같은 구조로 테스트가 쉬워집니다.
-
-## 7) 적용 체크리스트
-
-- 토큰은 `SharedPreferences`가 아니라 secure storage에 저장
-- 앱 시작 시 토큰 존재 여부만 로그로 확인
-- 401 처리(갱신/실패 시 로그아웃) 플로우를 명확히
-- 읽기/쓰기 실패 시 fallback(세션 초기화 + 재로그인 유도)
-- 로그/크래시 리포트에 토큰 값 자체는 절대 남기지 않기
-
+`flutter_secure_storage`는 토큰처럼 민감한 값을 플랫폼 보안 저장소에 저장하기 위한 도구입니다. 직접 호출을 앱 전체에 흩뿌리기보다 `TokenStorage` 같은 클래스로 감싸고, 네트워크 요청에는 Dio 인터셉터를 통해 토큰을 붙이는 구조가 유지보수에 좋습니다. secure storage를 쓰더라도 로그 노출, 백업/복원, 토큰 만료 정책까지 함께 고려해야 실제로 안전한 인증 흐름을 만들 수 있습니다.
