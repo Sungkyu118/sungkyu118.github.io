@@ -4,9 +4,19 @@ title: "SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)"
 date: 2026-05-17 01:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-jpa-h2-first-db
+description: "Spring Boot에서 JPA와 H2를 연결해 Entity와 Repository를 처음 만드는 과정, application.yml 설정, 저장과 조회 흐름을 실습 중심으로 정리합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)
+
+> 이 글에서는 Spring Boot 프로젝트에 JPA와 H2를 붙여 첫 번째 Entity와 Repository를 만드는 과정을 따라갑니다.
+>
+> 이전 글: [SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초](/springboot/mvc-service-layer-di)
+> 다음 글: [SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)](/springboot/mvc-crud-api-end-to-end)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본](/springboot/mvc-application-yml-profiles)
+> - [SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해](/springboot/mvc-transaction-basics)
 
 이 글은 초보자가 DB 개발을 시작할 수 있도록, 가장 쉬운 조합으로 진행합니다.
 

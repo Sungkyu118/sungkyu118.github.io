@@ -4,9 +4,19 @@ title: "SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해�
 date: 2026-05-17 00:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-hello-controller-debug
+description: "Spring Boot에서 첫 Controller를 만들고 /hello 요청을 처리하는 흐름을 브라우저 호출과 IntelliJ Debug 예제로 함께 확인합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기
+
+> 이 글에서는 첫 번째 GET API를 만들고 요청이 Controller까지 도달하는 흐름을 눈으로 확인합니다.
+>
+> 이전 글: [SpringBoot 입문 1: IntelliJ + Java + Gradle로 프로젝트 생성부터 실행까지](/springboot/mvc-setup-intellij)
+> 다음 글: [SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리](/springboot/mvc-request-validation-exception)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status)
+> - [SpringBoot 입문 16: 로깅 기본(SLF4J)과 logback 설정](/springboot/mvc-logging-logback)
 
 이 글에서는 Spring MVC의 가장 기본인 Controller를 만들고, 브라우저로 호출한 뒤, IntelliJ Debug로 내부 흐름을 확인합니다.
 

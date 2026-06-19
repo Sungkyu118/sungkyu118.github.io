@@ -4,9 +4,19 @@ title: "SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Re
 date: 2026-05-17 01:30:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-crud-api-end-to-end
+description: "Spring Boot CRUD API를 Controller, Service, Repository 구조로 끝까지 구현하면서 DTO 분리, 상태코드, 404 예외 처리까지 한 번에 정리합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)
+
+> 이 글에서는 실전에서 가장 자주 만드는 CRUD API를 계층 구조에 맞춰 끝까지 완성하는 흐름을 정리합니다.
+>
+> 이전 글: [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db)
+> 다음 글: [SpringBoot 입문 10: 목록 API의 기본 (Pagination/Sorting)](/springboot/mvc-pagination-sorting)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리](/springboot/mvc-request-validation-exception)
+> - [SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)](/springboot/mvc-exception-handling-advanced)
 
 이번 글은 초보자가 "진짜 API 개발"을 시작할 수 있도록 CRUD를 끝까지 한 번 완주합니다.
 

@@ -4,9 +4,19 @@ title: "SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검�
 date: 2026-05-17 02:00:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-unit-test-junit-mockito
+description: "Spring Boot Service 로직을 JUnit5와 Mockito로 검증하는 방법, Repository를 mock으로 대체하는 이유, 단위 테스트를 시작할 때 자주 막히는 지점을 함께 설명합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검증하기
+
+> 이 글에서는 Service 로직을 단위 테스트로 분리해서 검증하는 가장 기본적인 패턴을 익힙니다.
+>
+> 이전 글: [SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해](/springboot/mvc-transaction-basics)
+> 다음 글: [SpringBoot 입문 13: MockMvc로 Controller 테스트하기(요청/응답 검증)](/springboot/mvc-web-test-mockmvc)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 14: 통합 테스트(@SpringBootTest)로 전체 흐름 확인하기](/springboot/mvc-integration-test-springboottest)
+> - [SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)](/springboot/mvc-crud-api-end-to-end)
 
 초보자가 테스트를 시작할 때 가장 좋은 출발은 "Service 단위 테스트"입니다.
 

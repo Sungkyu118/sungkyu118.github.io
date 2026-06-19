@@ -4,9 +4,19 @@ title: "SpringBoot 입문 18: Swagger(OpenAPI) 문서 자동화(springdoc-openap
 date: 2026-05-17 03:00:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-openapi-swagger-springdoc
+description: "Spring Boot 3.x 프로젝트에 springdoc-openapi를 붙여 Swagger UI를 열고 API 문서를 자동화하는 방법, 운영 환경에서 주의할 점까지 정리합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 18: Swagger(OpenAPI) 문서 자동화(springdoc-openapi)
+
+> 이 글에서는 Spring Boot API 문서를 자동으로 열어주는 Swagger UI를 붙이고, 운영에서 어디까지 공개할지 판단하는 기준까지 다룹니다.
+>
+> 이전 글: [SpringBoot 입문 17: Actuator로 헬스체크/운영 지표 열기(주의점 포함)](/springboot/mvc-actuator-health-metrics)
+> 다음 글: [SpringBoot 입문 19: CORS 기본과 전역 설정(WebMvcConfigurer)](/springboot/mvc-cors-basics)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리](/springboot/mvc-request-validation-exception)
+> - [SpringBoot 입문 31: 공통 응답 포맷과 예외 코드 표준화](/springboot/mvc-global-response-format)
 
 API를 만들다 보면 다음 문제가 바로 생긴다.
 

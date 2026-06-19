@@ -4,9 +4,19 @@ title: "SpringBoot 입문 20: Spring Security 아주 기초(인증/인가 감 �
 date: 2026-05-17 03:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-security-basic
+description: "Spring Security 입문자가 인증과 인가 개념을 처음 잡을 수 있도록 기본 흐름, 401과 403 차이, SecurityFilterChain 시작점을 쉽게 설명합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 20: Spring Security 아주 기초(인증/인가 감 잡기)
+
+> 이 글에서는 Spring Security를 처음 붙였을 때 왜 401과 403이 나오는지부터, 어떤 경로를 열고 막을지 결정하는 기초 흐름을 이해합니다.
+>
+> 이전 글: [SpringBoot 입문 19: CORS 기본과 전역 설정(WebMvcConfigurer)](/springboot/mvc-cors-basics)
+> 다음 글: [SpringBoot 입문 21: 파일 업로드/다운로드 기본(Multipart)](/springboot/mvc-file-upload-download)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 30: JWT 인증 기본 흐름](/springboot/mvc-jwt-auth-basics)
+> - [SpringBoot 입문 18: Swagger(OpenAPI) 문서 자동화(springdoc-openapi)](/springboot/mvc-openapi-swagger-springdoc)
 
 Security는 초보자에게 어렵지만, "기본 흐름"만 잡아도 개발을 시작할 수 있습니다.
 

@@ -4,9 +4,19 @@ title: "SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 �
 date: 2026-05-17 00:30:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-request-validation-exception
+description: "Spring Boot에서 @RequestBody와 Validation을 함께 사용하는 방법, 검증 실패 시 자주 만나는 에러, 예외 응답을 정리하는 흐름을 예제로 설명합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리
+
+> 이 글에서는 요청 DTO를 받고 검증한 뒤, 실패를 일관된 에러 응답으로 바꾸는 기본 패턴을 익힙니다.
+>
+> 이전 글: [SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기](/springboot/mvc-hello-controller-debug)
+> 다음 글: [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)](/springboot/mvc-exception-handling-advanced)
+> - [SpringBoot 입문 31: 공통 응답 포맷과 예외 코드 표준화](/springboot/mvc-global-response-format)
 
 실전 API는 "요청을 받고 → 검증하고 → 실패는 일관되게 에러로 내려주기"가 기본입니다. 이 글은 이 흐름을 초보자도 그대로 복사해서 쓸 수 있게 만드는 게 목표예요.
 

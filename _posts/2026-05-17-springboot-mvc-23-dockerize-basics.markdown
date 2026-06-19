@@ -4,9 +4,19 @@ title: "SpringBoot 입문 23: Docker로 실행하기(가장 단순한 Dockerfile
 date: 2026-05-17 03:50:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-dockerize-basics
+description: "Spring Boot 애플리케이션을 Dockerfile로 이미지화하고 JAR 실행부터 컨테이너 기동까지 따라가며, 초보자가 자주 헷갈리는 Docker 기본 흐름을 정리합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 23: Docker로 실행하기(가장 단순한 Dockerfile)
+
+> 이 글에서는 Spring Boot 애플리케이션을 JAR로 만든 뒤 Docker 이미지와 컨테이너로 실행하는 가장 기본적인 배포 전환 흐름을 익힙니다.
+>
+> 이전 글: [SpringBoot 입문 22: JAR 빌드(bootJar)하고 실행하기](/springboot/mvc-build-jar-run)
+> 다음 글: [SpringBoot 입문 24: Docker Compose로 앱+DB 함께 실행](/springboot/mvc-docker-compose-basics)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 33: GitHub Actions로 CI 자동화](/springboot/mvc-github-actions-ci)
+> - [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db)
 
 Docker는 초보자에게 무섭게 느껴지지만, 배포/운영에서는 사실상 표준이 된 경우가 많습니다.
 

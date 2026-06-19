@@ -4,9 +4,19 @@ title: "SpringBoot 입문 1: IntelliJ + Java + Gradle로 프로젝트 생성부�
 date: 2026-05-17 00:10:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-setup-intellij
+description: "Spring Boot에서 IntelliJ와 Gradle로 첫 프로젝트를 만들고 Java 17 설정, Spring Initializr 선택, 실행 확인까지 한 번에 따라갈 수 있도록 단계별로 정리합니다."
+image: "/assets/img/favicons/android-chrome-512x512.png"
 ---
 
 # SpringBoot 입문 1: IntelliJ + Java + Gradle로 프로젝트 생성부터 실행까지
+
+> 이 글에서는 Spring Boot 프로젝트를 처음 만들고 실행하는 흐름을 실습 기준으로 정리합니다.
+>
+> 이전 글: 없음
+> 다음 글: [SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기](/springboot/mvc-hello-controller-debug)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 4: Gradle(build.gradle) 기본과 실행/빌드 흐름](/springboot/mvc-gradle-build-basics)
+> - [SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본](/springboot/mvc-application-yml-profiles)
 
 이 글은 SpringBoot가 처음인 사람도 **이 글만 따라하면** 로컬에서 프로젝트를 만들고 실행해서 브라우저로 확인할 수 있게 만드는 게 목표입니다.
 
