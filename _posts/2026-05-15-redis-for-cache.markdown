@@ -1,116 +1,160 @@
 ---
 layout: post
-title: "Redis for 캐시"
+title: "Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가"
 date: 2026-05-15 02:00:00 +0900
 category: Redis
 permalink: /redis/cache
 ---
 
-# Redis for 캐시
+# Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가
 
-Redis를 가장 먼저 쓰는 이유는 보통 "응답 시간을 줄이기"입니다. WebFlux에서는 논블로킹 흐름을 유지하면서도 캐시를 잘 설계해야 병목이 안 생깁니다.
+Redis를 가장 먼저 붙이는 이유는 보통 캐시입니다. 응답 시간을 줄이고, DB 부하를 낮추고, 외부 API 호출 비용을 줄이는 데 꽤 직접적인 효과가 있기 때문입니다. 하지만 캐시는 생각보다 "넣는 것"보다 "유지하는 것"이 더 어렵습니다.
 
-이 글은 다음을 목표로 합니다.
+이 글에서는 Redis 캐시를 언제 쓰면 효과가 큰지, 어떤 설계가 기본인지, 그리고 운영에서 자주 무너지는 포인트가 무엇인지 정리해보겠습니다.
 
-1. 캐시를 언제 쓰는지(트레이드오프)
-2. WebFlux에서 Cache-Aside 패턴을 구현하는 기본 형태
-3. 실무에서 터지는 문제(스탬피드/TTL/키 설계)와 방어
+## 캐시가 특히 잘 맞는 데이터
 
-## 1) 언제/왜 쓰나 (트레이드오프)
+캐시의 핵심은 같은 값을 여러 번 재사용하는 데 있습니다. 그래서 아래 같은 데이터에 잘 맞습니다.
 
-### 쓰면 좋은 경우
+- 카테고리, 설정값, 공통 메타데이터
+- 상품 상세처럼 조회가 많고 변경은 상대적으로 적은 데이터
+- 계산 비용이 큰 통계/집계 결과
+- 외부 API 응답 중 자주 반복되는 결과
 
-- 자주 조회되지만 자주 바뀌지 않는 데이터(설정, 카테고리, 인기 목록 등)
-- 계산 비용이 큰 결과(집계, 추천 결과 일부)
-- 외부 API 호출 결과(레이트 제한이 있는 API)
+반대로 캐시가 잘 안 맞는 경우도 있습니다.
 
-### 단점/주의점
+- 거의 매번 바뀌는 데이터
+- 사용자마다 값이 달라 재사용성이 낮은 데이터
+- stale 허용이 매우 어려운 핵심 원장 데이터
 
-- 캐시는 "정합성"을 포기하고 "속도"를 얻는 경우가 많음
-- TTL/갱신 정책을 안 잡으면 오래된 데이터가 계속 나갈 수 있음
-- 캐시가 살아있을 때는 빠르지만, 만료 순간에 부하가 폭발할 수 있음(캐시 스탬피드)
+도입 판단 기준은 [Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)에서 먼저 잡고 오는 편이 좋습니다.
 
-## 2) 키 설계 기본
+## 가장 무난한 시작점: Cache-Aside
 
-키는 "무엇을 캐시했는지"가 명확해야 디버깅이 쉽습니다.
+실무에서 가장 흔한 패턴은 Cache-Aside입니다.
 
-- 예: `user:{id}`
-- 예: `product:{id}`
-- 예: `feed:home:{region}`
+흐름은 단순합니다.
 
-가능하면 값 자체는 JSON(또는 직렬화된 문자열)로 저장하고 TTL을 붙이는 편이 운영이 편합니다.
+1. 먼저 Redis에서 읽는다.
+2. 없으면 DB나 외부 API에서 조회한다.
+3. 조회한 값을 Redis에 TTL과 함께 저장한다.
+4. 응답한다.
 
-## 3) WebFlux 캐시(기본): Cache-Aside
+이 방식이 많이 쓰이는 이유는 책임이 비교적 명확하기 때문입니다. 애플리케이션이 캐시를 직접 제어하므로 디버깅이 쉽고, 기존 DB 중심 구조에도 붙이기 수월합니다.
 
-전형적인 흐름:
-
-1. Redis에서 먼저 찾기
-2. 없으면 DB/API에서 조회
-3. Redis에 저장(적절한 TTL)
-4. 응답 반환
-
-Spring WebFlux + Reactive RedisTemplate 예시:
+## 코드 예시: Cache-Aside
 
 ```java
 import java.time.Duration;
 import org.springframework.data.redis.core.ReactiveStringRedisTemplate;
 import reactor.core.publisher.Mono;
 
-public class UserService {
+public class ProductService {
   private final ReactiveStringRedisTemplate redis;
-  private final UserRepository userRepository;
+  private final ProductRepository productRepository;
 
-  public UserService(ReactiveStringRedisTemplate redis, UserRepository userRepository) {
+  public ProductService(ReactiveStringRedisTemplate redis, ProductRepository productRepository) {
     this.redis = redis;
-    this.userRepository = userRepository;
+    this.productRepository = productRepository;
   }
 
-  public Mono<User> getUser(String id) {
-    String key = "user:" + id;
+  public Mono<Product> getProduct(String id) {
+    String key = "product:" + id;
 
     return redis.opsForValue().get(key)
-        .flatMap(json -> Mono.just(User.fromJson(json)))
+        .flatMap(json -> Mono.just(Product.fromJson(json)))
         .switchIfEmpty(
-            userRepository.findById(id)
-                .flatMap(user ->
+            productRepository.findById(id)
+                .flatMap(product ->
                     redis.opsForValue()
-                        .set(key, user.toJson(), Duration.ofMinutes(10))
-                        .thenReturn(user)
+                        .set(key, product.toJson(), Duration.ofMinutes(10))
+                        .thenReturn(product)
                 )
         );
   }
 }
 ```
 
-포인트:
+여기서 중요한 건 코드가 아니라 운영 감각입니다.
 
-- `switchIfEmpty(...)`로 캐시 미스 처리
-- 저장은 `.thenReturn(user)`로 파이프라인에 자연스럽게 붙이기
-- TTL은 데이터 성격에 맞게(너무 길면 stale, 너무 짧으면 미스 증가)
+- 키 이름이 읽히는가?
+- TTL이 데이터 성격에 맞는가?
+- miss가 몰릴 때 DB가 버틸 수 있는가?
 
-## 4) 흔한 문제와 방어
+이 세 가지를 놓치면 캐시는 금방 문제를 만들기 시작합니다.
 
-### (1) 캐시 스탬피드
+## 캐시에서 가장 흔한 사고 1: stale 데이터
 
-만료 순간에 동일 키를 동시에 여러 요청이 미스 내면, DB/API가 동시에 때려맞습니다.
+캐시는 원본이 아니라 복제본이기 때문에, 원본 데이터가 바뀐 뒤에도 예전 값이 잠시 남을 수 있습니다. 이걸 허용할 수 있는지 먼저 정해야 합니다.
+
+예:
+
+- 카테고리 설명: 몇 분 stale 가능
+- 상품 가격: 훨씬 더 민감
+- 권한 정보: stale 허용이 위험할 수 있음
+
+그래서 TTL은 성능 숫자가 아니라, **얼마나 오래된 값을 보여줘도 되는가**의 기준으로 정해야 합니다. 이 부분은 [키 설계와 TTL](/redis/practical-key-ttl)에서 더 자세히 다룹니다.
+
+## 캐시에서 가장 흔한 사고 2: 캐시 스탬피드
+
+여러 요청이 동시에 같은 키를 읽는데, 그 순간 캐시가 만료되어 모두 miss가 나면 어떻게 될까요? 다 같이 DB나 외부 API로 몰립니다. 이것이 캐시 스탬피드입니다.
+
+대표 증상:
+
+- 평소엔 빠르다가 특정 시간대에 갑자기 느려짐
+- DB가 순간적으로 급증
+- 캐시가 있는데도 장애처럼 보임
 
 완화 방법:
 
-- TTL에 약간의 랜덤 지터(jitter) 추가(동시에 만료되지 않게)
-- 키 단위 락(가벼운 분산락)으로 1개 요청만 갱신하게 만들기
-- stale-while-revalidate 패턴(일부는 오래된 값으로라도 응답, 백그라운드 갱신)
+- TTL에 jitter를 넣어 만료 시점 분산
+- 비싼 키는 백그라운드 재생성 고려
+- hot key는 별도 갱신 전략 검토
 
-### (2) null 캐싱(negative cache)
+## 캐시에서 가장 흔한 사고 3: null 캐싱을 안 해서 miss가 계속 난다
 
-없는 데이터(404)도 잠깐 캐시하면, 동일한 없는 요청이 계속 DB를 치는 걸 막을 수 있습니다.
+존재하지 않는 데이터에 대한 요청이 반복되면, 매번 DB까지 다녀오는 구조가 됩니다. 이럴 때는 "없다"는 결과도 짧게 캐싱하는 negative cache가 도움이 됩니다.
 
-### (3) TTL/무효화 정책
+예:
 
-데이터가 수정될 때 캐시를 어떻게 처리할지(삭제 or 갱신)를 정해두지 않으면 운영에서 결국 꼬입니다.
+- 존재하지 않는 상품 ID
+- 삭제된 사용자 프로필
+- 조건에 맞지 않는 조회 결과
 
-## 5) 정리
+물론 TTL은 짧게 두는 편이 안전합니다. 너무 길면 실제로 새 데이터가 생겼을 때 반영이 늦어질 수 있기 때문입니다.
 
-- 캐시는 Cache-Aside로 시작하면 된다
-- 키 설계 + TTL 정책이 절반이다
-- 스탬피드/정합성 문제는 "언제 stale을 허용할지" 기준부터 잡는 게 빠르다
+## 무효화 전략을 정하지 않으면 결국 사고 난다
 
+캐시는 채우는 것보다 지우는 규칙이 중요합니다. 보통 세 가지 방식이 있습니다.
+
+- TTL 자연 만료
+- 데이터 변경 시 명시적 삭제
+- 변경 후 새 값으로 즉시 덮어쓰기
+
+어떤 방식을 쓸지는 데이터 성격에 따라 달라집니다. 중요한 건 "어떻게든 되겠지" 상태로 두지 않는 것입니다. 쓰기 경로에서 캐시 처리 책임이 빠지면 운영 중에 아주 애매한 버그가 생깁니다.
+
+## 실무에서 자주 하는 실수
+
+### 1) 캐시 적중률보다 응답 시간만 본다
+
+응답은 빨라졌는데 hit rate가 낮으면, 사실상 Redis가 큰 역할을 못 하고 있을 수 있습니다.
+
+### 2) 모든 데이터에 캐시를 붙인다
+
+캐시가 만능처럼 보일 때 많이 생기는 실수입니다. 재사용성이 낮거나 stale에 민감한 데이터는 효과보다 비용이 더 클 수 있습니다.
+
+### 3) 메모리와 eviction을 안 본다
+
+캐시 키가 계속 늘어나면 메모리 문제가 시작됩니다. 그리고 메모리가 차기 시작하면 결국 eviction과 hit rate 흔들림으로 이어집니다. 이건 [운영 기본](/redis/practical-ops-basics)과 [메모리/eviction/hot key](/redis/memory-eviction-hotkeys) 쪽과 연결됩니다.
+
+## 정리
+
+Redis 캐시는 제대로만 설계하면 아주 강력합니다. 하지만 "빨라진다"는 장점만 보고 들어가면 stale 데이터, 캐시 스탬피드, 무효화 누락, 메모리 증가 같은 문제를 곧 만나게 됩니다.
+
+그래서 캐시는 항상 세 가지를 같이 봐야 합니다.
+
+- 이 데이터는 캐시에 맞는가?
+- TTL과 무효화 전략이 있는가?
+- miss가 몰릴 때 원본 시스템을 보호할 수 있는가?
+
+이 기준이 잡혀 있으면 Redis 캐시는 성능 최적화가 아니라 안정적인 운영 도구가 됩니다.
