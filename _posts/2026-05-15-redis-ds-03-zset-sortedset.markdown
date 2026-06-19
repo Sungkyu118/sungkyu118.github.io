@@ -1,45 +1,102 @@
 ---
 layout: post
-title: "Redis 자료구조 3: Sorted Set(ZSET) (랭킹의 정석)"
+title: "Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석"
 date: 2026-05-15 00:10:00 +0900
 category: Redis
 permalink: /redis/ds-zset
 ---
 
-# Redis 자료구조 3: Sorted Set(ZSET) (랭킹의 정석)
+# Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석
 
-Sorted Set(ZSET)은 Redis를 Redis답게 만드는 자료구조 중 하나입니다. "점수(score)로 정렬된 집합"이라서 랭킹/리더보드에 정석이에요.
+Sorted Set은 Redis를 랭킹 시스템에 쓰게 만드는 대표 자료구조입니다. Set처럼 member는 중복되지 않지만, 각 member에 score가 붙고 score 기준으로 정렬할 수 있습니다.
 
-## 1) 기본 모델
+일반 Set은 "포함되어 있는가"를 다루는 데 강하고, Sorted Set은 "몇 점이고 몇 등인가"를 다루는 데 강합니다. 그래서 게임 점수, 인기 게시글, 실시간 리더보드, 우선순위 큐 같은 곳에서 자주 등장합니다.
 
-- key: 랭킹 이름(기간/종류 포함)
-- member: 유저/아이템 ID
-- score: 점수(정렬 기준)
+## 기본 개념
+
+Sorted Set은 member와 score의 조합입니다.
+
+```bash
+ZADD ranking:daily 1500 user:42
+ZADD ranking:daily 1800 user:77
+ZREVRANGE ranking:daily 0 9 WITHSCORES
+ZRANK ranking:daily user:42
+ZREVRANK ranking:daily user:42
+```
+
+`ZREVRANGE`는 높은 점수부터 조회할 때 자주 씁니다. 랭킹은 보통 점수가 높은 사람이 위로 올라가기 때문입니다.
+
+## 랭킹에 왜 잘 맞을까
+
+SQL로 랭킹을 구현할 수도 있습니다. 하지만 점수가 자주 바뀌고 상위 N개를 계속 보여줘야 하면 DB 부하가 커질 수 있습니다. Redis Sorted Set은 점수 업데이트와 상위 조회가 단순합니다.
 
 예:
 
-- `rank:daily:2026-05-15`
+- 점수 갱신: `ZINCRBY ranking:daily 10 user:42`
+- 상위 10명 조회: `ZREVRANGE ranking:daily 0 9 WITHSCORES`
+- 내 등수 조회: `ZREVRANK ranking:daily user:42`
 
-## 2) 대표 명령
+랭킹은 [Redis for 랭킹](/redis/ranking) 글과 같이 보면 실무 구조를 잡기 좋습니다.
 
-- 점수 증가: `ZINCRBY key 1 member`
-- 상위 N개: `ZREVRANGE key 0 9 WITHSCORES`
-- 내 순위: `ZREVRANK key member`
+## 기간별 랭킹은 key를 분리하자
 
-## 3) 기간 랭킹 운영
+랭킹에서 가장 중요한 운영 포인트는 기간입니다. 일간, 주간, 월간 랭킹을 하나의 key에 섞으면 초기화와 조회가 복잡해집니다.
 
-기간별로 키를 나누고 TTL로 청소하는 방식이 가장 단순합니다.
+추천 형태:
 
-- daily/weekly/monthly 키 분리
-- TTL로 자동 정리
+- `ranking:daily:2026-06-19`
+- `ranking:weekly:2026-W25`
+- `ranking:monthly:2026-06`
 
-## 4) 동점 처리
+이렇게 나누면 TTL을 주기 쉽고, 과거 랭킹 보관 정책도 명확해집니다.
 
-score가 같으면 member의 사전순으로 정렬됩니다. 동점 정책이 중요하면 별도 로직(보조 스코어/후처리)을 고려해야 합니다.
+```bash
+ZINCRBY ranking:daily:2026-06-19 10 user:42
+EXPIRE ranking:daily:2026-06-19 604800
+```
+
+## 동점 처리는 미리 정해야 한다
+
+랭킹에서 은근히 자주 놓치는 부분이 동점 처리입니다. score가 같을 때 어떤 사용자를 먼저 보여줄지 정책이 필요합니다.
+
+가능한 방식:
+
+- 같은 점수면 같은 등수로 보여준다.
+- 먼저 달성한 사람을 위로 둔다.
+- userId나 timestamp를 보조 기준으로 둔다.
+
+Redis Sorted Set 자체는 score 기준 정렬이 핵심이기 때문에, 복잡한 동점 정책은 애플리케이션 로직이나 score 설계로 보완해야 합니다.
+
+예를 들어 "먼저 달성한 사람이 위"라는 정책이 중요하다면 score에 timestamp를 섞는 방식도 고민할 수 있습니다. 다만 score를 복잡하게 만들면 이해하기 어려워지므로 운영자가 설명 가능한 구조여야 합니다.
+
+## 값이 계속 커지는 문제
+
+랭킹 key는 시간이 지나면 member가 계속 늘 수 있습니다. 이벤트 랭킹처럼 기간이 명확하면 TTL을 주면 됩니다. 하지만 상시 랭킹이라면 오래된 member를 어떻게 정리할지 정해야 합니다.
+
+예:
+
+- 상위 10만 명만 유지
+- 일정 기간 활동 없는 user 제거
+- 기간별 key로 분리 후 TTL 처리
+
+`ZREMRANGEBYRANK`나 `ZREMRANGEBYSCORE`를 이용해 정리할 수 있지만, 언제 어떤 기준으로 지울지 정책이 먼저 있어야 합니다.
+
+## 실무에서 자주 하는 실수
+
+### 1) 모든 랭킹을 하나의 key에 넣는다
+
+처음에는 편하지만, 기간별 조회와 삭제가 어려워집니다. 일간/주간/월간 요구사항이 나올 가능성이 있으면 처음부터 key를 분리하는 편이 좋습니다.
+
+### 2) score 의미가 문서화되어 있지 않다
+
+score가 점수인지, 누적 조회 수인지, 가중치를 섞은 값인지 모르면 나중에 운영자가 해석하기 어렵습니다.
+
+### 3) 랭킹 조회만 생각하고 업데이트 비용을 놓친다
+
+점수 업데이트가 매우 자주 발생하면 Redis에도 부담이 됩니다. 랭킹은 빠르지만 무한히 공짜는 아닙니다.
 
 ## 정리
 
-- 랭킹은 ZSET이 정석
-- 기간 랭킹은 키 분리 + TTL 운영이 깔끔
-- 동점 정책을 초반에 정하면 운영이 편하다
+Sorted Set은 Redis에서 랭킹을 만들 때 가장 먼저 떠올릴 수 있는 자료구조입니다. 점수 갱신, 상위 N개 조회, 내 등수 조회가 단순하기 때문입니다.
 
+하지만 실무에서는 기간별 key 분리, TTL, 동점 정책, member 정리 기준까지 함께 정해야 합니다. 이 기준이 있어야 랭킹 기능이 단순한 데모를 넘어 운영 가능한 기능이 됩니다.

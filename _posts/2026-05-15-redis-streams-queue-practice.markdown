@@ -1,87 +1,112 @@
 ---
 layout: post
-title: "Redis Streams 실전: 작업 큐로 쓰는 법 (consumer group, 재처리 감각)"
+title: "Redis Streams 실전: 작업 큐로 쓰는 법"
 date: 2026-05-15 03:20:00 +0900
 category: Redis
 permalink: /redis/streams-queue
 ---
 
-# Redis Streams 실전: 작업 큐로 쓰는 법 (consumer group, 재처리 감각)
+# Redis Streams 실전: 작업 큐로 쓰는 법
 
-Redis를 "큐"로 쓰려면, List보다 Streams가 더 적합한 경우가 많습니다. Streams는 소비자 그룹, pending(처리중) 개념이 있어서 **유실/재처리**를 설계할 수 있어요.
+Redis Streams는 Redis 안에서 메시지를 쌓고 consumer가 읽어가는 자료구조입니다. 단순한 Pub/Sub과 달리 메시지가 stream에 남고, consumer group을 통해 여러 worker가 나눠 처리할 수 있습니다.
 
-이 글은 다음을 다룹니다.
+메일 발송, 알림 처리, 비동기 집계, 후처리 작업처럼 "요청과 분리해서 처리하되 유실되면 곤란한 작업"에 잘 맞습니다.
 
-1. List 큐 vs Streams 큐 차이(트레이드오프)
-2. Streams 핵심 개념(consumer group, pending)
-3. 실전에서 꼭 필요한 재처리/운영 감각
+Pub/Sub과의 차이는 [Redis Pub/Sub vs Streams](/redis/pubsub-vs-streams)에서 먼저 보면 좋습니다.
 
-## 1) List vs Streams 선택 기준
+## 기본 명령어
 
-### List가 맞는 경우
+메시지를 추가할 때는 `XADD`를 사용합니다.
 
-- "가벼운 비동기 분리"가 목적
-- 유실이 아주 치명적이지 않음
-- 단순 구현이 최우선
+```bash
+XADD stream:mail * userId 42 template welcome
+```
 
-### Streams가 맞는 경우
+읽을 때는 `XREAD`를 사용할 수 있습니다.
 
-- 작업 유실을 줄이고 싶다
-- 여러 소비자가 같은 스트림을 나눠 처리해야 한다(consumer group)
-- 처리 실패/재처리가 필요하다(pending + ack)
+```bash
+XREAD COUNT 10 STREAMS stream:mail 0
+```
 
-## 2) Streams의 핵심 개념
+하지만 실무 큐에서는 consumer group을 쓰는 경우가 많습니다.
 
-### 생산: XADD
+```bash
+XGROUP CREATE stream:mail mail-workers $ MKSTREAM
+XREADGROUP GROUP mail-workers worker-1 COUNT 10 STREAMS stream:mail >
+XACK stream:mail mail-workers 1710000000000-0
+```
 
-스트림에 이벤트/작업을 추가합니다.
+## consumer group이 필요한 이유
 
-예:
+consumer group은 여러 worker가 같은 stream을 나눠 처리할 수 있게 해줍니다. worker가 3개라면 각 worker가 서로 다른 메시지를 가져가 처리할 수 있습니다.
 
-- stream: `jobs:email`
-- fields: `to`, `template`, `payload`
+이 구조가 중요한 이유는 처리량을 늘릴 수 있고, 어떤 메시지가 처리 중인지 추적할 수 있기 때문입니다.
 
-### 소비: XREADGROUP
+List 기반 큐보다 운영성이 필요한 경우에는 [Redis for 큐](/redis/queue)에서 이야기한 것처럼 Streams가 더 적합할 수 있습니다.
 
-consumer group 단위로 메시지를 읽습니다. 같은 group 내에서 여러 consumer가 나눠서 처리할 수 있어요.
+## ACK가 중요하다
 
-### 완료: XACK
+Streams에서 consumer group을 쓸 때 메시지는 읽는 것만으로 끝나지 않습니다. 처리가 끝났다면 `XACK`를 호출해야 합니다.
 
-성공적으로 처리한 메시지는 ack로 완료 처리합니다. ack가 없으면 pending으로 남습니다.
+ACK가 없으면 Redis는 해당 메시지를 pending 상태로 봅니다. worker가 죽었거나 처리에 실패했을 때 pending 메시지를 다시 가져와 재처리할 수 있습니다.
 
-## 3) 실전 설계 포인트
+이 점이 Pub/Sub이나 단순 List 큐와 다른 큰 차이입니다.
 
-### (1) 재처리 전략을 먼저 정하기
+## 실패와 재처리
 
-실패했을 때:
+작업 큐는 성공보다 실패 설계가 더 중요합니다. 외부 API가 잠깐 실패하거나, 메일 서버가 느리거나, worker가 중간에 죽는 일은 충분히 생깁니다.
 
-- 몇 번까지 재시도할지
-- 재시도 간격(즉시/지연)
-- 최종 실패는 어디로 보낼지(DLQ 비슷한 스트림)
+정해야 할 것:
 
-### (2) pending 모니터링
+- 몇 번까지 재시도할 것인가?
+- 재시도 간격은 어떻게 둘 것인가?
+- 계속 실패한 메시지는 어디에 둘 것인가?
+- 실패 사유는 어디에 기록할 것인가?
 
-pending이 계속 쌓이면 소비자가 죽었거나, 처리 로직이 느리거나, 예외가 반복되는 겁니다. 운영에서는 "pending이 늘어나는가"를 중요한 신호로 봅니다.
+Streams는 pending 메시지를 추적할 수 있지만, 재시도 정책은 애플리케이션이 명확하게 설계해야 합니다.
 
-### (3) 메시지 크기
+## 메시지 크기와 보관 정책
 
-Streams에 큰 payload를 그대로 넣으면 메모리/네트워크 비용이 커집니다. 보통은:
+Stream은 메시지를 계속 쌓을 수 있습니다. 하지만 무한히 쌓으면 메모리 문제가 됩니다. 그래서 trim 정책을 고려해야 합니다.
 
-- payload는 ID로 두고
-- 실제 데이터는 DB/오브젝트 스토리지에 둔 뒤
-- consumer가 ID로 조회
+```bash
+XADD stream:mail MAXLEN ~ 100000 * userId 42 template welcome
+```
 
-같은 패턴이 운영이 편합니다.
+`MAXLEN`을 이용하면 stream 길이를 제한할 수 있습니다. 단, 너무 짧게 잡으면 아직 처리하지 못한 메시지가 사라질 수 있으니 consumer 처리 속도와 보관 요구사항을 같이 봐야 합니다.
 
-## 4) 흔한 실수
+## 실무 예시: 메일 발송 작업
 
-- ack를 안 해서 pending이 계속 쌓임
-- 소비자 그룹을 만들었지만, 소비자 장애 시 reclaim(재할당)을 설계 안 함
-- Streams에 너무 큰 데이터를 넣어 메모리 비용 급증
+회원가입 요청에서 바로 메일을 보내지 않고 Streams에 메시지만 넣을 수 있습니다.
+
+```bash
+XADD stream:mail * userId 42 template welcome email user@example.com
+```
+
+worker는 consumer group으로 메시지를 읽고 메일 발송에 성공하면 ACK합니다. 실패하면 재시도하거나 실패 저장소로 보냅니다.
+
+이렇게 하면 사용자의 회원가입 응답은 빠르게 유지하면서, 메일 발송 실패를 별도로 처리할 수 있습니다.
+
+## 운영에서 자주 하는 실수
+
+### 1) ACK를 빼먹는다
+
+처리 성공 후 ACK하지 않으면 pending이 계속 쌓입니다. 나중에 재처리 로직에서 같은 메시지를 다시 보게 될 수 있습니다.
+
+### 2) pending 메시지를 보지 않는다
+
+pending이 계속 늘면 worker가 처리하지 못하고 있거나 실패가 누적되고 있다는 뜻입니다.
+
+### 3) stream을 무한 보관한다
+
+메시지를 계속 쌓기만 하면 메모리 문제가 됩니다. 보관 기간과 trim 기준을 정해야 합니다.
+
+### 4) 작업을 idempotent하게 만들지 않는다
+
+재처리 구조에서는 같은 메시지가 두 번 처리될 가능성을 고려해야 합니다. 메일이 두 번 갈 수 있는지, 포인트가 두 번 적립될 수 있는지 확인해야 합니다.
 
 ## 정리
 
-- "작업 큐"라면 Streams가 List보다 실전 기능이 풍부하다
-- consumer group + ack + pending이 핵심
-- 재처리/운영(모니터링) 설계를 같이 해야 시스템이 안정된다
+Redis Streams는 단순 비동기 작업을 운영 가능한 큐에 가깝게 만들 수 있는 도구입니다. consumer group, ACK, pending, trim 같은 개념을 이해하면 List보다 훨씬 안정적으로 작업을 처리할 수 있습니다.
 
+하지만 Streams도 마법은 아닙니다. 실패 재시도, 메시지 보관, 중복 처리 방지, 모니터링을 애플리케이션에서 같이 설계해야 진짜 운영 가능한 큐가 됩니다.

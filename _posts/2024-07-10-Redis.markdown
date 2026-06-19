@@ -1,357 +1,105 @@
 ---
 layout: post
-title: Redis 데이터 구조
+title: "Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까"
 date: 2024-07-10 00:00:00 +0900
 category: Redis
 permalink: /redis/basis
-tags: [redis]
 ---
 
-<br>
+# Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까
 
-## String
+Redis를 처음 쓰면 `GET`, `SET`만 떠올리기 쉽지만, Redis의 장점은 단순 key-value 저장소에만 있지 않습니다. Redis는 String, Hash, List, Set, Sorted Set 같은 자료구조를 서버 안에서 바로 다룰 수 있기 때문에, 애플리케이션 코드와 DB 쿼리를 단순하게 만들 수 있습니다.
 
-String 타입의 데이터 구조. 텍스트, 직렬화된 객체 등을 저장하는 용도로 자주 사용
+다만 자료구조를 잘못 고르면 나중에 운영이 힘들어집니다. "일단 String에 JSON으로 다 넣자"는 방식은 시작은 쉽지만, 특정 필드만 바꾸거나 랭킹을 계산하거나 중복을 제거해야 하는 순간부터 불편해집니다.
 
-<br>
+## String: 가장 단순하고 가장 자주 쓰는 구조
 
-### SET
-
-- Time Complexity: O(1)
-- Description: 지정된 key에 문자열을 저장
+String은 Redis의 기본입니다. 문자열, 숫자, JSON 직렬화 결과를 저장할 수 있습니다.
 
 ```bash
-SET key value
+SET product:1001 "{\"name\":\"keyboard\",\"price\":39000}" EX 600
+GET product:1001
+INCR view:post:10
 ```
 
-ex)
+좋은 사용처는 캐시, 카운터, 간단한 상태값입니다. 예를 들어 상품 상세 JSON을 통째로 캐시하거나, 게시글 조회 수처럼 숫자를 증가시키는 데 잘 맞습니다.
+
+주의할 점은 값이 너무 커지는 경우입니다. 큰 JSON을 계속 String으로 저장하면 메모리 사용량이 빠르게 늘고, 작은 필드 하나만 바꿔도 전체 값을 다시 직렬화해야 합니다. 필드 단위 변경이 많다면 Hash를 고민하는 편이 좋습니다.
+
+## Hash: 한 객체를 필드 단위로 다룰 때
+
+Hash는 하나의 key 안에 여러 field/value를 넣는 구조입니다.
 
 ```bash
-GET user:1 '{"name": "John", "age": 13}'
+HSET user:42 name "kim" grade "gold" loginCount 12
+HGET user:42 grade
+HINCRBY user:42 loginCount 1
 ```
 
-<br>
+사용자 프로필, 상품 일부 속성, 설정값처럼 "객체 하나를 필드 단위로 다루고 싶은 경우"에 좋습니다. JSON String과 비교하면 특정 필드만 읽고 쓰기 쉽습니다.
 
-### GET
+하지만 Hash도 만능은 아닙니다. 객체가 너무 커지거나, field가 동적으로 무한히 늘어나는 구조라면 관리가 어려워질 수 있습니다. 또한 원본 데이터가 RDB에 있다면 Redis Hash는 보조 저장소일 뿐이라는 점을 잊으면 안 됩니다.
 
-- Time Complexity: O(1)
-- Description: 지정된 key의 문자열을 조회
+## List: 순서가 중요한 데이터
+
+List는 삽입 순서가 있는 컬렉션입니다. 왼쪽/오른쪽에 넣고 빼는 작업이 쉬워서 간단한 큐나 최근 목록에 자주 사용됩니다.
 
 ```bash
-GET key
+LPUSH recent:products:42 1001
+LTRIM recent:products:42 0 19
+LRANGE recent:products:42 0 9
 ```
 
-ex)
+예를 들어 "최근 본 상품 20개"는 List로 표현하기 좋습니다. 새 상품 ID를 앞에 넣고, 길이를 제한하면 됩니다.
+
+다만 작업 큐를 진지하게 운영하려면 List만으로 부족할 수 있습니다. 재처리, consumer group, 실패 추적이 필요하면 [Redis Streams 실전](/redis/streams-queue)을 검토하는 편이 낫습니다.
+
+## Set: 중복 없는 집합
+
+Set은 중복을 허용하지 않는 컬렉션입니다. 좋아요를 누른 사용자 목록, 특정 이벤트에 참여한 사용자 ID, 태그 집합처럼 "이미 들어갔는지"가 중요한 상황에 잘 맞습니다.
 
 ```bash
-GET user:1
+SADD post:10:likes user:42
+SISMEMBER post:10:likes user:42
+SCARD post:10:likes
 ```
 
-<br>
+Set의 장점은 중복 제거와 membership 확인입니다. 하지만 전체 멤버를 자주 모두 꺼내는 구조라면 데이터가 커졌을 때 부담이 됩니다. 큰 Set을 운영할 때는 `SMEMBERS`를 남발하지 말고, 필요하면 `SSCAN`을 고려해야 합니다.
 
-## List
+## Sorted Set: 점수 기반 정렬
 
-데이터 삽입 순서에 따라 정렬된 문자열 컬렉션의 형태
-
-<br>
-
-### LRANGE
-
-- Time Complexity: O(S+N) - S는 (HEAD or TAIL)에서의 distance, N은 지정된 요소 수
-- Description: List에서 지정된 범위의 요소를 반환
+Sorted Set은 member마다 score를 두고 정렬하는 구조입니다. 랭킹, 우선순위, 시간 기반 정렬에 특히 강합니다.
 
 ```bash
-LRANGE key start stop
+ZADD ranking:daily 1500 user:42
+ZREVRANGE ranking:daily 0 9 WITHSCORES
+ZRANK ranking:daily user:42
 ```
 
-ex)
+게임 점수, 인기 게시글, 실시간 리더보드처럼 "점수순으로 상위 N개"를 자주 보여줘야 한다면 Sorted Set이 잘 맞습니다.
 
-```bash
-LRANGE user_list 0 2
-```
+주의할 점은 기간별 분리입니다. 일간/주간/월간 랭킹을 하나의 key에 섞어두면 TTL과 초기화가 어려워집니다. 보통은 `ranking:daily:2024-07-10`처럼 기간을 key에 포함하고 TTL을 거는 식이 운영하기 쉽습니다. 자세한 내용은 [Redis for 랭킹](/redis/ranking)에서 이어서 볼 수 있습니다.
 
-<br>
+## 선택 기준
 
-### LPUSH
+자료구조를 고를 때는 "무엇을 저장할까"보다 "어떻게 읽고 바꿀까"를 먼저 생각해야 합니다.
 
-- Time Complexity: O(1)
-- Description: List의 HEAD에 지정된 요소를 추가
+- 통째로 읽고 통째로 저장하면 String
+- 객체의 일부 필드를 자주 바꾸면 Hash
+- 순서가 중요하면 List
+- 중복 제거와 포함 여부가 중요하면 Set
+- 점수 기반 정렬이 중요하면 Sorted Set
 
-```bash
-LPUSH key element
-```
+## 운영에서 자주 하는 실수
 
-ex)
+첫 번째는 모든 것을 String JSON으로 저장하는 것입니다. 처음에는 편하지만 자료구조가 가진 장점을 거의 쓰지 못합니다.
 
-```bash
-LPUSH user_list user_1
-```
+두 번째는 TTL 없이 계속 쌓는 것입니다. Redis는 메모리 기반이기 때문에 오래 쌓이는 키는 반드시 운영 비용으로 돌아옵니다. 키 설계와 TTL은 [Redis 입문 실무형 2: 키 설계와 TTL](/redis/practical-key-ttl)을 같이 보는 게 좋습니다.
 
-<br>
+세 번째는 큰 컬렉션을 한 번에 다 읽는 것입니다. `SMEMBERS`, 큰 범위의 `LRANGE`, 큰 `ZREVRANGE`는 데이터가 적을 때는 괜찮지만 운영 데이터가 커지면 부담이 됩니다.
 
-### RPUSH
+## 정리
 
-- Time Complexity: O(1)
-- Description: List의 TAIL에 지정된 요소를 추가
+Redis 자료구조는 단순 문법보다 사용 목적이 중요합니다. 같은 데이터라도 읽기 방식, 변경 방식, 운영 방식에 따라 맞는 구조가 달라집니다.
 
-```bash
-RPUSH key element
-```
-
-ex)
-
-```bash
-RPUSH user_list user_1
-```
-
-<br>
-
-### LPOP
-
-- Time Complexity: O(N) - N은 반환된 요소 수
-- Description: List의 첫번쨰 요소를 제거하고 반환
-
-```bash
-LPOP key [count]
-```
-
-ex)
-
-```bash
-LPOP user_list
-```
-
-<br>
-
-### RPOP
-
-- Time Complexity: O(N) - N은 반환된 요소 수
-- Description: List의 마지막 요소를 제거하고 반환
-
-```bash
-RPOP key [count]
-```
-
-ex)
-
-```bash
-RPOP user_list
-```
-
-<br>
-
-### LLEN
-
-- Time Complexity: O(1)
-- Description: List의 저장된 요소 수를 반환
-
-```bash
-LLEN key
-```
-
-ex)
-
-```bash
-LLEN user_list
-```
-
-<br>
-
-### LPOS
-
-- Time Complexity: O(N) - N은 목록의 요소 수
-- Description: List에서 일치하는 요소를 찾고 인덱스를 반환
-
-```bash
-LPOS key element
-```
-
-ex)
-
-```bash
-LPOS user_list user_1
-```
-
-<br>
-
-## Set
-
-순서가 지정되지 않은 문자열 컬렉션의 형태. 중복 요소가 허용되지 않음
-
-<br>
-
-### SMEMBERS
-
-- Time Complexity: O(N) - N은 저장된 요소 수
-- Description: Set에 저장된 모든 요소를 반환
-
-```bash
-SMEMBERS key
-```
-
-ex)
-
-```bash
-SMEMBERS user_list
-```
-
-<br>
-
-### SADD
-
-- Time Complexity: O(1)
-- Description: Set에 멤버를 추가
-
-```bash
-SADD key member
-```
-
-ex)
-
-```bash
-SADD user_list user_1
-```
-
-<br>
-
-### SISMEMBER
-
-- Time Complexity: O(1)
-- Description: Set에 멤버가 포함되어 있는지 확인
-
-```bash
-SISMEMBER key member
-```
-
-ex)
-
-```bash
-SISMEMBER user_list user_1
-```
-
-<br>
-
-### SCARD
-
-- Time Complexity: O(1)
-- Description: Set에 저장된 요소 수를 반환
-
-```bash
-SCARD key
-```
-
-ex)
-
-```bash
-SCARD user_list
-```
-
-<br>
-
-### SREM
-
-- Time Complexity: O(N) - N은 삭제할 요소의 수
-- Description: Set에 저장된 요소를 제거
-
-```bash
-SREM key member
-```
-
-ex)
-
-```bash
-SREM user_list user_1
-```
-
-<br>
-
-## Sored Set
-
-지정한 스코어에 따라서 순서가 지정되는 문자열 컬렉션의 형태. 중복 요소가 허용되지 않음.
-
-<br>
-
-### ZRANGE
-
-- Time Complexity: O(Log(N) + M) - N은 정렬된 집합의 요소 수, M은 반환된 요소 수
-- Description: Sorted Set에 저장된 범위 내(순서, 스코어) 요소를 반환
-
-```bash
-ZRANGE key start stop
-```
-
-ex)
-
-```bash
-ZRANGE user_list 0 -1
-```
-
-<br>
-
-### ZADD
-
-- Time Complexity: O(Log(N)) - N은 정렬된 집합의 요소 수
-- Description: member가 score에 의해 정렬 및 저장. 동일한 score인 경우 사전순 정렬
-
-```bash
-ZADD key score member
-```
-
-ex)
-
-```bash
-ZADD user_list 100 user_1
-```
-
-<br>
-
-### ZCARD
-
-- Time Complexity: O(1)
-- Description: 해당하는 key의 요소 수를 반환
-
-```bash
-ZCARD key
-```
-
-ex)
-
-```bash
-ZCARD user_list
-```
-
-<br>
-
-### ZPOPMIN
-
-- Time Complexity: O(log(N) \* M) - N은 정렬된 집합의 요소 수, M은 POP된 요소 수
-- Description: 점수가 낮은 순으로 멤버를 제거하고 반환
-
-```bash
-ZPOPMIN key [count]
-```
-
-ex)
-
-```bash
-ZPOPMIN user_list
-```
-
-<br>
-
-### ZPOPMAX
-
-- Time Complexity: O(log(N) \* M) - N은 정렬된 집합의 요소 수, M은 POP된 요소 수
-- Description: 점수가 높은 순으로 멤버를 제거하고 반환
-
-```bash
-ZPOPMAX key
-```
-
-ex)
-
-```bash
-ZPOPMAX user_list
-```
-
-<br>
+처음에는 String으로 시작하더라도, 중복 제거가 필요하면 Set, 랭킹이 필요하면 Sorted Set, 필드 단위 수정이 많으면 Hash처럼 문제에 맞는 구조로 옮겨가는 감각이 필요합니다. 이 감각이 생기면 Redis는 단순 캐시를 넘어 꽤 강력한 실무 도구가 됩니다.
