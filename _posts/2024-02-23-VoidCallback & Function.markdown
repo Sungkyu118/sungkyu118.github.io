@@ -4,8 +4,22 @@ title: "VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하�
 date: 2024-02-23 20:30:00 +0900
 category: Flutter
 permalink: /flutter/callback
+description: "VoidCallback과 Function 차이, 콜백 전달, 파라미터 처리 방식을 위젯 분리 관점에서 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 tags: [VoidCallback, Function]
 ---
+
+# VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기
+
+> VoidCallback과 Function 차이, 콜백 전달, 파라미터 처리 방식을 위젯 분리 관점에서 설명합니다.
+>
+> 이전 글: [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator)
+> 다음 글: [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+> 함께 보면 좋은 글:
+> - [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+> - [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics)
 
 Flutter를 처음 배울 때 부모 위젯과 자식 위젯 사이에서 값을 주고받는 부분이 꽤 헷갈립니다. 특히 버튼은 자식 위젯 안에 있는데 실제로 바꾸고 싶은 상태는 부모 위젯에 있을 때가 많습니다. 이때 자식이 부모의 상태를 직접 수정하려고 하면 구조가 금방 꼬입니다. Flutter에서는 보통 **부모가 함수를 만들어 자식에게 전달하고, 자식은 필요한 순간 그 함수를 호출**하는 방식으로 이벤트를 위로 올립니다.
 

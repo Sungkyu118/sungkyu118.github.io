@@ -4,9 +4,21 @@ title: "freezed와 json_serializable로 안전한 모델 만들기"
 date: 2026-05-15 01:00:00 +0900
 category: Flutter
 permalink: /flutter/freezed-json-basics
+description: "freezed와 json_serializable을 이용해 불변 모델과 안전한 JSON 변환 코드를 만드는 방법을 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # freezed와 json_serializable로 안전한 모델 만들기
+
+> freezed와 json_serializable을 이용해 불변 모델과 안전한 JSON 변환 코드를 만드는 방법을 설명합니다.
+>
+> 이전 글: [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage)
+> 다음 글: [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer)
+> 함께 보면 좋은 글:
+> - [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+> - [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
 
 Flutter 앱에서 서버 API를 사용하면 JSON 데이터를 Dart 객체로 바꾸는 작업을 계속 하게 됩니다. 처음에는 `Map<String, dynamic>`에서 값을 꺼내 쓰는 방식으로도 충분해 보입니다. 하지만 필드가 많아지고 nullable 값이 섞이고, 응답 구조가 바뀌기 시작하면 런타임 에러가 늘어납니다. 문자열 key 오타 하나 때문에 앱이 터지는 일도 흔합니다.
 

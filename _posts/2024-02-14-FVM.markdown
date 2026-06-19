@@ -4,10 +4,22 @@ title: "FVM으로 Flutter 버전 관리하기: 프로젝트마다 SDK 고정하�
 date: 2024-02-14 14:57:00 +0900
 category: Flutter
 permalink: /flutter/fvm
+description: "FVM으로 프로젝트별 Flutter SDK 버전을 고정하고 팀 개발에서 버전 충돌을 줄이는 방법을 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 tags: [Flutter, FVM]
 ---
 
 # FVM으로 Flutter 버전 관리하기: 프로젝트마다 SDK 고정하기
+
+> FVM으로 프로젝트별 Flutter SDK 버전을 고정하고 팀 개발에서 버전 충돌을 줄이는 방법을 설명합니다.
+>
+> 이전 글: [Flutter 개발환경 설정: SDK, Android Studio, 에뮬레이터까지](/flutter/settings)
+> 다음 글: [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
+> 함께 보면 좋은 글:
+> - [Flutter 개발환경 설정: SDK, Android Studio, 에뮬레이터까지](/flutter/settings)
+> - [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
 
 Flutter를 혼자 공부할 때는 최신 SDK 하나만 설치해도 큰 문제가 없어 보입니다. 하지만 프로젝트가 여러 개가 되거나 팀으로 개발하기 시작하면 Flutter 버전 차이가 생각보다 큰 문제를 만듭니다. 내 컴퓨터에서는 빌드되는데 다른 사람 컴퓨터에서는 실패하거나, 패키지 버전은 그대로인데 Flutter SDK만 달라져서 경고와 에러가 생길 수 있습니다.
 

@@ -4,10 +4,21 @@ title: "Flutter 개발환경 설정: SDK, Android Studio, 에뮬레이터까지"
 date: 2024-02-13 19:20:23 +0900
 category: Flutter
 permalink: /flutter/settings
+description: "Flutter SDK 설치부터 Android Studio, 에뮬레이터, flutter doctor 점검까지 입문자가 막히는 지점을 함께 정리합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 tags: [Flutter]
 ---
 
 # Flutter 개발환경 설정: SDK, Android Studio, 에뮬레이터까지
+
+> Flutter SDK 설치부터 Android Studio, 에뮬레이터, flutter doctor 점검까지 입문자가 막히는 지점을 함께 정리합니다.
+>
+> 다음 글: [FVM으로 Flutter 버전 관리하기: 프로젝트마다 SDK 고정하기](/flutter/fvm)
+> 함께 보면 좋은 글:
+> - [FVM으로 Flutter 버전 관리하기: 프로젝트마다 SDK 고정하기](/flutter/fvm)
+> - [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
 
 Flutter를 처음 시작할 때 가장 많이 막히는 부분은 Dart 문법이 아니라 개발환경 설정입니다. 예제 코드를 따라 치기도 전에 `flutter doctor`에서 빨간 표시가 나오고, Android SDK 경로를 못 찾고, 에뮬레이터가 실행되지 않으면 시작부터 지치기 쉽습니다. 하지만 개발환경은 한 번 제대로 잡아두면 이후 학습 속도가 훨씬 빨라집니다.
 

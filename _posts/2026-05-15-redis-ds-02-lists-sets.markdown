@@ -4,9 +4,21 @@ title: "Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법"
 date: 2026-05-15 00:09:00 +0900
 category: Redis
 permalink: /redis/ds-lists-sets
+description: "Redis List와 Set으로 큐, 중복 제거, 순서 보장 문제를 다루는 방법을 예제와 함께 정리합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법
+
+> Redis List와 Set으로 큐, 중복 제거, 순서 보장 문제를 다루는 방법을 예제와 함께 정리합니다.
+>
+> 이전 글: [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes)
+> 다음 글: [Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석](/redis/ds-zset)
+> 함께 보면 좋은 글:
+> - [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+> - [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
 
 Redis의 List와 Set은 이름은 단순하지만 실무에서 꽤 자주 등장합니다. 둘의 차이는 분명합니다. List는 순서가 중요할 때 쓰고, Set은 중복 제거와 포함 여부가 중요할 때 씁니다.
 

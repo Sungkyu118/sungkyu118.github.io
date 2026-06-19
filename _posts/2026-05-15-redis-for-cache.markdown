@@ -4,9 +4,21 @@ title: "Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가"
 date: 2026-05-15 02:00:00 +0900
 category: Redis
 permalink: /redis/cache
+description: "Redis 캐시가 언제 큰 효과를 내고, 캐시 무효화와 스탬피드 때문에 어디서 깨지는지 실무적으로 설명합니다."
+image:
+  path: "/assets/img/og/redis-cache-cover.svg"
+  alt: "Redis 캐시 포스트 대표 이미지"
 ---
 
 # Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가
+
+> Redis 캐시가 언제 큰 효과를 내고, 캐시 무효화와 스탬피드 때문에 어디서 깨지는지 실무적으로 설명합니다.
+>
+> 이전 글: [Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석](/redis/ds-zset)
+> 다음 글: [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session)
+> 함께 보면 좋은 글:
+> - [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)
+> - [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session)
 
 Redis를 가장 먼저 붙이는 이유는 보통 캐시입니다. 응답 시간을 줄이고, DB 부하를 낮추고, 외부 API 호출 비용을 줄이는 데 꽤 직접적인 효과가 있기 때문입니다. 하지만 캐시는 생각보다 "넣는 것"보다 "유지하는 것"이 더 어렵습니다.
 

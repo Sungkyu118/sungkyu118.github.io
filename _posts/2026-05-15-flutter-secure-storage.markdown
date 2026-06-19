@@ -4,9 +4,21 @@ title: "flutter_secure_storage로 토큰 안전하게 저장하기"
 date: 2026-05-15 00:40:00 +0900
 category: Flutter
 permalink: /flutter/secure-storage
+description: "flutter_secure_storage로 토큰과 민감 정보를 저장할 때 보안상 주의할 점과 사용법을 정리합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # flutter_secure_storage로 토큰 안전하게 저장하기
+
+> flutter_secure_storage로 토큰과 민감 정보를 저장할 때 보안상 주의할 점과 사용법을 정리합니다.
+>
+> 이전 글: [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute)
+> 다음 글: [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics)
+> 함께 보면 좋은 글:
+> - [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
+> - [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics)
 
 로그인 기능이 있는 Flutter 앱에서는 access token, refresh token 같은 민감한 값을 저장해야 하는 경우가 많습니다. 이 값을 단순히 `SharedPreferences`에 저장하면 구현은 쉽지만 보안상 적절하지 않을 수 있습니다. 토큰은 사용자의 인증 권한과 직접 연결되므로 가능한 한 플랫폼에서 제공하는 안전한 저장소를 사용해야 합니다.
 

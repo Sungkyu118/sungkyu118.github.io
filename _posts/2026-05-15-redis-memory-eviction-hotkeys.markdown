@@ -4,9 +4,20 @@ title: "Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴"
 date: 2026-05-15 03:40:00 +0900
 category: Redis
 permalink: /redis/memory-eviction-hotkeys
+description: "Redis 메모리 부족, eviction 정책, hot key 문제를 운영 장애 관점에서 정리합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴
+
+> Redis 메모리 부족, eviction 정책, hot key 문제를 운영 장애 관점에서 정리합니다.
+>
+> 이전 글: [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock)
+> 함께 보면 좋은 글:
+> - [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics)
+> - [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
 
 Redis 장애는 대개 "갑자기 느려졌다"로 시작합니다. 하지만 실제 원인은 대부분 이미 오래전부터 쌓이고 있었습니다. 메모리가 서서히 차오르거나, 특정 키가 과도하게 몰리거나, TTL이 한 번에 만료되는 구조가 숨어 있었던 경우가 많습니다.
 

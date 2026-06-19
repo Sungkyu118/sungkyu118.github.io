@@ -4,10 +4,22 @@ title: "Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일�
 date: 2024-02-20 21:00:00 +0900
 category: Flutter
 permalink: /flutter/containercolor
+description: "Container와 BoxDecoration으로 스타일을 구성할 때 자주 만나는 색상 충돌 에러와 해결법을 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 tags: [Container, BoxDecoration]
 ---
 
 # Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지
+
+> Container와 BoxDecoration으로 스타일을 구성할 때 자주 만나는 색상 충돌 에러와 해결법을 설명합니다.
+>
+> 이전 글: [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
+> 다음 글: [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images)
+> 함께 보면 좋은 글:
+> - [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images)
+> - [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
 
 Flutter에서 `Container`는 가장 자주 쓰는 위젯 중 하나입니다. 크기, 여백, 배경색, 테두리, 정렬을 한 번에 다룰 수 있어서 편리합니다. 하지만 편리한 만큼 처음에는 오해도 많습니다. 특히 `color`와 `decoration`을 동시에 지정했을 때 발생하는 에러는 Flutter 입문자들이 자주 만나는 문제입니다.
 

@@ -4,9 +4,21 @@ title: "Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때"
 date: 2026-05-15 00:20:00 +0900
 category: Flutter
 permalink: /flutter/isolate-compute
+description: "isolate와 compute로 무거운 작업을 분리해 Flutter UI 멈춤 현상을 줄이는 방법을 정리합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때
+
+> isolate와 compute로 무거운 작업을 분리해 Flutter UI 멈춤 현상을 줄이는 방법을 정리합니다.
+>
+> 이전 글: [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+> 다음 글: [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage)
+> 함께 보면 좋은 글:
+> - [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+> - [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer)
 
 Flutter 앱은 기본적으로 UI를 그리는 main isolate에서 Dart 코드를 실행합니다. 보통의 버튼 클릭, 간단한 상태 변경, 짧은 API 응답 처리 정도는 문제가 없습니다. 하지만 큰 JSON을 파싱하거나, 이미지 처리, 암호화, 긴 반복문 같은 CPU 작업을 main isolate에서 실행하면 화면이 버벅이거나 멈춘 것처럼 보일 수 있습니다.
 

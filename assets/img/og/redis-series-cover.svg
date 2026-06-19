@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Redis Series Cover</title>
+  <desc id="desc">Redis tutorial series cover image for Sungkyu's Dev Notes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2c1112" />
+      <stop offset="52%" stop-color="#6a1f22" />
+      <stop offset="100%" stop-color="#b2353b" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="74" y="72" width="1052" height="486" rx="32" fill="#ffffff" fill-opacity="0.08" stroke="#ffe1e3" stroke-opacity="0.25" />
+  <text x="118" y="158" fill="#ffd0d3" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">SUNGKYU'S DEV NOTES</text>
+  <text x="118" y="282" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="84" font-weight="800">Redis</text>
+  <text x="118" y="360" fill="#fff0f1" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">Practical Data & Operations Series</text>
+  <text x="118" y="438" fill="#ffe1e3" font-family="Segoe UI, Arial, sans-serif" font-size="30">Cache, TTL, Streams, Locks, Ranking, Session, Rate Limit</text>
+  <g transform="translate(840 190)" fill="#ff9aa2">
+    <rect x="0" y="0" width="84" height="84" rx="12" />
+    <rect x="98" y="0" width="84" height="84" rx="12" fill-opacity="0.9" />
+    <rect x="196" y="0" width="84" height="84" rx="12" fill-opacity="0.8" />
+    <rect x="49" y="96" width="84" height="84" rx="12" fill-opacity="0.9" />
+    <rect x="147" y="96" width="84" height="84" rx="12" fill-opacity="0.8" />
+  </g>
+</svg>

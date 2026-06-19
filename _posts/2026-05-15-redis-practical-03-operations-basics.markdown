@@ -4,9 +4,21 @@ title: "Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저
 date: 2026-05-15 00:07:00 +0900
 category: Redis
 permalink: /redis/practical-ops-basics
+description: "Redis 메모리, eviction, persistence, 모니터링의 기본을 초보자도 따라올 수 있게 실무 흐름으로 정리합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자
+
+> Redis 메모리, eviction, persistence, 모니터링의 기본을 초보자도 따라올 수 있게 실무 흐름으로 정리합니다.
+>
+> 이전 글: [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+> 다음 글: [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
+> 함께 보면 좋은 글:
+> - [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)
+> - [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
 
 Redis는 개발 환경에서는 정말 조용합니다. 캐시도 잘 되고, 응답도 빠르고, 문제 없어 보입니다. 그런데 운영에 올라가면 이야기가 달라집니다. 갑자기 hit rate가 떨어지거나, 메모리가 급증하거나, 특정 시간대에 DB 부하가 치솟는 식으로 문제가 드러납니다.
 

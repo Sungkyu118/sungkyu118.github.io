@@ -4,9 +4,21 @@ title: "Redis 레이트 리밋: Lua로 원자성 보장하기"
 date: 2026-05-15 03:00:00 +0900
 category: Redis
 permalink: /redis/rate-limit-lua
+description: "Lua 스크립트로 Redis 레이트 리밋의 원자성을 보장하는 이유와 구현 흐름을 예제와 함께 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 레이트 리밋: Lua로 원자성 보장하기
+
+> Lua 스크립트로 Redis 레이트 리밋의 원자성을 보장하는 이유와 구현 흐름을 예제와 함께 설명합니다.
+>
+> 이전 글: [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit)
+> 다음 글: [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+> 함께 보면 좋은 글:
+> - [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit)
+> - [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock)
 
 레이트 리밋은 요청 폭주와 남용을 막는 장치입니다. 하지만 분산 환경에서 레이트 리밋을 구현할 때는 단순 카운터만으로 부족할 수 있습니다. 여러 서버가 동시에 같은 key를 증가시키고, TTL을 설정하고, limit을 비교해야 하기 때문입니다.
 

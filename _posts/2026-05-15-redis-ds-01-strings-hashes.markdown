@@ -4,9 +4,21 @@ title: "Redis 자료구조 1: String과 Hash, 실무 모델링 감각"
 date: 2026-05-15 00:08:00 +0900
 category: Redis
 permalink: /redis/ds-strings-hashes
+description: "Redis String과 Hash의 차이, 키 설계, 조회와 갱신 패턴을 실무 모델링 관점에서 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 자료구조 1: String과 Hash, 실무 모델링 감각
+
+> Redis String과 Hash의 차이, 키 설계, 조회와 갱신 패턴을 실무 모델링 관점에서 설명합니다.
+>
+> 이전 글: [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
+> 다음 글: [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets)
+> 함께 보면 좋은 글:
+> - [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
+> - [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
 
 Redis에서 가장 자주 만나는 자료구조는 String과 Hash입니다. 둘 다 "값을 저장한다"는 점에서는 비슷해 보이지만, 실무에서는 꽤 다른 문제를 풀 때 사용합니다.
 

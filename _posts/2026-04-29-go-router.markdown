@@ -4,9 +4,21 @@ title: "go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터
 date: 2026-04-29 00:20:00 +0900
 category: Flutter
 permalink: /flutter/go-router
+description: "go_router로 Flutter 라우팅, 파라미터 전달, redirect, 화면 이동 구조를 체계적으로 구성하는 방법을 설명합니다."
+image:
+  path: "/assets/img/og/flutter-go-router-cover.svg"
+  alt: "Flutter go_router 포스트 대표 이미지"
 ---
 
 # go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect
+
+> go_router로 Flutter 라우팅, 파라미터 전달, redirect, 화면 이동 구조를 체계적으로 구성하는 방법을 설명합니다.
+>
+> 이전 글: [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback)
+> 다음 글: [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+> 함께 보면 좋은 글:
+> - [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
+> - [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator)
 
 Flutter에서 화면 이동은 처음에는 `Navigator.push`만으로도 충분합니다. 하지만 앱 규모가 커지면 로그인 여부에 따라 접근을 막아야 하고, `/users/42`처럼 URL에 값을 넣어야 하고, 하단 탭 구조 안에서 화면을 유지해야 하는 요구가 생깁니다. 이때 모든 이동 로직을 위젯 곳곳에 흩뿌리면 나중에 라우트 이름 하나 바꾸는 일도 부담스러워집니다.
 

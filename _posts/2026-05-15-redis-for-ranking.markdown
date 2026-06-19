@@ -4,9 +4,21 @@ title: "Redis for 랭킹: Sorted Set으로 실시간 순위 만들기"
 date: 2026-05-15 02:40:00 +0900
 category: Redis
 permalink: /redis/ranking
+description: "Redis Sorted Set으로 실시간 랭킹을 구현할 때 필요한 명령어와 운영 포인트를 예제와 함께 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis for 랭킹: Sorted Set으로 실시간 순위 만들기
+
+> Redis Sorted Set으로 실시간 랭킹을 구현할 때 필요한 명령어와 운영 포인트를 예제와 함께 설명합니다.
+>
+> 이전 글: [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
+> 다음 글: [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock)
+> 함께 보면 좋은 글:
+> - [Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석](/redis/ds-zset)
+> - [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
 
 랭킹 기능은 보기에는 단순합니다. 점수가 높은 사람을 위에 보여주면 됩니다. 그런데 실무에서는 생각보다 고려할 것이 많습니다. 점수가 얼마나 자주 바뀌는지, 기간별 랭킹이 필요한지, 내 순위를 빠르게 보여줘야 하는지, 동점 처리는 어떻게 할지 정해야 합니다.
 

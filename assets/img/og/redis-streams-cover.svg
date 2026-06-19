@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Redis Streams Cover</title>
+  <desc id="desc">Custom cover for the Redis Streams queue article.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#102018" />
+      <stop offset="52%" stop-color="#166534" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="76" y="76" width="1048" height="478" rx="30" fill="#ffffff" fill-opacity="0.08" stroke="#dcfce7" stroke-opacity="0.24" />
+  <text x="118" y="160" fill="#bbf7d0" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700">REDIS STREAMS</text>
+  <text x="118" y="278" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="800">Queue Practice</text>
+  <text x="118" y="356" fill="#f0fdf4" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">consumer groups, ack, pending entries</text>
+  <text x="118" y="434" fill="#dcfce7" font-family="Segoe UI, Arial, sans-serif" font-size="30">Building a more reliable work queue with Redis Streams</text>
+</svg>

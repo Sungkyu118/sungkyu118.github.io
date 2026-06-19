@@ -4,10 +4,22 @@ title: "BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성�
 date: 2024-02-23 22:37:00 +0900
 category: Flutter
 permalink: /flutter/navigator
+description: "BottomNavigationBar로 하단 탭 전환을 구현할 때 상태 유지와 화면 구조를 안정적으로 가져가는 방법을 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 tags: [BottomNavigationBar, Navigator]
 ---
 
 # BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기
+
+> BottomNavigationBar로 하단 탭 전환을 구현할 때 상태 유지와 화면 구조를 안정적으로 가져가는 방법을 설명합니다.
+>
+> 이전 글: [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images)
+> 다음 글: [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback)
+> 함께 보면 좋은 글:
+> - [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
+> - [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
 
 모바일 앱에서 하단 탭은 매우 익숙한 UI입니다. 홈, 검색, 알림, 마이페이지처럼 주요 영역을 빠르게 오갈 수 있게 해줍니다. Flutter에서는 `Scaffold`의 `bottomNavigationBar`와 `BottomNavigationBar`를 조합해 기본적인 하단 탭 구조를 만들 수 있습니다.
 

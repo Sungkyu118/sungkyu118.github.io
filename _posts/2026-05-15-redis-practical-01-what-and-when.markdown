@@ -4,9 +4,20 @@ title: "Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될�
 date: 2026-05-15 00:05:00 +0900
 category: Redis
 permalink: /redis/practical-what-and-when
+description: "Redis를 도입해야 하는 상황과 오히려 쓰지 말아야 하는 상황을 캐시, 세션, 큐, 랭킹 사례와 함께 실무 관점으로 정리합니다."
+image:
+  path: "/assets/img/og/redis-overview-cover.svg"
+  alt: "Redis 도입 판단 포스트 대표 이미지"
 ---
 
 # Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까
+
+> Redis를 도입해야 하는 상황과 오히려 쓰지 말아야 하는 상황을 캐시, 세션, 큐, 랭킹 사례와 함께 실무 관점으로 정리합니다.
+>
+> 다음 글: [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+> 함께 보면 좋은 글:
+> - [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
+> - [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
 
 Redis를 처음 접하면 보통 "메모리 DB", "엄청 빠른 저장소" 정도로만 이해하고 넘어가기 쉽습니다. 그런데 실무에서는 그 정도 설명만으로는 거의 도움이 되지 않습니다. 중요한 건 "Redis가 빠르다"가 아니라, **어떤 문제를 해결할 때 Redis가 특히 강하고, 반대로 어떤 문제에서는 오히려 독이 되는지**를 구분하는 감각입니다.
 

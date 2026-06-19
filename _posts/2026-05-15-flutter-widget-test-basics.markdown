@@ -4,9 +4,20 @@ title: "Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지"
 date: 2026-05-15 00:50:00 +0900
 category: Flutter
 permalink: /flutter/widget-test-basics
+description: "Widget Test로 버튼 클릭, 비동기 화면, 위젯 상태를 검증하는 기본 흐름을 예제와 함께 설명합니다."
+image:
+  path: "/assets/img/og/flutter-widget-test-cover.svg"
+  alt: "Flutter Widget Test 포스트 대표 이미지"
 ---
 
 # Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지
+
+> Widget Test로 버튼 클릭, 비동기 화면, 위젯 상태를 검증하는 기본 흐름을 예제와 함께 설명합니다.
+>
+> 이전 글: [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer)
+> 함께 보면 좋은 글:
+> - [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback)
+> - [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
 
 Flutter 테스트는 크게 unit test, widget test, integration test로 나눌 수 있습니다. 그중 widget test는 실제 기기나 에뮬레이터를 띄우지 않고도 위젯이 어떻게 그려지는지, 버튼을 눌렀을 때 텍스트가 바뀌는지, 로딩 상태가 표시되는지 확인할 수 있는 테스트입니다. 화면 단위 로직을 빠르게 검증할 수 있어서 Flutter 프로젝트에서 가장 먼저 익히기 좋은 테스트 방식입니다.
 

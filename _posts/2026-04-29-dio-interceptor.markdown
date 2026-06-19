@@ -4,9 +4,21 @@ title: "Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기"
 date: 2026-04-29 00:10:00 +0900
 category: Flutter
 permalink: /flutter/dio-interceptor
+description: "Dio Interceptor로 토큰 주입, 공통 로깅, 에러 변환을 한 곳에서 처리하는 구조를 설명합니다."
+image:
+  path: "/assets/img/og/flutter-dio-cover.svg"
+  alt: "Flutter Dio Interceptor 포스트 대표 이미지"
 ---
 
 # Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기
+
+> Dio Interceptor로 토큰 주입, 공통 로깅, 에러 변환을 한 곳에서 처리하는 구조를 설명합니다.
+>
+> 이전 글: [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+> 다음 글: [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+> 함께 보면 좋은 글:
+> - [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage)
+> - [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
 
 Flutter 앱에서 서버 API를 호출하다 보면 거의 모든 요청에 반복되는 코드가 생깁니다. `Authorization` 헤더를 붙이고, 요청과 응답을 로그로 확인하고, 401 에러가 오면 로그인 화면으로 보내고, 네트워크가 끊기면 사용자에게 안내해야 합니다. 이 코드를 API 함수마다 직접 쓰면 처음에는 괜찮아 보여도, API가 20개만 넘어가도 유지보수가 힘들어집니다.
 

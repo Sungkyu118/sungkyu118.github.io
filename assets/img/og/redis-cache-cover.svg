@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Redis Cache Cover</title>
+  <desc id="desc">Custom cover for the Redis cache article.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="52%" stop-color="#155e75" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="76" y="76" width="1048" height="478" rx="30" fill="#ffffff" fill-opacity="0.08" stroke="#cffafe" stroke-opacity="0.24" />
+  <text x="118" y="160" fill="#a5f3fc" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700">REDIS CACHE</text>
+  <text x="118" y="278" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="800">Cache Strategy</text>
+  <text x="118" y="356" fill="#ecfeff" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">hit ratio, invalidation, stampede</text>
+  <text x="118" y="434" fill="#cffafe" font-family="Segoe UI, Arial, sans-serif" font-size="30">When cache helps, and how it fails in production</text>
+</svg>

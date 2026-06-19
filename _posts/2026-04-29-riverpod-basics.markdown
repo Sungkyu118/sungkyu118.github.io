@@ -4,9 +4,21 @@ title: "Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지"
 date: 2026-04-29 00:00:00 +0900
 category: Flutter
 permalink: /flutter/riverpod-basics
+description: "Riverpod의 Provider, StateProvider, AsyncValue를 이용한 상태 관리 기본 흐름을 예제와 함께 정리합니다."
+image:
+  path: "/assets/img/og/flutter-riverpod-cover.svg"
+  alt: "Flutter Riverpod 포스트 대표 이미지"
 ---
 
 # Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지
+
+> Riverpod의 Provider, StateProvider, AsyncValue를 이용한 상태 관리 기본 흐름을 예제와 함께 정리합니다.
+>
+> 이전 글: [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+> 다음 글: [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
+> 함께 보면 좋은 글:
+> - [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
+> - [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback)
 
 Flutter 앱을 만들다 보면 어느 순간 `setState`만으로는 화면 상태를 관리하기 버거워집니다. 화면 하나 안에서 숫자를 바꾸는 정도라면 괜찮지만, 로그인 사용자 정보, API 응답, 설정값, 캐시된 목록처럼 여러 화면이 함께 쓰는 상태는 한 위젯 안에 두기 어렵습니다. 이때 상태 관리 도구가 필요하고, 그중 Riverpod은 Flutter에서 많이 사용하는 선택지입니다.
 

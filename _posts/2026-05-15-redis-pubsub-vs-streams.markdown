@@ -4,9 +4,21 @@ title: "Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까"
 date: 2026-05-15 03:30:00 +0900
 category: Redis
 permalink: /redis/pubsub-vs-streams
+description: "Redis Pub/Sub와 Streams의 차이, 메시지 유실 가능성, 재처리 요구사항에 따른 선택 기준을 정리합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까
+
+> Redis Pub/Sub와 Streams의 차이, 메시지 유실 가능성, 재처리 요구사항에 따른 선택 기준을 정리합니다.
+>
+> 이전 글: [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
+> 다음 글: [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+> 함께 보면 좋은 글:
+> - [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+> - [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
 
 Redis에는 이벤트를 전달하는 방식으로 Pub/Sub과 Streams가 있습니다. 둘 다 메시지를 전달할 수 있지만 성격은 꽤 다릅니다.
 

@@ -4,9 +4,21 @@ title: "Redis 분산락: SET NX PX로 시작하는 실전 가이드"
 date: 2026-05-15 03:10:00 +0900
 category: Redis
 permalink: /redis/distributed-lock
+description: "Redis 분산락의 기본 개념과 SET NX PX, 만료 시간, 중복 실행 방지 주의점을 실무 기준으로 설명합니다."
+image:
+  path: "/assets/img/og/redis-lock-cover.svg"
+  alt: "Redis 분산락 포스트 대표 이미지"
 ---
 
 # Redis 분산락: SET NX PX로 시작하는 실전 가이드
+
+> Redis 분산락의 기본 개념과 SET NX PX, 만료 시간, 중복 실행 방지 주의점을 실무 기준으로 설명합니다.
+>
+> 이전 글: [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+> 다음 글: [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)
+> 함께 보면 좋은 글:
+> - [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)
+> - [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua)
 
 분산락은 여러 서버가 동시에 같은 작업을 처리하지 못하게 막는 장치입니다. 서버가 한 대뿐이라면 JVM 안의 `synchronized`나 `ReentrantLock`으로도 어느 정도 해결할 수 있습니다. 하지만 서버가 여러 대가 되는 순간, 프로세스 내부 락은 서로를 알 수 없습니다.
 

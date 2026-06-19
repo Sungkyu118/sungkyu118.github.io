@@ -4,9 +4,21 @@ title: "Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기"
 date: 2026-05-15 02:20:00 +0900
 category: Redis
 permalink: /redis/rate-limit
+description: "Redis로 요청 제한을 구현하는 기본 원리와 카운터, 윈도우 전략, 실수하기 쉬운 지점을 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기
+
+> Redis로 요청 제한을 구현하는 기본 원리와 카운터, 윈도우 전략, 실수하기 쉬운 지점을 설명합니다.
+>
+> 이전 글: [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session)
+> 다음 글: [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua)
+> 함께 보면 좋은 글:
+> - [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua)
+> - [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)
 
 레이트 리밋은 일정 시간 안에 허용할 요청 수를 제한하는 기능입니다. 로그인 시도, 인증번호 발송, 검색 API, 결제 요청처럼 남용되면 위험하거나 비용이 커지는 기능에 자주 붙입니다.
 

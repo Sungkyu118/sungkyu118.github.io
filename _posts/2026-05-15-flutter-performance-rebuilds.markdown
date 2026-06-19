@@ -4,9 +4,21 @@ title: "Flutter 성능 최적화: 불필요한 rebuild 줄이기"
 date: 2026-05-15 00:30:00 +0900
 category: Flutter
 permalink: /flutter/performance-rebuilds
+description: "불필요한 rebuild를 줄여 Flutter 렌더링 성능을 개선하는 기본 원칙과 점검 포인트를 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # Flutter 성능 최적화: 불필요한 rebuild 줄이기
+
+> 불필요한 rebuild를 줄여 Flutter 렌더링 성능을 개선하는 기본 원칙과 점검 포인트를 설명합니다.
+>
+> 이전 글: [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers)
+> 다음 글: [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute)
+> 함께 보면 좋은 글:
+> - [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute)
+> - [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers)
 
 Flutter에서 rebuild는 나쁜 것이 아닙니다. Flutter는 위젯을 다시 build하는 것을 전제로 설계되어 있고, 작은 위젯 트리는 매우 빠르게 다시 그릴 수 있습니다. 문제는 rebuild 자체가 아니라, **너무 넓은 범위가 너무 자주 다시 build되거나, build 안에서 무거운 작업을 반복하는 것**입니다.
 

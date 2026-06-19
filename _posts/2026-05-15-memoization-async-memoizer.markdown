@@ -4,9 +4,21 @@ title: "Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막�
 date: 2026-05-15 01:10:00 +0900
 category: Flutter
 permalink: /flutter/memoization-async-memoizer
+description: "AsyncMemoizer로 같은 비동기 작업의 중복 실행을 막고 초기 로딩을 안정화하는 패턴을 정리합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기
+
+> AsyncMemoizer로 같은 비동기 작업의 중복 실행을 막고 초기 로딩을 안정화하는 패턴을 정리합니다.
+>
+> 이전 글: [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics)
+> 다음 글: [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics)
+> 함께 보면 좋은 글:
+> - [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute)
+> - [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
 
 앱을 만들다 보면 같은 계산이나 같은 API 호출이 여러 번 반복되는 상황이 생깁니다. 사용자는 한 번만 눌렀다고 생각했는데 화면 rebuild 때문에 Future가 다시 생성되거나, 탭을 이동할 때마다 같은 초기화 작업이 반복될 수 있습니다. 이런 문제는 성능을 떨어뜨릴 뿐 아니라 중복 요청, 깜빡임, 데이터 불일치로 이어질 수 있습니다.
 

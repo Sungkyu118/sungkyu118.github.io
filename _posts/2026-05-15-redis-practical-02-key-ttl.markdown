@@ -4,9 +4,21 @@ title: "Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 
 date: 2026-05-15 00:06:00 +0900
 category: Redis
 permalink: /redis/practical-key-ttl
+description: "Redis 키 네이밍, TTL 설계, 충돌 방지, 만료 정책을 운영 사고 관점에서 이해하기 쉽게 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법
+
+> Redis 키 네이밍, TTL 설계, 충돌 방지, 만료 정책을 운영 사고 관점에서 이해하기 쉽게 설명합니다.
+>
+> 이전 글: [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)
+> 다음 글: [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics)
+> 함께 보면 좋은 글:
+> - [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes)
+> - [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics)
 
 Redis를 실무에서 조금만 써보면 결국 계속 부딪히는 문제가 두 가지 있습니다. 첫째는 키를 어떻게 설계할지, 둘째는 TTL을 어떻게 줄지입니다. 이 두 가지가 애매하면 초반에는 빨라 보이던 캐시가 시간이 지날수록 stale 데이터, 메모리 증가, 캐시 스탬피드 같은 문제로 돌아오기 시작합니다.
 

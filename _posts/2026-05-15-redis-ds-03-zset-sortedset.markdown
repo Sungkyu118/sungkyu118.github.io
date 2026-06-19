@@ -4,9 +4,21 @@ title: "Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석"
 date: 2026-05-15 00:10:00 +0900
 category: Redis
 permalink: /redis/ds-zset
+description: "Redis Sorted Set으로 랭킹, 점수 기반 정렬, 범위 조회를 구현하는 기본기를 실전 예시와 함께 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석
+
+> Redis Sorted Set으로 랭킹, 점수 기반 정렬, 범위 조회를 구현하는 기본기를 실전 예시와 함께 설명합니다.
+>
+> 이전 글: [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets)
+> 다음 글: [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+> 함께 보면 좋은 글:
+> - [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+> - [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
 
 Sorted Set은 Redis를 랭킹 시스템에 쓰게 만드는 대표 자료구조입니다. Set처럼 member는 중복되지 않지만, 각 member에 score가 붙고 score 기준으로 정렬할 수 있습니다.
 

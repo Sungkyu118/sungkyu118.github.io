@@ -4,9 +4,21 @@ title: "Redis Streams 실전: 작업 큐로 쓰는 법"
 date: 2026-05-15 03:20:00 +0900
 category: Redis
 permalink: /redis/streams-queue
+description: "Redis Streams를 작업 큐로 사용할 때 consumer group, 재처리, ack 흐름을 실전 중심으로 정리합니다."
+image:
+  path: "/assets/img/og/redis-streams-cover.svg"
+  alt: "Redis Streams 포스트 대표 이미지"
 ---
 
 # Redis Streams 실전: 작업 큐로 쓰는 법
+
+> Redis Streams를 작업 큐로 사용할 때 consumer group, 재처리, ack 흐름을 실전 중심으로 정리합니다.
+>
+> 이전 글: [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+> 다음 글: [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
+> 함께 보면 좋은 글:
+> - [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+> - [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
 
 Redis Streams는 Redis 안에서 메시지를 쌓고 consumer가 읽어가는 자료구조입니다. 단순한 Pub/Sub과 달리 메시지가 stream에 남고, consumer group을 통해 여러 worker가 나눠 처리할 수 있습니다.
 

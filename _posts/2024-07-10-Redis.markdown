@@ -4,9 +4,21 @@ title: "Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 �
 date: 2024-07-10 00:00:00 +0900
 category: Redis
 permalink: /redis/basis
+description: "Redis String, Hash, List, Set, Sorted Set 차이와 실제 서비스에서 어떤 자료구조를 선택해야 하는지 예제로 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까
+
+> Redis String, Hash, List, Set, Sorted Set 차이와 실제 서비스에서 어떤 자료구조를 선택해야 하는지 예제로 설명합니다.
+>
+> 이전 글: [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics)
+> 다음 글: [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes)
+> 함께 보면 좋은 글:
+> - [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes)
+> - [Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석](/redis/ds-zset)
 
 Redis를 처음 쓰면 `GET`, `SET`만 떠올리기 쉽지만, Redis의 장점은 단순 key-value 저장소에만 있지 않습니다. Redis는 String, Hash, List, Set, Sorted Set 같은 자료구조를 서버 안에서 바로 다룰 수 있기 때문에, 애플리케이션 코드와 DB 쿼리를 단순하게 만들 수 있습니다.
 

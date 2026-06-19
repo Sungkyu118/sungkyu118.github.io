@@ -4,9 +4,21 @@ title: "LayoutBuilder로 Flutter 반응형 레이아웃 만들기"
 date: 2026-05-15 01:20:00 +0900
 category: Flutter
 permalink: /flutter/responsive-layoutbuilder
+description: "LayoutBuilder를 사용해 화면 크기에 따라 반응형 UI를 나누는 기준과 구현 패턴을 정리합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # LayoutBuilder로 Flutter 반응형 레이아웃 만들기
+
+> LayoutBuilder를 사용해 화면 크기에 따라 반응형 UI를 나누는 기준과 구현 패턴을 정리합니다.
+>
+> 이전 글: [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
+> 다음 글: [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers)
+> 함께 보면 좋은 글:
+> - [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor)
+> - [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers)
 
 Flutter 앱은 휴대폰, 태블릿, 웹, 데스크톱까지 다양한 화면에서 실행될 수 있습니다. 처음에는 특정 기기 크기에 맞춰 `SizedBox(width: 360)` 같은 값을 넣어도 화면이 그럭저럭 보일 수 있습니다. 하지만 기기가 바뀌거나 가로 모드가 되거나 웹 브라우저 크기가 달라지면 레이아웃이 쉽게 깨집니다. 반응형 레이아웃은 이런 상황을 대비해 화면 크기에 따라 배치를 바꾸는 방식입니다.
 

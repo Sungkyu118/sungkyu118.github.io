@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Flutter Series Cover</title>
+  <desc id="desc">Flutter tutorial series cover image for Sungkyu's Dev Notes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1c36" />
+      <stop offset="52%" stop-color="#154fb2" />
+      <stop offset="100%" stop-color="#34a6ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="74" y="72" width="1052" height="486" rx="32" fill="#ffffff" fill-opacity="0.08" stroke="#dbeafe" stroke-opacity="0.25" />
+  <text x="118" y="158" fill="#bfdbfe" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">SUNGKYU'S DEV NOTES</text>
+  <text x="118" y="282" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="84" font-weight="800">Flutter</text>
+  <text x="118" y="360" fill="#eff6ff" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">UI, State, Routing, Performance Series</text>
+  <text x="118" y="438" fill="#dbeafe" font-family="Segoe UI, Arial, sans-serif" font-size="30">Setup, Riverpod, go_router, Dio, Testing, Responsive Layout</text>
+</svg>

@@ -4,9 +4,21 @@ title: "Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 �
 date: 2026-05-15 02:10:00 +0900
 category: Redis
 permalink: /redis/session
+description: "여러 서버 환경에서 Redis로 세션을 공유할 때 필요한 TTL, 장애 대응, 보안 관점을 정리합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법
+
+> 여러 서버 환경에서 Redis로 세션을 공유할 때 필요한 TTL, 장애 대응, 보안 관점을 정리합니다.
+>
+> 이전 글: [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+> 다음 글: [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit)
+> 함께 보면 좋은 글:
+> - [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+> - [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
 
 세션은 사용자의 로그인 상태를 서버가 기억하는 방식입니다. 서버가 한 대일 때는 메모리에 세션을 저장해도 큰 문제가 없어 보입니다. 하지만 서버가 여러 대가 되거나 배포가 잦아지면 이야기가 달라집니다.
 

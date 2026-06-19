@@ -4,9 +4,21 @@ title: "CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤�
 date: 2026-05-15 00:10:00 +0900
 category: Flutter
 permalink: /flutter/customscrollview-slivers
+description: "CustomScrollView와 Sliver를 이용해 AppBar, 리스트, 그리드를 하나의 스크롤로 묶는 방법을 설명합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 ---
 
 # CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기
+
+> CustomScrollView와 Sliver를 이용해 AppBar, 리스트, 그리드를 하나의 스크롤로 묶는 방법을 설명합니다.
+>
+> 이전 글: [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+> 다음 글: [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+> 함께 보면 좋은 글:
+> - [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+> - [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
 
 Flutter에서 스크롤 화면을 만들 때 가장 먼저 떠오르는 위젯은 `ListView`입니다. 단순한 목록이라면 `ListView.builder`만으로 충분합니다. 하지만 실제 앱에서는 상단에 접히는 앱바가 있고, 그 아래에 프로필 영역이 있고, 다시 가로 카드 목록이나 그리드가 이어지는 식으로 화면이 복잡해집니다. 이때 `Column` 안에 `ListView`를 넣고, 또 그 안에 `GridView`를 넣기 시작하면 스크롤 충돌과 높이 에러가 자주 발생합니다.
 

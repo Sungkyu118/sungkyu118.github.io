@@ -4,9 +4,21 @@ title: "Redis for 큐: List로 시작하고 Streams를 고민하는 기준"
 date: 2026-05-15 02:30:00 +0900
 category: Redis
 permalink: /redis/queue
+description: "Redis List와 Streams를 기준으로 큐를 설계할 때의 선택 기준과 운영 포인트를 설명합니다."
+image:
+  path: "/assets/img/og/redis-series-cover.svg"
+  alt: "Redis 시리즈 공통 대표 이미지"
 ---
 
 # Redis for 큐: List로 시작하고 Streams를 고민하는 기준
+
+> Redis List와 Streams를 기준으로 큐를 설계할 때의 선택 기준과 운영 포인트를 설명합니다.
+>
+> 이전 글: [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua)
+> 다음 글: [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
+> 함께 보면 좋은 글:
+> - [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
+> - [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
 
 큐는 요청을 바로 처리하지 않고 뒤로 미루기 위한 구조입니다. 사용자가 버튼을 눌렀을 때 화면 응답은 빨리 주고, 메일 발송이나 알림 처리, 집계 같은 일은 백그라운드에서 처리하는 식입니다.
 

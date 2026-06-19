@@ -4,10 +4,22 @@ title: "MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조"
 date: 2024-02-19 21:53:00 +0900
 category: Flutter
 permalink: /flutter/materialapp
+description: "MaterialApp이 앱 전체 구조에서 맡는 역할과 테마, 라우팅, 초기 화면 설정의 기본을 정리합니다."
+image:
+  path: "/assets/img/og/flutter-series-cover.svg"
+  alt: "Flutter 시리즈 공통 대표 이미지"
 tags: [MaterialApp]
 ---
 
 # MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조
+
+> MaterialApp이 앱 전체 구조에서 맡는 역할과 테마, 라우팅, 초기 화면 설정의 기본을 정리합니다.
+>
+> 이전 글: [FVM으로 Flutter 버전 관리하기: 프로젝트마다 SDK 고정하기](/flutter/fvm)
+> 다음 글: [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor)
+> 함께 보면 좋은 글:
+> - [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+> - [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator)
 
 Flutter 프로젝트를 만들면 `main.dart`에서 거의 항상 `MaterialApp`을 만나게 됩니다. 처음에는 예제 코드에 있으니까 그냥 복사해서 쓰지만, 앱이 커질수록 `MaterialApp`이 어떤 역할을 하는지 이해하는 것이 중요해집니다. 라우팅, 테마, 언어 설정, 디버그 배너, Navigator 환경이 이 위젯을 중심으로 구성되기 때문입니다.
 
