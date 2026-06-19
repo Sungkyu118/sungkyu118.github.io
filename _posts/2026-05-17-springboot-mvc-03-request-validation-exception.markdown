@@ -1,11 +1,11 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리"
 date: 2026-05-17 00:30:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-request-validation-exception
 description: "Spring Boot에서 @RequestBody와 Validation을 함께 사용하는 방법, 검증 실패 시 자주 만나는 에러, 예외 응답을 정리하는 흐름을 예제로 설명합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리

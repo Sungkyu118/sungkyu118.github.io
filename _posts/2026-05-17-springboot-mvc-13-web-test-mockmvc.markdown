@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 13: MockMvc로 Controller 테스트하기(요청/응답 검증)"
 date: 2026-05-17 02:10:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-web-test-mockmvc
+description: "Spring Boot Controller를 MockMvc로 테스트하는 방법, 요청과 응답 검증 포인트, 웹 레이어 테스트를 시작할 때 필요한 기본 구성을 설명합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 13: MockMvc로 Controller 테스트하기(요청/응답 검증)
+
+> 이 글에서는 Controller 레이어를 MockMvc로 검증하면서 요청과 응답 테스트 감각을 익힙니다.
+>
+> 이전 글: [SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검증하기](/springboot/mvc-unit-test-junit-mockito)
+> 다음 글: [SpringBoot 입문 14: 통합 테스트(@SpringBootTest)로 전체 흐름 확인하기](/springboot/mvc-integration-test-springboottest)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해](/springboot/mvc-transaction-basics)
+> - [SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)](/springboot/mvc-exception-handling-advanced)
+
 
 Controller 테스트는 "HTTP 요청/응답"을 코드로 고정하는 작업입니다. MockMvc는 Spring MVC에서 가장 흔한 선택이에요.
 

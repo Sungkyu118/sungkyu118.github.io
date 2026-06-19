@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SpringBoot Series Cover</title>
+  <desc id="desc">SpringBoot tutorial series cover image for Sungkyu's Dev Notes.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1f1a" />
+      <stop offset="55%" stop-color="#123c31" />
+      <stop offset="100%" stop-color="#1d6f57" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.04" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <circle cx="1080" cy="110" r="140" fill="#7be495" fill-opacity="0.16" />
+  <circle cx="1040" cy="560" r="200" fill="#7be495" fill-opacity="0.10" />
+  <rect x="70" y="70" width="1060" height="490" rx="28" fill="url(#panel)" stroke="#d8ffe3" stroke-opacity="0.22" />
+  <text x="110" y="165" fill="#7be495" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">SUNGKYU'S DEV NOTES</text>
+  <text x="110" y="285" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="78" font-weight="800">SpringBoot</text>
+  <text x="110" y="360" fill="#ecfff2" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">Hands-on MVC Tutorial Series</text>
+  <text x="110" y="455" fill="#d8ffe3" font-family="Segoe UI, Arial, sans-serif" font-size="30">Setup, API, JPA, Testing, Security, Docker, CI</text>
+  <rect x="110" y="500" width="250" height="56" rx="28" fill="#7be495" />
+  <text x="152" y="537" fill="#0b1f1a" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="800">springboot</text>
+</svg>

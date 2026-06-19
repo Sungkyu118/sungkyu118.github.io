@@ -4,9 +4,20 @@ title: "SpringBoot 입문 1-1: IntelliJ로 첫 프로젝트 만들고 실행까�
 date: 2026-05-18 00:25:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-01-1-setup-intellij-practice
+description: "Spring Boot 입문자가 IntelliJ에서 첫 프로젝트를 실제로 만들고 실행하기까지, 설치 확인과 흔한 에러 포인트를 더 자세한 실습 흐름으로 안내합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 1-1: IntelliJ로 첫 프로젝트 만들고 실행까지 (완전 실습 가이드)
+
+> 이 글에서는 완전 초보자 기준으로 Spring Boot 첫 프로젝트를 실제로 만들고 실행해보는 더 자세한 실습 흐름을 다룹니다.
+>
+> 이전 글: [SpringBoot 입문 1: IntelliJ + Java + Gradle로 프로젝트 생성부터 실행까지](/springboot/mvc-setup-intellij)
+> 다음 글: [SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기](/springboot/mvc-hello-controller-debug)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 4: Gradle(build.gradle) 기본과 실행/빌드 흐름](/springboot/mvc-gradle-build-basics)
+> - [SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본](/springboot/mvc-application-yml-profiles)
+
 
 이번 글은 "진짜 처음" 시작하는 사람을 기준으로 작성했다.  
 중간에 막히지 않도록, 왜 이 설정이 필요한지와 어떤 에러가 나오는지까지 같이 다룬다.

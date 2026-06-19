@@ -1,11 +1,11 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 1: IntelliJ + Java + Gradle로 프로젝트 생성부터 실행까지"
 date: 2026-05-17 00:10:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-setup-intellij
 description: "Spring Boot에서 IntelliJ와 Gradle로 첫 프로젝트를 만들고 Java 17 설정, Spring Initializr 선택, 실행 확인까지 한 번에 따라갈 수 있도록 단계별로 정리합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 1: IntelliJ + Java + Gradle로 프로젝트 생성부터 실행까지

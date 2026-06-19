@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해"
 date: 2026-05-17 01:50:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-transaction-basics
+description: "Spring Boot의 @Transactional이 언제 필요한지, 롤백과 프록시 때문에 초보자가 자주 헷갈리는 지점을 중심으로 트랜잭션 기본을 정리합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해
+
+> 이 글에서는 트랜잭션이 실제로 어떤 범위를 묶고 언제 롤백되는지 입문자 기준으로 이해합니다.
+>
+> 이전 글: [SpringBoot 입문 10: 목록 API의 기본 (Pagination/Sorting)](/springboot/mvc-pagination-sorting)
+> 다음 글: [SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검증하기](/springboot/mvc-unit-test-junit-mockito)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)](/springboot/mvc-crud-api-end-to-end)
+> - [SpringBoot 입문 13: MockMvc로 Controller 테스트하기(요청/응답 검증)](/springboot/mvc-web-test-mockmvc)
+
 
 초보자가 DB 작업을 하기 시작하면 바로 부딪히는 개념이 트랜잭션입니다.
 

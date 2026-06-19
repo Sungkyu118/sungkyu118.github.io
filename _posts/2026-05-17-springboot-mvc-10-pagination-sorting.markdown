@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 10: 목록 API의 기본 (Pagination/Sorting)"
 date: 2026-05-17 01:40:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-pagination-sorting
+description: "Spring Boot 목록 API에서 Pagination과 Sorting을 적용하는 방법, 페이지 번호와 크기 설계 시 주의할 점을 실습 기준으로 설명합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 10: 목록 API의 기본 (Pagination/Sorting)
+
+> 이 글에서는 목록 API에 페이지네이션과 정렬을 붙일 때 어떤 요청 형식과 응답 구조가 필요한지 정리합니다.
+>
+> 이전 글: [SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)](/springboot/mvc-crud-api-end-to-end)
+> 다음 글: [SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해](/springboot/mvc-transaction-basics)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db)
+> - [SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검증하기](/springboot/mvc-unit-test-junit-mockito)
+
 
 목록 API를 만들 때 가장 흔한 실수는 "전체 데이터를 다 내려주는 것"입니다. 데이터가 늘면 바로 느려지고, 결국 장애가 됩니다.
 

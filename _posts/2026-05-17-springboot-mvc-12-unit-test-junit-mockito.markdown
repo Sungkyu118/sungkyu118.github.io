@@ -1,11 +1,11 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검증하기"
 date: 2026-05-17 02:00:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-unit-test-junit-mockito
 description: "Spring Boot Service 로직을 JUnit5와 Mockito로 검증하는 방법, Repository를 mock으로 대체하는 이유, 단위 테스트를 시작할 때 자주 막히는 지점을 함께 설명합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 12: 단위 테스트(JUnit5 + Mockito)로 Service 검증하기

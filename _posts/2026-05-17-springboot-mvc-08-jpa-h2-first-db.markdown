@@ -1,11 +1,11 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)"
 date: 2026-05-17 01:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-jpa-h2-first-db
 description: "Spring Boot에서 JPA와 H2를 연결해 Entity와 Repository를 처음 만드는 과정, application.yml 설정, 저장과 조회 흐름을 실습 중심으로 정리합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)

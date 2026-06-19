@@ -1,13 +1,24 @@
----
+﻿---
 layout: post
 title: Spring Boot AOP
 date: 2024-02-15 22:57:00 +0900
 category: SpringBoot
 permalink: /springboot/aop
+description: "Spring Boot에서 AOP를 적용해 로깅, 공통 처리, 횡단 관심사를 분리하는 핵심 개념과 Aspect, Pointcut, Advice 흐름을 이해하기 쉽게 정리합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 tags: [AOP, Spring Boot AOP, Aspect]
 ---
 
 # AOP(Aspect-Oriented Programming)란?
+
+> 이 글에서는 Spring Boot에서 반복되는 공통 로직을 AOP로 분리하는 기본 개념을 이해합니다.
+>
+> 이전 글: 없음
+> 다음 글: 없음
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 16: 로깅 기본(SLF4J)과 logback 설정](/springboot/mvc-logging-logback)
+> - [SpringBoot 입문 11: 트랜잭션(@Transactional) 기본과 흔한 오해](/springboot/mvc-transaction-basics)
+
 
 AOP는 관점 지향 프로그래밍(Aspect-Oriented Programming)의 약자로, 프로그램의 여러 부분에서 발생하는 공통 관심사를 모듈화하여 코드의 중복을 줄이고 유지보수성을 높이는 프로그래밍 패러다임입니다. 전통적인 객체 지향 프로그래밍에서는 핵심 기능과 횡단 관심사(cross-cutting concern)를 구분하기 위해 여러 디자인 패턴과 기법을 사용해야 했습니다. 그러나 AOP는 이러한 횡단 관심사를 명시적으로 분리하여 관리할 수 있도록 합니다.
 

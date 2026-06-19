@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드"
 date: 2026-05-17 01:00:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-rest-basics-params-status
+description: "Spring Boot에서 @RequestParam과 @PathVariable을 언제 쓰는지, HTTP 상태코드를 어떻게 내려야 하는지 REST API 기본 흐름을 예제로 설명합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드
+
+> 이 글에서는 REST API에서 query parameter와 path variable을 구분하고 상태코드를 설계하는 기본을 다룹니다.
+>
+> 이전 글: [SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본](/springboot/mvc-application-yml-profiles)
+> 다음 글: [SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초](/springboot/mvc-service-layer-di)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 4: Gradle(build.gradle) 기본과 실행/빌드 흐름](/springboot/mvc-gradle-build-basics)
+> - [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db)
+
 
 이 글은 API를 만들 때 가장 자주 쓰는 2가지 입력 방식과, 응답 상태코드를 정리합니다.
 

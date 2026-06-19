@@ -5,7 +5,7 @@ date: 2026-05-17 22:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-github-actions-ci
 description: "Spring Boot 프로젝트에 GitHub Actions CI를 붙여 push와 pull request마다 Gradle 빌드와 테스트를 자동 실행하는 방법을 입문자 기준으로 정리합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 33: GitHub Actions로 CI 자동화

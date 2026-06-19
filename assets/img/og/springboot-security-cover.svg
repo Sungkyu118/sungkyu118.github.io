@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SpringBoot Security Cover</title>
+  <desc id="desc">Custom cover for the SpringBoot Security basics article.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="55%" stop-color="#7c2d12" />
+      <stop offset="100%" stop-color="#ea580c" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="78" y="78" width="1044" height="474" rx="30" fill="#ffffff" fill-opacity="0.07" stroke="#ffedd5" stroke-opacity="0.24" />
+  <text x="118" y="160" fill="#fed7aa" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700">SPRINGBOOT SECURITY</text>
+  <text x="118" y="278" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="800">Authentication</text>
+  <text x="118" y="356" fill="#fff7ed" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">Authorization, 401, 403, filter chain</text>
+  <text x="118" y="434" fill="#ffedd5" font-family="Segoe UI, Arial, sans-serif" font-size="30">A practical first step into Spring Security basics</text>
+  <path d="M886 164l96 34v86c0 78-57 149-144 177-87-28-144-99-144-177v-86l144-34z" fill="#fff7ed" fill-opacity="0.18" stroke="#ffffff" stroke-opacity="0.34" stroke-width="6"/>
+  <path d="M838 232a46 46 0 1 1 92 0v18h22v102H724V250h22v-18a46 46 0 1 1 92 0zm-54 18h108v-18a54 54 0 1 0-108 0z" fill="#fdba74"/>
+</svg>

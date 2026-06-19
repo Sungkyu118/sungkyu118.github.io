@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 21: 파일 업로드/다운로드 기본(Multipart)"
 date: 2026-05-17 03:30:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-file-upload-download
+description: "Spring Boot에서 Multipart 기반 파일 업로드와 다운로드를 구현하는 기본 흐름, 요청 설정과 주의사항을 입문자 관점으로 정리합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 21: 파일 업로드/다운로드 기본(Multipart)
+
+> 이 글에서는 파일 업로드와 다운로드 API를 만들 때 Multipart 요청과 응답 헤더를 어떻게 다뤄야 하는지 살펴봅니다.
+>
+> 이전 글: [SpringBoot 입문 20: Spring Security 아주 기초(인증/인가 감 잡기)](/springboot/mvc-security-basic)
+> 다음 글: [SpringBoot 입문 22: JAR 빌드(bootJar)하고 실행하기](/springboot/mvc-build-jar-run)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 19: CORS 기본과 전역 설정(WebMvcConfigurer)](/springboot/mvc-cors-basics)
+> - [SpringBoot 입문 23: Docker로 실행하기(가장 단순한 Dockerfile)](/springboot/mvc-dockerize-basics)
+
 
 초보자 프로젝트에서도 파일 업로드는 자주 필요합니다(프로필 이미지 등).
 

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">SpringBoot Docker Cover</title>
+  <desc id="desc">Custom cover for the SpringBoot Docker basics article.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1324" />
+      <stop offset="55%" stop-color="#0f4c81" />
+      <stop offset="100%" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect x="76" y="76" width="1048" height="478" rx="30" fill="#ffffff" fill-opacity="0.07" stroke="#e0f2fe" stroke-opacity="0.25" />
+  <text x="118" y="160" fill="#bae6fd" font-family="Segoe UI, Arial, sans-serif" font-size="32" font-weight="700">SPRINGBOOT DEPLOYMENT</text>
+  <text x="118" y="278" fill="#ffffff" font-family="Segoe UI, Arial, sans-serif" font-size="82" font-weight="800">Docker Basics</text>
+  <text x="118" y="356" fill="#f0f9ff" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600">Dockerfile, image build, container run</text>
+  <text x="118" y="434" fill="#e0f2fe" font-family="Segoe UI, Arial, sans-serif" font-size="30">Move from local JAR execution to a portable runtime package</text>
+  <g transform="translate(782 210)" fill="#7dd3fc">
+    <rect x="0" y="0" width="68" height="68" rx="10" />
+    <rect x="78" y="0" width="68" height="68" rx="10" fill-opacity="0.92" />
+    <rect x="156" y="0" width="68" height="68" rx="10" fill-opacity="0.84" />
+    <rect x="39" y="78" width="68" height="68" rx="10" fill-opacity="0.92" />
+    <rect x="117" y="78" width="68" height="68" rx="10" fill-opacity="0.84" />
+    <path d="M-8 172c44 0 76-12 104-34 11 38 45 62 88 62 60 0 110-47 124-111 34 13 54 45 54 83H-8z" fill="#e0f2fe" fill-opacity="0.28" />
+  </g>
+</svg>

@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 4: Gradle(build.gradle) 기본과 실행/빌드 흐름"
 date: 2026-05-17 00:40:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-gradle-build-basics
+description: "Spring Boot에서 build.gradle이 어떤 역할을 하는지, 의존성 추가 후 sync와 build, run 흐름을 어떻게 이해하면 되는지 초보자 기준으로 설명합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 4: Gradle(build.gradle) 기본과 실행/빌드 흐름
+
+> 이 글에서는 Gradle이 의존성, 빌드, 실행을 어떻게 묶어주는지부터 IntelliJ에서 어디를 봐야 하는지까지 정리합니다.
+>
+> 이전 글: [SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리](/springboot/mvc-request-validation-exception)
+> 다음 글: [SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본](/springboot/mvc-application-yml-profiles)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기](/springboot/mvc-hello-controller-debug)
+> - [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status)
+
 
 이 글은 초보자가 가장 헷갈려 하는 `Gradle`의 기본을 잡는 글입니다. 목표는 단순합니다.
 

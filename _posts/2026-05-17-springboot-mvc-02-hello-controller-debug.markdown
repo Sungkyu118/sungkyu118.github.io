@@ -1,11 +1,11 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기"
 date: 2026-05-17 00:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-hello-controller-debug
 description: "Spring Boot에서 첫 Controller를 만들고 /hello 요청을 처리하는 흐름을 브라우저 호출과 IntelliJ Debug 예제로 함께 확인합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기

@@ -1,11 +1,13 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)"
 date: 2026-05-17 01:30:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-crud-api-end-to-end
 description: "Spring Boot CRUD API를 Controller, Service, Repository 구조로 끝까지 구현하면서 DTO 분리, 상태코드, 404 예외 처리까지 한 번에 정리합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image:
+  path: "/assets/img/og/springboot-crud-cover.svg"
+  alt: "SpringBoot CRUD API article cover"
 ---
 
 # SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)

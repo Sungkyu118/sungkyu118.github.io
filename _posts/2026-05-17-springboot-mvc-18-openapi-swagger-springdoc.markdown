@@ -5,7 +5,9 @@ date: 2026-05-17 03:00:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-openapi-swagger-springdoc
 description: "Spring Boot 3.x 프로젝트에 springdoc-openapi를 붙여 Swagger UI를 열고 API 문서를 자동화하는 방법, 운영 환경에서 주의할 점까지 정리합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image:
+  path: "/assets/img/og/springboot-swagger-cover.svg"
+  alt: "SpringBoot Swagger and OpenAPI article cover"
 ---
 
 # SpringBoot 입문 18: Swagger(OpenAPI) 문서 자동화(springdoc-openapi)

@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초"
 date: 2026-05-17 01:10:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-service-layer-di
+description: "Spring Boot에서 Controller와 Service를 분리하는 이유, 의존성 주입이 왜 필요한지, 입문자가 계층 구조를 잡는 방법을 쉽게 정리합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초
+
+> 이 글에서는 Service 계층을 분리해 Controller가 너무 많은 책임을 갖지 않게 만드는 방법을 설명합니다.
+>
+> 이전 글: [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status)
+> 다음 글: [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본](/springboot/mvc-application-yml-profiles)
+> - [SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)](/springboot/mvc-crud-api-end-to-end)
+
 
 초보자가 컨트롤러에 로직을 다 넣기 시작하면, 프로젝트가 조금만 커져도 바로 유지보수가 어려워집니다.
 

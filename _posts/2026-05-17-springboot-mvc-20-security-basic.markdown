@@ -1,11 +1,13 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 20: Spring Security 아주 기초(인증/인가 감 잡기)"
 date: 2026-05-17 03:20:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-security-basic
 description: "Spring Security 입문자가 인증과 인가 개념을 처음 잡을 수 있도록 기본 흐름, 401과 403 차이, SecurityFilterChain 시작점을 쉽게 설명합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image:
+  path: "/assets/img/og/springboot-security-cover.svg"
+  alt: "SpringBoot Security basics article cover"
 ---
 
 # SpringBoot 입문 20: Spring Security 아주 기초(인증/인가 감 잡기)

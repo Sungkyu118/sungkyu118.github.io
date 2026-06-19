@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)"
 date: 2026-05-17 02:30:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-exception-handling-advanced
+description: "Spring Boot 예외 처리를 고도화하면서 에러 코드, NotFound 예외, 공통 응답 포맷을 어떻게 맞추는지 실전 API 기준으로 설명합니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)
+
+> 이 글에서는 예외 처리 정책을 한 단계 올려 공통 에러 응답과 비즈니스 예외 코드를 맞추는 방법을 다룹니다.
+>
+> 이전 글: [SpringBoot 입문 14: 통합 테스트(@SpringBootTest)로 전체 흐름 확인하기](/springboot/mvc-integration-test-springboottest)
+> 다음 글: [SpringBoot 입문 16: 로깅 기본(SLF4J)과 logback 설정](/springboot/mvc-logging-logback)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 13: MockMvc로 Controller 테스트하기(요청/응답 검증)](/springboot/mvc-web-test-mockmvc)
+> - [SpringBoot 입문 17: Actuator로 헬스체크/운영 지표 열기(주의점 포함)](/springboot/mvc-actuator-health-metrics)
+
 
 API가 커질수록 중요한 건 "실패 응답의 일관성"입니다. 프론트/클라이언트가 실패를 처리할 수 있어야, UX가 망가지지 않습니다.
 

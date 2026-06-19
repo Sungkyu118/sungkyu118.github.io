@@ -1,12 +1,23 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본"
 date: 2026-05-17 00:50:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-application-yml-profiles
+description: "Spring Boot의 application.yml 구조, 환경별 profile 분리, 설정값 관리 기본을 예제와 함께 정리해 설정 파일 때문에 자주 막히는 지점을 줄여줍니다."
+image: "/assets/img/og/springboot-series-cover.svg"
 ---
 
 # SpringBoot 입문 5: application.yml과 설정 관리(Profiles) 기본
+
+> 이 글에서는 application.yml을 읽는 법과 profile로 설정을 나누는 기본 감각을 익힙니다.
+>
+> 이전 글: [SpringBoot 입문 4: Gradle(build.gradle) 기본과 실행/빌드 흐름](/springboot/mvc-gradle-build-basics)
+> 다음 글: [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status)
+> 함께 보면 좋은 글:
+> - [SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리](/springboot/mvc-request-validation-exception)
+> - [SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초](/springboot/mvc-service-layer-di)
+
 
 Spring Boot를 쓰면 설정의 중심은 `application.yml`(또는 properties)입니다. 초보자에게 중요한 건 이 3가지예요.
 

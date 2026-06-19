@@ -1,11 +1,13 @@
----
+﻿---
 layout: post
 title: "SpringBoot 입문 23: Docker로 실행하기(가장 단순한 Dockerfile)"
 date: 2026-05-17 03:50:00 +0900
 category: SpringBoot
 permalink: /springboot/mvc-dockerize-basics
 description: "Spring Boot 애플리케이션을 Dockerfile로 이미지화하고 JAR 실행부터 컨테이너 기동까지 따라가며, 초보자가 자주 헷갈리는 Docker 기본 흐름을 정리합니다."
-image: "/assets/img/favicons/android-chrome-512x512.png"
+image:
+  path: "/assets/img/og/springboot-docker-cover.svg"
+  alt: "SpringBoot Docker basics article cover"
 ---
 
 # SpringBoot 입문 23: Docker로 실행하기(가장 단순한 Dockerfile)
