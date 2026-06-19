@@ -1,27 +1,27 @@
-﻿---
+---
 layout: post
-title: "Riverpod 湲곕낯 ?ъ슜踰? Provider, StateProvider, AsyncValue源뚯?"
+title: "Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지"
 date: 2026-04-29 00:00:00 +0900
 category: Flutter
 permalink: /flutter/riverpod-basics
 ---
 
-# Riverpod 湲곕낯 ?ъ슜踰? Provider, StateProvider, AsyncValue源뚯?
+# Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지
 
-Flutter ?깆쓣 留뚮뱾??蹂대㈃ ?대뒓 ?쒓컙 `setState`留뚯쑝濡쒕뒗 ?붾㈃ ?곹깭瑜?愿由ы븯湲?踰꾧굅?뚯쭛?덈떎. ?붾㈃ ?섎굹 ?덉뿉???レ옄瑜?諛붽씀???뺣룄?쇰㈃ 愿쒖갖吏留? 濡쒓렇???ъ슜???뺣낫, API ?묐떟, ?ㅼ젙媛? 罹먯떆??紐⑸줉泥섎읆 ?щ윭 ?붾㈃???④퍡 ?곕뒗 ?곹깭?????꾩젽 ?덉뿉 ?먭린 ?대졄?듬땲?? ?대븣 ?곹깭 愿由??꾧뎄媛 ?꾩슂?섍퀬, 洹몄쨷 Riverpod? Flutter?먯꽌 留롮씠 ?ъ슜?섎뒗 ?좏깮吏?낅땲??
+Flutter 앱을 만들다 보면 어느 순간 `setState`만으로는 화면 상태를 관리하기 버거워집니다. 화면 하나 안에서 숫자를 바꾸는 정도라면 괜찮지만, 로그인 사용자 정보, API 응답, 설정값, 캐시된 목록처럼 여러 화면이 함께 쓰는 상태는 한 위젯 안에 두기 어렵습니다. 이때 상태 관리 도구가 필요하고, 그중 Riverpod은 Flutter에서 많이 사용하는 선택지입니다.
 
-Riverpod??泥섏쓬 蹂대㈃ `ref.watch`, `ref.read`, `ProviderScope` 媛숈? ?⑹뼱媛 ?쒓볼踰덉뿉 ?섏????대졄寃??먭뺨吏묐땲?? ?섏?留??듭떖? ?⑥닚?⑸땲?? **?곹깭???섏〈?깆쓣 provider濡??좎뼵?섍퀬, ?꾩젽? ref瑜??듯빐 洹멸쾬???쎈뒗??*??援ъ“?낅땲?? ??湲?먯꽌??媛??湲곕낯?곸씤 `Provider`, `StateProvider`, `FutureProvider`, `AsyncValue`瑜??ㅼ뒿 ?먮쫫?쇰줈 ?뺣━?대낫寃좎뒿?덈떎.
+Riverpod을 처음 보면 `ref.watch`, `ref.read`, `ProviderScope` 같은 용어가 한꺼번에 나와서 어렵게 느껴집니다. 하지만 핵심은 단순합니다. **상태나 의존성을 provider로 선언하고, 위젯은 ref를 통해 그것을 읽는다**는 구조입니다. 이 글에서는 가장 기본적인 `Provider`, `StateProvider`, `FutureProvider`, `AsyncValue`를 실습 흐름으로 정리해보겠습니다.
 
-## ?ㅼ튂? ProviderScope
+## 설치와 ProviderScope
 
-`pubspec.yaml`??`flutter_riverpod`??異붽??⑸땲??
+`pubspec.yaml`에 `flutter_riverpod`을 추가합니다.
 
 ```yaml
 dependencies:
   flutter_riverpod: ^2.0.0
 ```
 
-?깆쓽 媛??諛붽묑??`ProviderScope`濡?媛먯떥??Riverpod provider?ㅼ씠 ?숈옉?⑸땲??
+앱의 가장 바깥을 `ProviderScope`로 감싸야 Riverpod provider들이 동작합니다.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -41,11 +41,11 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-`ProviderScope`瑜?鍮좊쑉由щ㈃ provider瑜??쎈뒗 ?쒓컙 ?먮윭媛 ?⑸땲?? Riverpod???꾩엯?덈뒗?????쒖옉 ???댁긽??provider 愿???먮윭媛 ?섏삩?ㅻ㈃ 媛??癒쇱? `main()`???뺤씤?대낫硫??⑸땲??
+`ProviderScope`를 빠뜨리면 provider를 읽는 순간 에러가 납니다. Riverpod을 도입했는데 앱 시작 시 이상한 provider 관련 에러가 나온다면 가장 먼저 `main()`을 확인해보면 됩니다.
 
-## Provider: 蹂?섏? ?딅뒗 媛믪씠???섏〈???쒓났
+## Provider: 변하지 않는 값이나 의존성 제공
 
-`Provider`???쎄린 ?꾩슜 媛믪씠??媛앹껜瑜??쒓났?????ъ슜?⑸땲?? ?덈? ?ㅼ뼱 API base URL, repository, service 媛앹껜泥섎읆 ???щ윭 怨녹뿉???곗?留??꾩젽 ?곹깭泥섎읆 吏곸젒 蹂?섏? ?딅뒗 媛믪뿉 ?곹빀?⑸땲??
+`Provider`는 읽기 전용 값이나 객체를 제공할 때 사용합니다. 예를 들어 API base URL, repository, service 객체처럼 앱 여러 곳에서 쓰지만 위젯 상태처럼 직접 변하지 않는 값에 적합합니다.
 
 ```dart
 final apiBaseUrlProvider = Provider<String>((ref) {
@@ -53,7 +53,7 @@ final apiBaseUrlProvider = Provider<String>((ref) {
 });
 ```
 
-?꾩젽?먯꽌 provider瑜??쎌쑝?ㅻ㈃ `ConsumerWidget`???ъ슜?⑸땲??
+위젯에서 provider를 읽으려면 `ConsumerWidget`을 사용합니다.
 
 ```dart
 class DebugConfigPage extends ConsumerWidget {
@@ -71,17 +71,17 @@ class DebugConfigPage extends ConsumerWidget {
 }
 ```
 
-`ref.watch`??provider??媛믪쓣 援щ룆?⑸땲?? 媛믪씠 諛붾뚮㈃ ?대떦 ?꾩젽???ㅼ떆 build ?⑸땲?? 諛섎?濡??대깽???몃뱾???덉뿉????踰덈쭔 ?쎄퀬 ?띕떎硫?`ref.read`瑜??ъ슜?⑸땲??
+`ref.watch`는 provider의 값을 구독합니다. 값이 바뀌면 해당 위젯이 다시 build 됩니다. 반대로 이벤트 핸들러 안에서 한 번만 읽고 싶다면 `ref.read`를 사용합니다.
 
-## StateProvider: ?⑥닚???붾㈃ ?곹깭
+## StateProvider: 단순한 화면 상태
 
-?レ옄, ?좏깮???? ?좉? ?щ?泥섎읆 ?⑥닚???곹깭??`StateProvider`濡??쒖옉?대룄 異⑸텇?⑸땲??
+숫자, 선택된 탭, 토글 여부처럼 단순한 상태는 `StateProvider`로 시작해도 충분합니다.
 
 ```dart
 final counterProvider = StateProvider<int>((ref) => 0);
 ```
 
-移댁슫???붾㈃??留뚮뱾?대낫寃좎뒿?덈떎.
+카운터 화면을 만들어보겠습니다.
 
 ```dart
 class CounterPage extends ConsumerWidget {
@@ -110,27 +110,27 @@ class CounterPage extends ConsumerWidget {
 }
 ```
 
-?ш린???쎌쓣 ?뚮뒗 `ref.watch(counterProvider)`瑜??ъ슜?섍퀬, ?섏젙???뚮뒗 `ref.read(counterProvider.notifier).state`瑜??ъ슜?덉뒿?덈떎. build ?덉뿉?쒕뒗 ?붾㈃???ㅼ떆 洹몃젮???섎?濡?watch媛 ?먯뿰?ㅻ읇怨? 踰꾪듉 ?대┃ ?몃뱾?ъ뿉?쒕뒗 洹??쒓컙 ?곹깭瑜?蹂寃쏀븯湲곕쭔 ?섎㈃ ?섎?濡?read媛 ?댁슱由쎈땲??
+여기서 읽을 때는 `ref.watch(counterProvider)`를 사용하고, 수정할 때는 `ref.read(counterProvider.notifier).state`를 사용했습니다. build 안에서는 화면을 다시 그려야 하므로 watch가 자연스럽고, 버튼 클릭 핸들러에서는 그 순간 상태를 변경하기만 하면 되므로 read가 어울립니다.
 
-## watch? read瑜??룰컝由щ㈃ ?앷린??臾몄젣
+## watch와 read를 헷갈리면 생기는 문제
 
-`ref.read`濡?媛믪쓣 ?쎌쑝硫?洹?provider媛 諛붾뚯뼱???꾩젽???먮룞?쇰줈 ?ㅼ떆 洹몃젮吏吏 ?딆뒿?덈떎. 洹몃옒???붾㈃??蹂댁뿬以?媛믪? 蹂댄넻 `watch`瑜??ъ슜?댁빞 ?⑸땲??
+`ref.read`로 값을 읽으면 그 provider가 바뀌어도 위젯이 자동으로 다시 그려지지 않습니다. 그래서 화면에 보여줄 값은 보통 `watch`를 사용해야 합니다.
 
 ```dart
-// ?붾㈃ ?쒖떆??媛믪? watch
+// 화면 표시용 값은 watch
 final count = ref.watch(counterProvider);
 
-// 踰꾪듉 ?대┃泥섎읆 ?대깽??泥섎━?먯꽌??read
+// 버튼 클릭처럼 이벤트 처리에서는 read
 onPressed: () {
   ref.read(counterProvider.notifier).state = 0;
 }
 ```
 
-諛섎?濡??대깽???몃뱾???덉뿉??留ㅻ쾲 `watch`瑜??곕젮怨??섎㈃ 臾몃㎘??留욎? ?딄굅??遺덊븘?뷀븳 rebuild ?섏〈?깆씠 ?앷퉩?덈떎. 媛꾨떒??湲곗뼲?섎㈃ "?붾㈃??洹몃┫ 媛믪? watch, ?됰룞???뚮뒗 read"?낅땲??
+반대로 이벤트 핸들러 안에서 매번 `watch`를 쓰려고 하면 문맥상 맞지 않거나 불필요한 rebuild 의존성이 생깁니다. 간단히 기억하면 "화면에 그릴 값은 watch, 행동할 때는 read"입니다.
 
-## FutureProvider? AsyncValue
+## FutureProvider와 AsyncValue
 
-API ?몄텧泥섎읆 鍮꾨룞湲??곗씠?곕뒗 `FutureProvider`濡??쒗쁽?????덉뒿?덈떎.
+API 호출처럼 비동기 데이터는 `FutureProvider`로 표현할 수 있습니다.
 
 ```dart
 class User {
@@ -145,7 +145,7 @@ final userProvider = FutureProvider<User>((ref) async {
 });
 ```
 
-`FutureProvider`瑜?watch?섎㈃ `AsyncValue<T>`媛 諛섑솚?⑸땲?? ??媛믪? loading, error, data ??媛吏 ?곹깭瑜??덉쟾?섍쾶 ?ㅻ０ ???덇쾶 ?댁쨳?덈떎.
+`FutureProvider`를 watch하면 `AsyncValue<T>`가 반환됩니다. 이 값은 loading, error, data 세 가지 상태를 안전하게 다룰 수 있게 해줍니다.
 
 ```dart
 class UserPage extends ConsumerWidget {
@@ -160,8 +160,8 @@ class UserPage extends ConsumerWidget {
       body: Center(
         child: userAsync.when(
           loading: () => const CircularProgressIndicator(),
-          error: (error, stackTrace) => Text('?먮윭: $error'),
-          data: (user) => Text('?덈뀞?섏꽭?? ${user.name}??),
+          error: (error, stackTrace) => Text('에러: $error'),
+          data: (user) => Text('안녕하세요, ${user.name}님'),
         ),
       ),
     );
@@ -169,11 +169,11 @@ class UserPage extends ConsumerWidget {
 }
 ```
 
-鍮꾨룞湲?泥섎━瑜?吏곸젒 `bool isLoading`, `String? error`, `User? data`濡??섎닠??愿由ы븷 ?섎룄 ?덉?留? ?곹깭 議고빀??留롮븘吏硫??ㅼ닔?섍린 ?쎌뒿?덈떎. `AsyncValue`瑜??ъ슜?섎㈃ 濡쒕뵫, ?ㅽ뙣, ?깃났??鍮좊쑉由ъ? ?딄퀬 ?ㅻ０ ???덉뒿?덈떎.
+비동기 처리를 직접 `bool isLoading`, `String? error`, `User? data`로 나눠서 관리할 수도 있지만, 상태 조합이 많아지면 실수하기 쉽습니다. `AsyncValue`를 사용하면 로딩, 실패, 성공을 빠뜨리지 않고 다룰 수 있습니다.
 
-## repository瑜?provider濡?遺꾨━?섍린
+## repository를 provider로 분리하기
 
-?ㅼ젣 ?깆뿉?쒕뒗 API ?몄텧 肄붾뱶瑜?provider ?덉뿉 吏곸젒 留롮씠 ?곌린蹂대떎 repository濡?遺꾨━?⑸땲?? ?ㅽ듃?뚰겕 怨꾩링? [Dio Interceptor 湲](/flutter/dio-interceptor/)泥섎읆 蹂꾨룄 ?대씪?댁뼵?몃줈 留뚮뱾怨? provider???섏〈?깆쓣 ?곌껐?섎뒗 ??븷???섍쾶 ?먮㈃ 醫뗭뒿?덈떎.
+실제 앱에서는 API 호출 코드를 provider 안에 직접 많이 쓰기보다 repository로 분리합니다. 네트워크 계층은 [Dio Interceptor 글](/flutter/dio-interceptor)처럼 별도 클라이언트로 만들고, provider는 의존성을 연결하는 역할을 하게 두면 좋습니다.
 
 ```dart
 class UserRepository {
@@ -193,16 +193,16 @@ final meProvider = FutureProvider<User>((ref) async {
 });
 ```
 
-??援ъ“???μ젏? ?뚯뒪?멸? ?ъ썙吏꾨떎??寃껋엯?덈떎. ?뚯뒪?몄뿉?쒕뒗 `userRepositoryProvider`瑜?媛吏?repository濡?諛붽퓭移섍린?????덉뒿?덈떎.
+이 구조의 장점은 테스트가 쉬워진다는 것입니다. 테스트에서는 `userRepositoryProvider`를 가짜 repository로 바꿔치기할 수 있습니다.
 
-## ?먯＜ 留뚮굹???먮윭? 二쇱쓽?ы빆
+## 자주 만나는 에러와 주의사항
 
-`ProviderScope`媛 ?녿떎???먮윭媛 ?섎㈃ ??理쒖긽?⑥쓣 ?뺤씤?댁빞 ?⑸땲?? `runApp(const MyApp())`泥섎읆 ?섏뼱 ?덉쑝硫?`ProviderScope`濡?媛먯떥???⑸땲??
+`ProviderScope`가 없다는 에러가 나면 앱 최상단을 확인해야 합니다. `runApp(const MyApp())`처럼 되어 있으면 `ProviderScope`로 감싸야 합니다.
 
-provider ?덉뿉??`BuildContext`瑜?怨쇳븯寃??ъ슜?섎젮??寃껊룄 醫뗭? ?딆뒿?덈떎. provider??UI? 遺꾨━???곹깭/?섏〈??怨꾩링?쇰줈 蹂대뒗 ?몄씠 ?덉쟾?⑸땲?? ?붾㈃ ?대룞?대굹 dialog ?쒖떆 媛숈? UI ?묒뾽? ?꾩젽?먯꽌 泥섎━?섍퀬, provider???곗씠?곗? ?곹깭 蹂?붿뿉 吏묒쨷?쒗궎??寃껋씠 醫뗭뒿?덈떎.
+provider 안에서 `BuildContext`를 과하게 사용하려는 것도 좋지 않습니다. provider는 UI와 분리된 상태/의존성 계층으로 보는 편이 안전합니다. 화면 이동이나 dialog 표시 같은 UI 작업은 위젯에서 처리하고, provider는 데이터와 상태 변화에 집중시키는 것이 좋습니다.
 
-`StateProvider`??濡쒖쭅??怨꾩냽 ?섏뼱?섎뒗 寃껊룄 ?좏샇?낅땲?? 泥섏쓬?먮뒗 ?⑥닚 移댁슫?곗??붾뜲 寃利? API ?몄텧, ?щ윭 ?꾨뱶 蹂寃쎌씠 ?ㅼ뼱媛湲??쒖옉?섎㈃ notifier 湲곕컲 援ъ“濡???린??寃껋씠 醫뗭뒿?덈떎. ?⑥닚 ?곹깭??`StateProvider`, 蹂듭옟???곹깭 蹂寃?洹쒖튃? notifier, 鍮꾨룞湲??곗씠?곕뒗 `FutureProvider` ?먮뒗 `AsyncNotifier` 履쎌쑝濡??뺤옣?쒕떎怨??앷컖?섎㈃ ?⑸땲??
+`StateProvider`에 로직이 계속 늘어나는 것도 신호입니다. 처음에는 단순 카운터였는데 검증, API 호출, 여러 필드 변경이 들어가기 시작하면 notifier 기반 구조로 옮기는 것이 좋습니다. 단순 상태는 `StateProvider`, 복잡한 상태 변경 규칙은 notifier, 비동기 데이터는 `FutureProvider` 또는 `AsyncNotifier` 쪽으로 확장한다고 생각하면 됩니다.
 
-## ?뺣━
+## 정리
 
-Riverpod? 泥섏쓬遺??紐⑤뱺 媛쒕뀗????踰덉뿉 ?몄슦?ㅺ퀬 ?섎㈃ ?대졄?듬땲?? 癒쇱? `ProviderScope`濡??깆쓣 媛먯떥怨? `Provider`濡??섏〈?깆쓣 ?쒓났?섍퀬, `StateProvider`濡??⑥닚 ?곹깭瑜?諛붽씀怨? `FutureProvider`? `AsyncValue`濡?鍮꾨룞湲??곗씠?곕? ?쒖떆?섎뒗 ?먮쫫遺???듯엳硫??⑸땲?? ?댄썑 ?깆씠 而ㅼ?硫?repository, notifier, ?뚯뒪??override濡??먯뿰?ㅻ읇寃??뺤옣?????덉뒿?덈떎.
+Riverpod은 처음부터 모든 개념을 한 번에 외우려고 하면 어렵습니다. 먼저 `ProviderScope`로 앱을 감싸고, `Provider`로 의존성을 제공하고, `StateProvider`로 단순 상태를 바꾸고, `FutureProvider`와 `AsyncValue`로 비동기 데이터를 표시하는 흐름부터 익히면 됩니다. 이후 앱이 커지면 repository, notifier, 테스트 override로 자연스럽게 확장할 수 있습니다.

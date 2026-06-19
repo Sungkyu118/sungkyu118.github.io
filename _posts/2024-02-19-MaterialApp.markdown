@@ -1,21 +1,21 @@
-﻿---
+---
 layout: post
-title: "MaterialApp ?댄빐?섍린: Flutter ?깆쓽 媛??諛붽묑 援ъ“"
+title: "MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조"
 date: 2024-02-19 21:53:00 +0900
 category: Flutter
 permalink: /flutter/materialapp
 tags: [MaterialApp]
 ---
 
-# MaterialApp ?댄빐?섍린: Flutter ?깆쓽 媛??諛붽묑 援ъ“
+# MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조
 
-Flutter ?꾨줈?앺듃瑜?留뚮뱾硫?`main.dart`?먯꽌 嫄곗쓽 ??긽 `MaterialApp`??留뚮굹寃??⑸땲?? 泥섏쓬?먮뒗 ?덉젣 肄붾뱶???덉쑝?덇퉴 洹몃깷 蹂듭궗?댁꽌 ?곗?留? ?깆씠 而ㅼ쭏?섎줉 `MaterialApp`???대뼡 ??븷???섎뒗吏 ?댄빐?섎뒗 寃껋씠 以묒슂?댁쭛?덈떎. ?쇱슦?? ?뚮쭏, ?몄뼱 ?ㅼ젙, ?붾쾭洹?諛곕꼫, Navigator ?섍꼍?????꾩젽??以묒떖?쇰줈 援ъ꽦?섍린 ?뚮Ц?낅땲??
+Flutter 프로젝트를 만들면 `main.dart`에서 거의 항상 `MaterialApp`을 만나게 됩니다. 처음에는 예제 코드에 있으니까 그냥 복사해서 쓰지만, 앱이 커질수록 `MaterialApp`이 어떤 역할을 하는지 이해하는 것이 중요해집니다. 라우팅, 테마, 언어 설정, 디버그 배너, Navigator 환경이 이 위젯을 중심으로 구성되기 때문입니다.
 
-`MaterialApp`? ?붾㈃ ?섎굹瑜??덉걯寃?蹂댁뿬二쇰뒗 ?꾩젽?대씪湲곕낫?? Material Design 湲곕컲 ?깆씠 ?숈옉?섍린 ?꾪븳 怨듯넻 ?섍꼍???쒓났?섎뒗 ?꾩젽?낅땲?? ?쎄쾶 留먰븯硫?Flutter ?깆쓽 "諛붽묑 猿띾뜲湲곗씠???ㅼ젙 以묒떖吏"?쇨퀬 蹂????덉뒿?덈떎.
+`MaterialApp`은 화면 하나를 예쁘게 보여주는 위젯이라기보다, Material Design 기반 앱이 동작하기 위한 공통 환경을 제공하는 위젯입니다. 쉽게 말하면 Flutter 앱의 "바깥 껍데기이자 설정 중심지"라고 볼 수 있습니다.
 
-## 媛??湲곕낯?곸씤 援ъ“
+## 가장 기본적인 구조
 
-Flutter ?깆쓽 ?쒖옉?먯? `main()`?낅땲??
+Flutter 앱의 시작점은 `main()`입니다.
 
 ```dart
 import 'package:flutter/material.dart';
@@ -48,26 +48,26 @@ class HomePage extends StatelessWidget {
 }
 ```
 
-`runApp`? Flutter ?꾩젽 ?몃━???쒖옉?먯쓣 ?깅줉?⑸땲?? 洹??덉뿉 `MaterialApp`???덇퀬, `home`?먮뒗 泥??붾㈃???ㅼ뼱媛묐땲?? ?ㅼ젣 ?붾㈃ 援ъ“??蹂댄넻 `Scaffold`媛 ?대떦?⑸땲??
+`runApp`은 Flutter 위젯 트리의 시작점을 등록합니다. 그 안에 `MaterialApp`이 있고, `home`에는 첫 화면이 들어갑니다. 실제 화면 구조는 보통 `Scaffold`가 담당합니다.
 
-## MaterialApp怨?Scaffold??李⑥씠
+## MaterialApp과 Scaffold의 차이
 
-珥덈낫?먭? 媛??留롮씠 ?룰컝由щ뒗 遺遺꾩씠 `MaterialApp`怨?`Scaffold`????븷?낅땲?? `MaterialApp`? ???꾩껜 ?ㅼ젙???대떦?섍퀬, `Scaffold`?????붾㈃??湲곕낯 援ъ“瑜??대떦?⑸땲??
+초보자가 가장 많이 헷갈리는 부분이 `MaterialApp`과 `Scaffold`의 역할입니다. `MaterialApp`은 앱 전체 설정을 담당하고, `Scaffold`는 한 화면의 기본 구조를 담당합니다.
 
 ```dart
 MaterialApp(
   home: Scaffold(
-    appBar: AppBar(title: const Text('?쒕ぉ')),
-    body: const Center(child: Text('蹂몃Ц')),
+    appBar: AppBar(title: const Text('제목')),
+    body: const Center(child: Text('본문')),
   ),
 )
 ```
 
-`Scaffold`??appBar, body, floatingActionButton, drawer, bottomNavigationBar 媛숈? ?붾㈃ 援ъ꽦 ?붿냼瑜??쒓났?⑸땲?? 諛섎㈃ `MaterialApp`? ?뚮쭏, ?쇱슦?? locale, navigator 媛숈? ???꾩껜 ?섍꼍???쒓났?⑸땲??
+`Scaffold`는 appBar, body, floatingActionButton, drawer, bottomNavigationBar 같은 화면 구성 요소를 제공합니다. 반면 `MaterialApp`은 테마, 라우팅, locale, navigator 같은 앱 전체 환경을 제공합니다.
 
-## title怨?debugShowCheckedModeBanner
+## title과 debugShowCheckedModeBanner
 
-泥섏쓬 ?깆쓣 ?ㅽ뻾?섎㈃ ?ㅻⅨ履??꾩뿉 DEBUG 諛곕꼫媛 蹂댁엯?덈떎. 媛쒕컻 以묒씠?쇰뒗 ?쒖떆?낅땲?? ?ㅽ겕由곗꺑?대굹 ?곕え ?붾㈃?먯꽌 嫄곗뒳由곕떎硫??????덉뒿?덈떎.
+처음 앱을 실행하면 오른쪽 위에 DEBUG 배너가 보입니다. 개발 중이라는 표시입니다. 스크린샷이나 데모 화면에서 거슬린다면 끌 수 있습니다.
 
 ```dart
 MaterialApp(
@@ -77,10 +77,11 @@ MaterialApp(
 )
 ```
 
-`title`? Android task switcher?????섏씠吏 ?쒕ぉ ?깆뿉???ъ슜?????덉뒿?덈떎. ???대쫫???섎? ?덇쾶 ?ｌ뼱?먮뒗 ?몄씠 醫뗭뒿?덈떎.
+`title`은 Android task switcher나 웹 페이지 제목 등에서 사용될 수 있습니다. 앱 이름을 의미 있게 넣어두는 편이 좋습니다.
 
-## ThemeData濡?怨듯넻 ?ㅽ????뺥븯湲?
-???꾩껜 ?됱긽怨??ㅽ??쇱? `theme`?먯꽌 愿由ы빀?덈떎.
+## ThemeData로 공통 스타일 정하기
+
+앱 전체 색상과 스타일은 `theme`에서 관리합니다.
 
 ```dart
 final appTheme = ThemeData(
@@ -104,18 +105,18 @@ class MyApp extends StatelessWidget {
 }
 ```
 
-?붾㈃留덈떎 吏곸젒 ?됱긽怨?湲瑗댁쓣 吏?뺥븯硫??섏쨷???붿옄?몄쓣 諛붽씀湲??대졄?듬땲?? 怨듯넻 ?ㅽ??쇱? 媛?ν븯硫?`ThemeData`???щ━怨? 媛??붾㈃?먯꽌??`Theme.of(context)`瑜??듯빐 媛?몃떎 ?곕뒗 諛⑹떇???좎?蹂댁닔??醫뗭뒿?덈떎.
+화면마다 직접 색상과 글꼴을 지정하면 나중에 디자인을 바꾸기 어렵습니다. 공통 스타일은 가능하면 `ThemeData`에 올리고, 각 화면에서는 `Theme.of(context)`를 통해 가져다 쓰는 방식이 유지보수에 좋습니다.
 
 ```dart
 Text(
-  '以묒슂??臾멸뎄',
+  '중요한 문구',
   style: Theme.of(context).textTheme.titleLarge,
 )
 ```
 
-## ?쇱슦???ㅼ젙
+## 라우팅 설정
 
-?묒? ?깆뿉?쒕뒗 `home` ?섎굹濡??쒖옉?대룄 ?⑸땲?? ?섏?留??붾㈃???щ윭 媛쒓? ?섎㈃ `routes`瑜??ъ슜?????덉뒿?덈떎.
+작은 앱에서는 `home` 하나로 시작해도 됩니다. 하지만 화면이 여러 개가 되면 `routes`를 사용할 수 있습니다.
 
 ```dart
 MaterialApp(
@@ -127,17 +128,17 @@ MaterialApp(
 )
 ```
 
-?대룞???뚮뒗 ?ㅼ쓬泥섎읆 ?몄텧?⑸땲??
+이동할 때는 다음처럼 호출합니다.
 
 ```dart
 Navigator.of(context).pushNamed('/settings');
 ```
 
-??洹쒕え媛 ??而ㅼ?怨?濡쒓렇??媛?? ?λ쭅?? URL ?뚮씪誘명꽣媛 ?꾩슂?댁?硫?[go_router 湲](/flutter/go-router/)泥섎읆 `MaterialApp.router`瑜??ъ슜?섎뒗 諛⑹떇?쇰줈 ?뺤옣?????덉뒿?덈떎.
+앱 규모가 더 커지고 로그인 가드, 딥링크, URL 파라미터가 필요해지면 [go_router 글](/flutter/go-router)처럼 `MaterialApp.router`를 사용하는 방식으로 확장할 수 있습니다.
 
-## MaterialApp???붾㈃留덈떎 ?ｌ쑝硫????섎뒗 ?댁쑀
+## MaterialApp을 화면마다 넣으면 안 되는 이유
 
-媛???섏씠吏 ?꾩젽 ?덉뿉 ?ㅼ떆 `MaterialApp`???ｋ뒗 肄붾뱶媛 ?덉뒿?덈떎.
+가끔 페이지 위젯 안에 다시 `MaterialApp`을 넣는 코드가 있습니다.
 
 ```dart
 class LoginPage extends StatelessWidget {
@@ -154,7 +155,7 @@ class LoginPage extends StatelessWidget {
 }
 ```
 
-??肄붾뱶???붾㈃??蹂댁씪 ?섎뒗 ?덉?留?醫뗭? 援ъ“媛 ?꾨떃?덈떎. `MaterialApp`???щ윭 媛??앷린硫?Navigator, Theme, MediaQuery ?먮쫫???섎룄? ?ㅻⅤ寃?遺꾨━?????덉뒿?덈떎. ?쇰컲 ?섏씠吏??`Scaffold`遺???묒꽦?섍퀬, `MaterialApp`? ??理쒖긽?⑥뿉 ?섎굹留??먮뒗 寃껋쓣 湲곕낯?쇰줈 ?앷컖?섎㈃ ?⑸땲??
+이 코드는 화면이 보일 수는 있지만 좋은 구조가 아닙니다. `MaterialApp`이 여러 개 생기면 Navigator, Theme, MediaQuery 흐름이 의도와 다르게 분리될 수 있습니다. 일반 페이지는 `Scaffold`부터 작성하고, `MaterialApp`은 앱 최상단에 하나만 두는 것을 기본으로 생각하면 됩니다.
 
 ```dart
 class LoginPage extends StatelessWidget {
@@ -170,10 +171,10 @@ class LoginPage extends StatelessWidget {
 }
 ```
 
-## context ?꾩튂 二쇱쓽
+## context 위치 주의
 
-`Theme.of(context)`??`Navigator.of(context)`??context媛 ?꾩젽 ?몃━?먯꽌 ?대뵒???덈뒗吏???곕씪 寃곌낵媛 ?щ씪吏묐땲?? `MaterialApp` ?꾨옒???덈뒗 context?먯꽌 ?몄텧?댁빞 Material 愿???ㅼ젙??李얠쓣 ???덉뒿?덈떎. ?깆쓣 留뚮뱾??蹂대㈃ context 愿???먮윭媛 ?섏삤?붾뜲, ?대븣??"??context媛 MaterialApp ?꾨옒???덈뒗媛"瑜?癒쇱? ?앷컖?대낫硫?醫뗭뒿?덈떎.
+`Theme.of(context)`나 `Navigator.of(context)`는 context가 위젯 트리에서 어디에 있는지에 따라 결과가 달라집니다. `MaterialApp` 아래에 있는 context에서 호출해야 Material 관련 설정을 찾을 수 있습니다. 앱을 만들다 보면 context 관련 에러가 나오는데, 이때는 "이 context가 MaterialApp 아래에 있는가"를 먼저 생각해보면 좋습니다.
 
-## ?뺣━
+## 정리
 
-`MaterialApp`? Flutter Material ?깆쓽 ?쒖옉?먯엯?덈떎. ?붾㈃ ?섎굹???덉씠?꾩썐蹂대떎?????꾩껜???뚮쭏, ?쇱슦?? Navigator ?섍꼍???쒓났?섎뒗 ??븷??媛源앹뒿?덈떎. 泥섏쓬?먮뒗 `MaterialApp -> Scaffold -> body` 援ъ“留??뺥솗???댄빐?대룄 留롮? ?덉젣瑜??쎄린 ?ъ썙吏묐땲?? ?댄썑 ?뚮쭏, ?쇱슦?? ?곹깭 愿由щ줈 ?뺤옣?섎㈃ Flutter ??援ъ“媛 ?⑥뵮 ?먯뿰?ㅻ읇寃?蹂댁엯?덈떎.
+`MaterialApp`은 Flutter Material 앱의 시작점입니다. 화면 하나의 레이아웃보다는 앱 전체의 테마, 라우팅, Navigator 환경을 제공하는 역할에 가깝습니다. 처음에는 `MaterialApp -> Scaffold -> body` 구조만 정확히 이해해도 많은 예제를 읽기 쉬워집니다. 이후 테마, 라우팅, 상태 관리로 확장하면 Flutter 앱 구조가 훨씬 자연스럽게 보입니다.
