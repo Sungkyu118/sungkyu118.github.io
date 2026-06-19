@@ -16,6 +16,7 @@
   {%- endcapture -%}
 
   <!-- Setup Open Graph image -->
+  {% assign social_image_url = nil %}
 
   {% if page.image %}
   {% assign src = page.image.path | default: page.image %}
@@ -29,29 +30,40 @@
   {%- capture new_url -%}{{ img_url }}{%- endcapture -%}
 
   {% assign seo_tags = seo_tags | replace: old_url, new_url %}
+  {% assign social_image_url = img_url | strip %}
+  {% else %}
+  {% assign social_image_url = src %}
   {% endunless %}
 
   {% elsif site.social_preview_image %}
   {%- capture img_url -%}
   {% include img-url.html src=site.social_preview_image absolute=true %}
   {%- endcapture -%}
+  {% assign social_image_url = img_url | strip %}
+  {% endif %}
 
-  {%- capture og_image -%}
-  <meta property="og:image" content="{{ img_url }}" />
-  {%- endcapture -%}
-
-  {%- capture twitter_image -%}
-  <meta property="twitter:card" content="summary_large_image" />
-  <meta property="twitter:image" content="{{ img_url }}" />
-  {%- endcapture -%}
-
-  {% assign old_meta_clip = '
-  <meta name="twitter:card" content="summary" />' %}
-  {% assign new_meta_clip = og_image | append: twitter_image %}
-  {% assign seo_tags = seo_tags | replace: old_meta_clip, new_meta_clip %}
+  {% if social_image_url %}
+  {% assign seo_tags = seo_tags | replace_first: 'name="twitter:card" content="summary"', 'name="twitter:card" content="summary_large_image"' %}
   {% endif %}
 
   {{ seo_tags }}
+
+  {% if social_image_url %}
+  <meta property="og:image" content="{{ social_image_url }}" />
+  <meta name="twitter:image" content="{{ social_image_url }}" />
+  {% if page.image.alt %}
+  <meta property="og:image:alt" content="{{ page.image.alt | xml_escape }}" />
+  <meta name="twitter:image:alt" content="{{ page.image.alt | xml_escape }}" />
+  {% endif %}
+  {% endif %}
+
+  {% assign seo_keywords = page.tags | default: page.categories %}
+  {% if page.tags and page.categories %}
+  {% assign seo_keywords = page.tags | concat: page.categories | uniq %}
+  {% endif %}
+  {% if seo_keywords and seo_keywords != empty %}
+  <meta name="keywords" content="{{ seo_keywords | join: ', ' | xml_escape }}" />
+  {% endif %}
 
   <title>
     {%- unless page.layout == 'home' -%}
