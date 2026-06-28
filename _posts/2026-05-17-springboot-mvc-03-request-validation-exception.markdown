@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "SpringBoot 입문 3: 요청 받기(@RequestBody) + Validation + 예외 처리"
 date: 2026-05-17 00:30:00 +0900
@@ -145,6 +145,12 @@ public class ApiExceptionHandler {
 - `jakarta.validation` 패키지 import가 안 됨: validation dependency가 없는 상태일 가능성이 큼
 - record가 안 됨: Java 버전이 낮거나, 프로젝트 SDK가 17이 아닌 상태일 수 있음
 
+
+<!-- codex-springboot-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기](/springboot/mvc-hello-controller-debug), [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status), [SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)](/springboot/mvc-exception-handling-advanced) 글도 함께 읽어보시면 좋습니다. 앞단의 준비 과정과 다음 단계의 확장 흐름이 자연스럽게 이어져서, 지금 배우는 내용이 프로젝트 안에서 어디에 연결되는지 더 분명하게 감을 잡으실 수 있습니다.
+
+<!-- codex-springboot-inline-links:end -->
 ## 다음 글 아이디어
 
 여기까지 하면 "API 개발을 시작할 수 있는 최소 체력"이 생깁니다.
@@ -155,3 +161,14 @@ public class ApiExceptionHandler {
 - 서비스 계층 분리(Service/Repository)
 - 테스트(JUnit + MockMvc)
 
+<!-- codex-springboot-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [SpringBoot 입문 2: 첫 Controller 만들기 + Debug로 흐름 이해하기](/springboot/mvc-hello-controller-debug)
+- [SpringBoot 입문 6: REST 기본(@RequestParam/@PathVariable)과 HTTP 상태코드](/springboot/mvc-rest-basics-params-status)
+- [SpringBoot 입문 15: 예외 처리 고급(에러코드, NotFound, 공통 응답 포맷)](/springboot/mvc-exception-handling-advanced)
+
+지금 글과 연결되는 흐름으로 골라두었으니, 바로 다음 실습이나 비교 학습을 이어가실 때 참고해보시면 좋겠습니다.
+
+<!-- codex-springboot-links:end -->

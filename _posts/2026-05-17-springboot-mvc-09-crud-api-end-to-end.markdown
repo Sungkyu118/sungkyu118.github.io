@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: "SpringBoot 입문 9: CRUD API 끝까지 만들기 (Controller/Service/Repository)"
 date: 2026-05-17 01:30:00 +0900
@@ -147,9 +147,26 @@ public class NotFoundException extends RuntimeException {
 
 그리고 `@RestControllerAdvice`에서 404 응답 포맷을 통일합니다(입문 3편의 구조 확장).
 
+
+<!-- codex-springboot-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초](/springboot/mvc-service-layer-di), [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db), [SpringBoot 입문 10: 목록 API의 기본 (Pagination/Sorting)](/springboot/mvc-pagination-sorting) 글도 함께 읽어보시면 좋습니다. 앞단의 준비 과정과 다음 단계의 확장 흐름이 자연스럽게 이어져서, 지금 배우는 내용이 프로젝트 안에서 어디에 연결되는지 더 분명하게 감을 잡으실 수 있습니다.
+
+<!-- codex-springboot-inline-links:end -->
 ## 정리
 
 - CRUD는 Controller/Service/Repository로 계층을 나눠서 만든다
 - DTO로 외부 입력/출력을 통제한다
 - 예외/상태코드를 일관되게 유지하면 프론트/클라이언트가 편해진다
 
+<!-- codex-springboot-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [SpringBoot 입문 7: Service 계층과 의존성 주입(DI) 기초](/springboot/mvc-service-layer-di)
+- [SpringBoot 입문 8: JPA + H2로 DB 시작하기 (Entity/Repository)](/springboot/mvc-jpa-h2-first-db)
+- [SpringBoot 입문 10: 목록 API의 기본 (Pagination/Sorting)](/springboot/mvc-pagination-sorting)
+
+지금 글과 연결되는 흐름으로 골라두었으니, 바로 다음 실습이나 비교 학습을 이어가실 때 참고해보시면 좋겠습니다.
+
+<!-- codex-springboot-links:end -->
