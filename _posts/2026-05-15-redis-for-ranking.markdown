@@ -123,7 +123,7 @@ Redis 랭킹은 빠른 조회용으로 좋지만, 영구 기록의 원본까지 
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 자료구조 3: Sorted Set(ZSET), 랭킹의 정석](/redis/ds-zset), [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics), [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+?ㅼ떆媛???궧? ?덉떆濡?蹂닿린?먮뒗 ?щ??덉?留? ?ㅼ젣 援ы쁽?먯꽌???뺣젹 援ъ“ ?좏깮怨??댁쁺 鍮꾩슜??媛숈씠 蹂댁? ?딆쑝硫?湲덈갑 ?⑥닚 ?곕え??癒몃Т瑜닿쾶 ?⑸땲?? 洹몃옒??[Redis ?먮즺援ъ“ 3: Sorted Set(ZSET), ??궧???뺤꽍](/redis/ds-zset), [Redis ?낅Ц ?ㅻТ??3: ?댁쁺 湲곕낯, 硫붾え由ъ? eviction??癒쇱? 蹂댁옄](/redis/practical-ops-basics), [Redis ?댁쁺 ?ы솕: 硫붾え由? eviction, ?ロ궎 ?ш퀬 ?⑦꽩](/redis/memory-eviction-hotkeys) 湲???④퍡 ?쎌뼱蹂댁떆硫?醫뗪쿋?듬땲?? ?대젃寃?媛숈씠 蹂댁떆硫???궧 援ы쁽 ?먯껜肉??꾨땲?? ?멸린 ?ㅺ? 紐곕졇?????대뼡 臾몄젣媛 ?앷만 ???덈뒗吏?????꾩떎?곸쑝濡?蹂댁씠??寃껋엯?덈떎.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

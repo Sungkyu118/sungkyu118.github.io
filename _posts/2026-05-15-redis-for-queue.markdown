@@ -127,7 +127,7 @@ LPUSH queue:mail '{"userId":42,"template":"welcome"}'
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets), [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams), [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+??湲? Redis瑜??먯쿂?????뚯쓽 異쒕컻?먯뿉 媛源앷린 ?뚮Ц?? ?먮즺援ъ“? 硫붿떆吏 ?꾨떖 諛⑹떇源뚯? 媛숈씠 蹂댁뀛???꾩껜 ?먮떒???ъ썙吏묐땲?? [Redis ?먮즺援ъ“ 2: List? Set, ?쒖꽌? 以묐났???ㅻ（??踰?(/redis/ds-lists-sets), [Redis Pub/Sub vs Streams: ?대깽???꾨떖???대뵒???⑥빞 ?좉퉴](/redis/pubsub-vs-streams), [Redis Streams ?ㅼ쟾: ?묒뾽 ?먮줈 ?곕뒗 踰?(/redis/streams-queue) 湲???댁뼱??蹂댁떆硫? "吏湲덉? List濡?異⑸텇?쒖?", "?대깽???꾨떖怨??묒뾽 ?먮? 媛숈? 寃껋쑝濡?蹂대㈃ ?????섎뒗吏", "?몄젣 Streams濡??섏뼱媛???섎뒗吏"媛 ?⑥뵮 紐낇솗?댁쭛?덈떎.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

@@ -124,7 +124,7 @@ eviction은 단순 로그가 아니라 서비스 품질이 흔들리기 시작�
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys), [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache), [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+?댁쁺 湲곕낯? ?먯무 泥댄겕由ъ뒪?몄쿂?쇰쭔 ?쏀엳湲??ъ슫?? ?ㅼ젣 湲곕뒫 湲怨?媛숈씠 臾띠뼱??遊먯빞 ??洹몃윴 湲곗????꾩슂?쒖? 媛먯씠 ?듬땲?? [Redis ?댁쁺 ?ы솕: 硫붾え由? eviction, ?ロ궎 ?ш퀬 ?⑦꽩](/redis/memory-eviction-hotkeys), [Redis for 罹먯떆: ?몄젣 ?④낵媛 ?ш퀬, ?대뵒??留앷?吏?붽?](/redis/cache), [Redis for ??궧: Sorted Set?쇰줈 ?ㅼ떆媛??쒖쐞 留뚮뱾湲?(/redis/ranking) 湲???댁뼱??蹂댁떆硫? 硫붾え由??뺤콉怨?eviction???⑥닚 ?쒕쾭 ?ㅼ젙???꾨땲??湲곕뒫 ?덉쭏怨?吏곸젒 ?곌껐?쒕떎???먯쓣 ?⑥뵮 ?ㅺ컧?섍쾶 ?댄빐?섏떎 ???덉뒿?덈떎.
 
 <!-- codex-category-inline-links:end -->
 ## 정리
