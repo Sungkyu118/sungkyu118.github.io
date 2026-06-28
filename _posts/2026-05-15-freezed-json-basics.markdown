@@ -192,6 +192,23 @@ dart run build_runner build --delete-conflicting-outputs
 
 또 하나의 실수는 생성 파일을 직접 수정하는 것입니다. 생성 파일은 언제든 다시 덮어써질 수 있으므로 수정하면 안 됩니다. 모델 원본 파일을 고치고 다시 생성해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `freezed`와 `json_serializable`을 사용하면 JSON 모델을 더 안전하게 다룰 수 있습니다. 문자열 key를 직접 꺼내는 코드를 줄이고, 불변 객체와 `copyWith`, 값 비교, JSON 변환을 자동 생성할 수 있습니다. 처음 설정은 조금 번거롭지만, API 모델이 늘어날수록 안정성과 생산성 차이가 커집니다. 특히 Riverpod 같은 상태 관리와 함께 사용하면 상태 변경 흐름이 훨씬 명확해집니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
+- [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+- [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

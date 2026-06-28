@@ -256,6 +256,23 @@ class DashboardPage extends StatelessWidget {
 }
 ```
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `CustomScrollView`는 복잡한 스크롤 화면을 하나의 스크롤로 묶기 위한 위젯입니다. 일반 위젯은 `SliverToBoxAdapter`, 목록은 `SliverList`, 그리드는 `SliverGrid`, 접히는 앱바는 `SliverAppBar`를 사용합니다. `Column`과 여러 스크롤 위젯을 억지로 중첩하기 전에, 화면이 하나의 스크롤 흐름인지 먼저 생각해보면 구조를 훨씬 깔끔하게 잡을 수 있습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+- [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+- [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

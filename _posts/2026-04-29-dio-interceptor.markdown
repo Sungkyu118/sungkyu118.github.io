@@ -236,6 +236,23 @@ class UserApi {
 
 화면에서는 네트워크 세부 구현보다 성공, 로딩, 실패 상태에 집중할 수 있습니다. 이 흐름은 [Riverpod 기본 글](/flutter/riverpod-basics)의 `AsyncValue`나 notifier 구조와 함께 쓰면 더 깔끔해집니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `onRequest`는 요청이 나가기 전 공통 헤더나 query parameter를 붙일 때 사용합니다. `onResponse`는 응답 로그나 공통 변환이 필요할 때 사용합니다. `onError`는 timeout, 401, 500 같은 실패를 한곳에서 처리할 때 사용합니다. 다만 인터셉터는 강력한 만큼 책임을 너무 많이 넣으면 거대한 블랙박스가 됩니다. 토큰 주입, 로그, 에러 매핑처럼 명확한 책임 단위로 나누고, 민감 정보 로그와 401 무한 루프를 조심하는 것이 핵심입니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage)
+- [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+- [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

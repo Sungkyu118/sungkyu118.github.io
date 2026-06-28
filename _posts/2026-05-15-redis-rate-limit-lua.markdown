@@ -132,8 +132,25 @@ Redis는 빠르지만 싱글 스레드 이벤트 루프 특성이 있습니다. 
 
 레이트 리밋은 운영하면서 조정하는 기능입니다. 어떤 key가 얼마나 자주 막히는지 로그가 없으면 정상 사용자와 비정상 트래픽을 구분하기 어렵습니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit), [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock), [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis Lua는 레이트 리밋에서 체크, 증가, TTL 설정을 원자적으로 묶는 데 유용합니다. 단순한 fixed window도 Lua로 처리하면 운영 중 애매한 race condition을 줄일 수 있습니다.
 
 다만 Lua 자체가 목적은 아닙니다. 중요한 것은 어떤 기준으로 제한할지, 초과 시 어떻게 응답할지, 정상 사용자를 얼마나 보호할지입니다. 이 기준이 있어야 레이트 리밋이 보안 장치이면서도 사용자 경험을 해치지 않습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit)
+- [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock)
+- [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

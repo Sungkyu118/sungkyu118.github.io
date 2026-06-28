@@ -130,8 +130,25 @@ try {
 
 분산락은 보조 장치입니다. 재고 차감, 결제 상태 변경처럼 중요한 데이터는 DB의 트랜잭션과 유니크 제약조건도 함께 봐야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua), [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session), [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 분산락은 `SET NX PX`로 시작할 수 있지만, 진짜 중요한 부분은 TTL, token 비교 해제, 실패 처리입니다.
 
 짧고 명확한 동시성 제어에는 유용하지만, 모든 정합성 문제를 분산락으로 해결하려고 하면 구조가 더 위험해질 수 있습니다. 락은 마지막 답이 아니라, DB 제약과 작업 설계 사이에서 조심스럽게 쓰는 도구로 보는 편이 좋습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua)
+- [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session)
+- [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

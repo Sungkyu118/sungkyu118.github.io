@@ -195,6 +195,23 @@ BottomNavigationBar(
 
 처음부터 복잡하게 시작할 필요는 없습니다. 먼저 index 기반 하단 탭을 이해하고, 요구사항이 생겼을 때 라우팅 구조로 옮겨도 충분합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `BottomNavigationBar`는 `currentIndex`와 `onTap`을 중심으로 동작합니다. 탭을 누를 때 새 화면을 push하는 것이 아니라 선택된 index를 바꾸고 `body`를 교체하는 것이 기본입니다. 탭별 상태를 유지해야 한다면 `IndexedStack`을 사용하고, 상세 화면으로 들어갈 때는 `Navigator.push`를 사용합니다. 이 구분만 명확히 해도 하단 탭 구조에서 생기는 많은 혼란을 줄일 수 있습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
+- [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+- [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

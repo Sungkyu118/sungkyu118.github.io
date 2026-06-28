@@ -99,8 +99,25 @@ Redis가 잠깐 느려지거나 장애가 났을 때 요청을 모두 허용할�
 
 처음에는 넉넉하게 시작하고, 로그를 보면서 줄이는 방식이 안전한 경우가 많습니다. 특히 인증번호, 로그인, 결제처럼 민감한 영역은 차단 기준과 사용자 안내를 같이 설계해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua), [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl), [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 레이트 리밋은 분산 환경에서 요청 수를 제한하기 좋은 방법입니다. 하지만 key 기준, limit 값, window 크기, 원자성, 429 응답, Redis 장애 정책까지 같이 정해야 운영 가능한 기능이 됩니다.
 
 처음 구현은 fixed window로 시작해도 좋습니다. 다만 트래픽이 많거나 보안 요구가 강하다면 Lua 기반 원자 처리와 더 정교한 정책을 검토하는 편이 좋습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 레이트 리밋: Lua로 원자성 보장하기](/redis/rate-limit-lua)
+- [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+- [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

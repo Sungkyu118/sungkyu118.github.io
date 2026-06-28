@@ -150,6 +150,11 @@ TTL이 짧으면 stale 이슈는 줄지만, 캐시 미스가 늘어나서 DB나 
 - 변경 시 무효화가 필요한 데이터인지 구분되어 있는가?
 - 만료 시점이 한꺼번에 몰리는 구조는 아닌가?
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes), [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session), [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 키 설계와 TTL은 단순한 취향 문제가 아니라, 운영 안정성과 직결되는 설계 문제입니다.
@@ -157,3 +162,15 @@ Redis 키 설계와 TTL은 단순한 취향 문제가 아니라, 운영 안정�
 좋은 키는 읽히고, 좋은 TTL은 stale 허용 범위와 시스템 부하 사이에서 이유 있게 정해집니다. 여기에 만료 분산과 무효화 전략까지 더해져야 Redis가 진짜 운영 도구가 됩니다.
 
 다음 글에서는 이 설계를 실제 운영 관점에서 어떻게 감시해야 하는지 [Redis 입문 실무형 3: 운영 기본](/redis/practical-ops-basics)으로 이어가보겠습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes)
+- [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session)
+- [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

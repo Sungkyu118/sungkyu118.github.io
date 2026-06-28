@@ -125,8 +125,25 @@ LPUSH queue:mail '{"userId":42,"template":"welcome"}'
 
 큐 시스템은 장애 상황에서 중복 처리가 발생할 수 있습니다. 작업 자체를 idempotent하게 만드는 것이 중요합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets), [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams), [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis List는 간단한 큐를 빠르게 만들기에 좋습니다. 하지만 작업 유실, 재시도, consumer group, 실패 추적이 중요해지는 순간 Streams를 고민해야 합니다.
 
 큐는 단순히 비동기로 미루는 도구가 아니라, 실패와 재처리까지 포함한 운영 구조입니다. 그래서 처음부터 "실패하면 어떻게 할 것인가"를 같이 설계해야 합니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets)
+- [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
+- [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

@@ -113,8 +113,25 @@ Hash도 무한히 편한 구조는 아닙니다. field가 지나치게 많거나
 
 String이든 Hash든 TTL 없이 계속 쌓으면 메모리가 차오릅니다. 키 설계와 TTL은 [Redis 입문 실무형 2](/redis/practical-key-ttl)에서 다룬 기준을 같이 적용해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl), [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session), [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 String과 Hash의 차이는 "저장할 수 있느냐"가 아니라 "어떻게 읽고 바꿀 것이냐"입니다.
 
 String은 단순 캐시와 카운터에 강하고, Hash는 필드 단위 객체 관리에 강합니다. Redis 자료구조를 잘 고르면 애플리케이션 코드가 단순해지고, 잘못 고르면 운영 중에 캐시 무효화와 메모리 문제가 더 어려워집니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+- [Redis for 세션: 여러 서버에서 로그인 상태를 공유하는 법](/redis/session)
+- [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

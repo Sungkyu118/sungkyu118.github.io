@@ -114,6 +114,11 @@ Streams는 메시지를 읽는 것만으로 끝나지 않습니다. consumer gro
 
 실패한 메시지를 어떻게 다시 처리할지, 몇 번까지 재시도할지, 계속 실패하면 어디에 보관할지 정해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue), [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue), [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis Pub/Sub은 지금 듣고 있는 대상에게 바로 전달하는 방송 구조입니다. 빠르고 단순하지만 메시지 유실을 감수해야 합니다.
@@ -121,3 +126,15 @@ Redis Pub/Sub은 지금 듣고 있는 대상에게 바로 전달하는 방송 �
 Redis Streams는 메시지를 기록하고 consumer가 처리하는 구조입니다. 운영 개념은 더 많지만, 작업 큐와 재처리가 필요한 이벤트 처리에 더 적합합니다.
 
 선택 기준은 간단합니다. 놓쳐도 되는 실시간 신호면 Pub/Sub, 놓치면 안 되는 작업이면 Streams를 먼저 검토하면 됩니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+- [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
+- [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

@@ -107,8 +107,25 @@ score가 점수인지, 누적 조회 수인지, 가중치를 섞은 값인지 �
 
 점수 업데이트가 매우 자주 발생하면 Redis에도 부담이 됩니다. 랭킹은 빠르지만 무한히 공짜는 아닙니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking), [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys), [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Sorted Set은 Redis에서 랭킹을 만들 때 가장 먼저 떠올릴 수 있는 자료구조입니다. 점수 갱신, 상위 N개 조회, 내 등수 조회가 단순하기 때문입니다.
 
 하지만 실무에서는 기간별 key 분리, TTL, 동점 정책, member 정리 기준까지 함께 정해야 합니다. 이 기준이 있어야 랭킹 기능이 단순한 데모를 넘어 운영 가능한 기능이 됩니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+- [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)
+- [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

@@ -195,6 +195,23 @@ isolate는 공짜가 아닙니다. 새 isolate를 만들고 데이터를 주고�
 
 또 하나의 주의점은 디버깅입니다. isolate 경계가 생기면 에러 추적이 조금 더 복잡해질 수 있습니다. 그래서 처음부터 모든 로직을 isolate로 보내기보다, 실제로 프레임 드랍이 있는지 확인하고 필요한 부분만 분리하는 것이 좋습니다. Flutter DevTools의 Performance 탭을 함께 보면 판단이 쉬워집니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `async`와 `await`는 비동기 흐름을 표현하는 문법이고, CPU를 오래 사용하는 작업을 자동으로 다른 isolate로 보내주지는 않습니다. 큰 JSON 파싱, 이미지 처리, 무거운 계산처럼 UI를 멈출 수 있는 작업은 `compute`로 분리하는 것을 고려해야 합니다. 다만 isolate 생성과 데이터 전달 비용이 있으므로 작은 작업까지 무조건 분리하는 것은 좋지 않습니다. 성능 문제는 감으로만 판단하지 말고, 실제 버벅임과 측정 결과를 보고 필요한 부분에 적용하는 것이 가장 안전합니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+- [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer)
+- [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

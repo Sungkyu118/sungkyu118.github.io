@@ -290,6 +290,23 @@ testWidgets('프로필 이름을 표시한다', (tester) async {
 
 이런 구조는 [VoidCallback 글](/flutter/callback)에서 다룬 콜백 전달과도 같은 원리입니다. 외부 의존성을 주입하면 테스트가 쉬워지고 위젯 재사용성도 좋아집니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Widget test는 실제 사용자의 행동을 작은 단위로 검증하는 도구입니다. `pumpWidget`으로 화면을 그리고, `find`로 위젯을 찾고, `tap`이나 `enterText`로 행동을 수행한 뒤, `expect`로 결과를 확인합니다. 상태 변경 뒤에는 `pump`가 필요하고, 비동기 화면에서는 기다릴 시간을 명확히 제어해야 합니다. 처음부터 모든 화면을 테스트하려고 하기보다 로그인 버튼, 입력 검증, 중요한 상태 전환처럼 실패하면 치명적인 흐름부터 하나씩 추가하는 것이 좋습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback)
+- [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+- [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

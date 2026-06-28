@@ -243,6 +243,23 @@ Future<User> loadUser(String id) {
 
 세 번째는 에러도 캐시될 수 있다는 점입니다. 첫 요청이 실패했는데 그 실패 Future를 계속 재사용하면 재시도해도 계속 실패처럼 보일 수 있습니다. 실패 시 캐시를 비우는 정책이 필요한지 확인해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute), [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Memoization은 같은 작업을 반복하지 않도록 결과를 기억하는 기법입니다. Flutter에서는 build 안에서 Future를 계속 새로 만들지 않도록 `initState`에 저장하거나, 정말 한 번만 실행할 비동기 초기화에 `AsyncMemoizer`를 사용할 수 있습니다. 하지만 캐시는 항상 무효화 전략과 함께 생각해야 합니다. 데이터가 바뀔 수 있는지, 입력값이 달라지는지, 실패를 재시도해야 하는지까지 고려해야 안전하게 사용할 수 있습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+- [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute)
+- [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

@@ -134,8 +134,25 @@ DEL session:abc123
 
 클라이언트 쿠키만 지우고 서버 세션을 남기면 보안상 찜찜한 상태가 됩니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes), [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl), [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 세션은 여러 서버가 로그인 상태를 공유해야 할 때 좋은 선택입니다. 하지만 세션 데이터 크기, TTL, 쿠키 보안 설정, 로그아웃 처리, Redis 장애 정책까지 같이 봐야 합니다.
 
 세션은 단순 저장 문제가 아니라 인증 경험 전체의 일부입니다. Redis를 붙이는 순간부터 운영과 보안 기준을 함께 설계해야 안전합니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 자료구조 1: String과 Hash, 실무 모델링 감각](/redis/ds-strings-hashes)
+- [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+- [Redis 분산락: SET NX PX로 시작하는 실전 가이드](/redis/distributed-lock)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

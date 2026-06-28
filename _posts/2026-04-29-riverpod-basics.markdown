@@ -215,6 +215,23 @@ provider 안에서 `BuildContext`를 과하게 사용하려는 것도 좋지 않
 
 `StateProvider`에 로직이 계속 늘어나는 것도 신호입니다. 처음에는 단순 카운터였는데 검증, API 호출, 여러 필드 변경이 들어가기 시작하면 notifier 기반 구조로 옮기는 것이 좋습니다. 단순 상태는 `StateProvider`, 복잡한 상태 변경 규칙은 notifier, 비동기 데이터는 `FutureProvider` 또는 `AsyncNotifier` 쪽으로 확장한다고 생각하면 됩니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Riverpod은 처음부터 모든 개념을 한 번에 외우려고 하면 어렵습니다. 먼저 `ProviderScope`로 앱을 감싸고, `Provider`로 의존성을 제공하고, `StateProvider`로 단순 상태를 바꾸고, `FutureProvider`와 `AsyncValue`로 비동기 데이터를 표시하는 흐름부터 익히면 됩니다. 이후 앱이 커지면 repository, notifier, 테스트 override로 자연스럽게 확장할 수 있습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds)
+- [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer)
+- [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

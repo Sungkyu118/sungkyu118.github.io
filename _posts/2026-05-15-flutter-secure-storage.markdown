@@ -192,6 +192,23 @@ Android에서 백업/복원 과정 때문에 암호화 키가 맞지 않아 읽�
 
 토큰을 너무 오래 저장하는 것도 위험합니다. "자동 로그인이 편하니까 refresh token을 영구 저장하자"는 접근은 보안 사고 시 피해를 키울 수 있습니다. 서비스 성격에 따라 만료 정책과 재로그인 정책을 정해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `flutter_secure_storage`는 토큰처럼 민감한 값을 플랫폼 보안 저장소에 저장하기 위한 도구입니다. 직접 호출을 앱 전체에 흩뿌리기보다 `TokenStorage` 같은 클래스로 감싸고, 네트워크 요청에는 Dio 인터셉터를 통해 토큰을 붙이는 구조가 유지보수에 좋습니다. secure storage를 쓰더라도 로그 노출, 백업/복원, 토큰 만료 정책까지 함께 고려해야 실제로 안전한 인증 흐름을 만들 수 있습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor)
+- [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+- [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

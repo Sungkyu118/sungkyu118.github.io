@@ -137,8 +137,25 @@ Redis 운영에서 아래 항목은 꼭 보는 편이 좋습니다.
 
 트래픽이 늘어난 게 아니라, 트래픽이 비정상적으로 특정 키에 집중된 것일 수 있습니다. 이런 경우 키 설계와 캐시 갱신 전략이 핵심 원인입니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics), [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache), [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 운영 사고는 대부분 "메모리 증가 -> eviction 시작 -> hit rate 흔들림 -> 원본 시스템 부하 증가" 같은 흐름으로 연결됩니다. 여기에 hot key와 동시 만료가 겹치면 체감 장애가 훨씬 커집니다.
 
 그래서 Redis를 운영할 때는 단순히 빠른 저장소로 보는 대신, **메모리와 키 분포를 관리하는 시스템**으로 보는 감각이 필요합니다. 이 감각이 생기면 Redis는 훨씬 믿을 수 있는 도구가 됩니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 입문 실무형 3: 운영 기본, 메모리와 eviction을 먼저 보자](/redis/practical-ops-basics)
+- [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+- [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

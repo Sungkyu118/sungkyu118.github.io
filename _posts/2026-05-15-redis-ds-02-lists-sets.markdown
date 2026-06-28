@@ -111,8 +111,25 @@ Set은 순서를 보장하는 구조가 아닙니다. 순위나 최신순이 필
 
 List든 Set이든 계속 쌓이면 메모리 문제가 됩니다. TTL, 길이 제한, 보관 정책을 처음부터 정해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue), [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams), [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 List와 Set은 각각 "순서"와 "중복 제거"라는 아주 분명한 목적이 있습니다. 이 목적에 맞게 쓰면 단순하고 강력하지만, 목적을 헷갈리면 나중에 코드와 운영이 복잡해집니다.
 
 List는 최근 목록과 간단한 순서 처리에, Set은 좋아요/참여자/태그처럼 포함 여부와 중복 제거가 중요한 곳에 먼저 떠올리면 됩니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+- [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
+- [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

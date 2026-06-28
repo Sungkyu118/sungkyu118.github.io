@@ -187,6 +187,23 @@ class LoginPage extends StatelessWidget {
 
 `Theme.of(context)`나 `Navigator.of(context)`는 context가 위젯 트리에서 어디에 있는지에 따라 결과가 달라집니다. `MaterialApp` 아래에 있는 context에서 호출해야 Material 관련 설정을 찾을 수 있습니다. 앱을 만들다 보면 context 관련 에러가 나오는데, 이때는 "이 context가 MaterialApp 아래에 있는가"를 먼저 생각해보면 좋습니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `MaterialApp`은 Flutter Material 앱의 시작점입니다. 화면 하나의 레이아웃보다는 앱 전체의 테마, 라우팅, Navigator 환경을 제공하는 역할에 가깝습니다. 처음에는 `MaterialApp -> Scaffold -> body` 구조만 정확히 이해해도 많은 예제를 읽기 쉬워집니다. 이후 테마, 라우팅, 상태 관리로 확장하면 Flutter 앱 구조가 훨씬 자연스럽게 보입니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator)
+- [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router)
+- [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

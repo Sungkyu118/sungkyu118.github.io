@@ -122,6 +122,11 @@ Redis 도입 여부를 판단할 때는 "Redis가 빠른가?"보다 아래 질�
 4. 필요하면 세션/레이트 리밋/랭킹으로 확장
 5. 정말 필요할 때만 Streams, 분산락, 복잡한 운영 패턴 도입
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis), [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache), [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis는 "빠른 저장소"라서 쓰는 것이 아니라, **읽기 병목, 세션 공유, 요청 제한, 실시간 순위, 비동기 분리** 같은 문제를 풀기 위해 쓰는 도구입니다.
@@ -129,3 +134,15 @@ Redis는 "빠른 저장소"라서 쓰는 것이 아니라, **읽기 병목, 세�
 반대로 정합성이 절대적인 핵심 데이터, 캐시 재사용성이 낮은 데이터, 운영 전략 없이 일단 붙이는 구조에는 잘 맞지 않습니다.
 
 다음 글에서는 Redis를 붙였을 때 실제 운영 난이도를 크게 좌우하는 [키 설계와 TTL](/redis/practical-key-ttl)을 더 구체적으로 들어가보겠습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
+- [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+- [Redis for 레이트 리밋: 요청 폭주와 남용을 막는 기본기](/redis/rate-limit)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

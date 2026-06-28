@@ -122,6 +122,11 @@ eviction은 단순 로그가 아니라 서비스 품질이 흔들리기 시작�
 
 애플리케이션 코드도 중요하지만, Redis 키 설계와 만료 전략이 원인인 경우도 많습니다. 그래서 코드와 운영 지표를 같이 봐야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys), [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache), [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 운영의 출발점은 복잡한 명령어가 아니라 **메모리, hit/miss, latency, eviction을 꾸준히 보는 습관**입니다.
@@ -129,3 +134,15 @@ Redis 운영의 출발점은 복잡한 명령어가 아니라 **메모리, hit/m
 캐시가 잘 되는지, 메모리가 위험해지는지, 특정 키가 병목인지가 보이기 시작하면 Redis는 훨씬 다루기 쉬운 도구가 됩니다. 반대로 이 감각 없이 운영하면 "원래 빠르던 Redis가 왜 갑자기 장애를 만들었지?"라는 상황을 자주 겪게 됩니다.
 
 다음 단계에서는 메모리/eviction/hot key 사고 패턴을 더 구체적으로 보는 [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)으로 넘어가면 좋습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)
+- [Redis for 캐시: 언제 효과가 크고, 어디서 망가지는가](/redis/cache)
+- [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

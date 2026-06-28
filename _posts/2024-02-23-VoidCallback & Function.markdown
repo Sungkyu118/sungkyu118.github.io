@@ -230,6 +230,23 @@ class _SubmitButtonState extends State<SubmitButton> {
 
 콜백이 너무 많아지는 것도 주의해야 합니다. 작은 컴포넌트라면 괜찮지만, 화면 전체 로직이 여러 콜백으로 흩어지면 흐름을 따라가기 어렵습니다. 이때는 [Riverpod 기본 글](/flutter/riverpod-basics)처럼 상태 관리 도구로 로직을 분리하는 것이 더 나을 수 있습니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics), [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `VoidCallback`은 값 없이 이벤트만 알려줄 때 사용하고, `void Function(T value)`는 자식 위젯이 부모에게 값을 함께 전달해야 할 때 사용합니다. 핵심은 자식이 부모의 상태를 직접 바꾸는 것이 아니라, 부모가 제공한 함수를 자식이 호출하도록 만드는 것입니다. 이 패턴을 익히면 버튼, 입력창, 리스트 아이템, 모달, 커스텀 위젯을 훨씬 깔끔하게 분리할 수 있습니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+- [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics)
+- [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

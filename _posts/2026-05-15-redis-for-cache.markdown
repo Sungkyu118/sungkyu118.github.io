@@ -159,6 +159,11 @@ public class ProductService {
 
 캐시 키가 계속 늘어나면 메모리 문제가 시작됩니다. 그리고 메모리가 차기 시작하면 결국 eviction과 hit rate 흔들림으로 이어집니다. 이건 [운영 기본](/redis/practical-ops-basics)과 [메모리/eviction/hot key](/redis/memory-eviction-hotkeys) 쪽과 연결됩니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when), [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl), [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis 캐시는 제대로만 설계하면 아주 강력합니다. 하지만 "빨라진다"는 장점만 보고 들어가면 stale 데이터, 캐시 스탬피드, 무효화 누락, 메모리 증가 같은 문제를 곧 만나게 됩니다.
@@ -170,3 +175,15 @@ Redis 캐시는 제대로만 설계하면 아주 강력합니다. 하지만 "빨
 - miss가 몰릴 때 원본 시스템을 보호할 수 있는가?
 
 이 기준이 잡혀 있으면 Redis 캐시는 성능 최적화가 아니라 안정적인 운영 도구가 됩니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis 입문 실무형 1: Redis는 언제 쓰고, 언제 쓰면 안 될까](/redis/practical-what-and-when)
+- [Redis 입문 실무형 2: 키 설계와 TTL, 운영에서 덜 망하는 법](/redis/practical-key-ttl)
+- [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

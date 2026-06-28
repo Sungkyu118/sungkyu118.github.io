@@ -179,6 +179,23 @@ Row(
 
 Flutter 레이아웃은 "자식이 원하는 크기"와 "부모가 허용하는 크기"의 협상입니다. Container만 보는 것이 아니라 부모 위젯이 어떤 제약을 주는지도 함께 봐야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `Container`는 크기, 여백, 정렬, 장식을 다룰 수 있는 강력한 위젯입니다. 단순 배경색만 필요하면 `color`, 둥근 모서리나 테두리 같은 스타일이 필요하면 `BoxDecoration`을 사용합니다. `color`와 `decoration`을 동시에 쓰면 충돌하므로 색상도 decoration 안에 넣어야 합니다. 그리고 여백만 필요하면 `Padding`, 크기만 필요하면 `SizedBox`처럼 더 명확한 위젯을 선택하면 코드가 읽기 쉬워집니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images)
+- [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+- [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

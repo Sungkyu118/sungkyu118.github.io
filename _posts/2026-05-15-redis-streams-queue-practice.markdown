@@ -117,8 +117,25 @@ pending이 계속 늘면 worker가 처리하지 못하고 있거나 실패가 �
 
 재처리 구조에서는 같은 메시지가 두 번 처리될 가능성을 고려해야 합니다. 메일이 두 번 갈 수 있는지, 포인트가 두 번 적립될 수 있는지 확인해야 합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue), [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams), [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets) 글도 함께 읽어보시면 좋겠습니다. 같은 Redis 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Redis Streams는 단순 비동기 작업을 운영 가능한 큐에 가깝게 만들 수 있는 도구입니다. consumer group, ACK, pending, trim 같은 개념을 이해하면 List보다 훨씬 안정적으로 작업을 처리할 수 있습니다.
 
 하지만 Streams도 마법은 아닙니다. 실패 재시도, 메시지 보관, 중복 처리 방지, 모니터링을 애플리케이션에서 같이 설계해야 진짜 운영 가능한 큐가 됩니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Redis for 큐: List로 시작하고 Streams를 고민하는 기준](/redis/queue)
+- [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
+- [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

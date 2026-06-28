@@ -204,6 +204,23 @@ bool isDesktop(BoxConstraints constraints) {
 
 또한 LayoutBuilder의 builder는 레이아웃 과정에서 호출됩니다. 내부에서 무거운 계산이나 API 호출을 하면 안 됩니다. 이 주의점은 [성능 최적화 글](/flutter/performance-rebuilds)의 build 원칙과도 같습니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp), [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 `LayoutBuilder`는 부모가 허용한 크기를 기준으로 UI를 바꾸는 위젯입니다. 전체 화면 크기만 보는 MediaQuery보다 특정 영역의 실제 너비에 맞춰 반응형 판단을 할 수 있습니다. 좁은 화면에서는 1열, 넓은 화면에서는 2열이나 사이드바 구조로 바꾸는 식의 레이아웃에 잘 어울립니다. 고정 크기를 남용하지 말고, breakpoint를 일관되게 관리하며, 필요한 곳에만 LayoutBuilder를 사용하는 것이 좋은 반응형 설계의 시작입니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp)
+- [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor)
+- [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->

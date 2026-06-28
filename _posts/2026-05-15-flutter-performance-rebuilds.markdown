@@ -206,6 +206,23 @@ class ProductTile extends StatelessWidget {
 
 `debugPrintRebuildDirtyWidgets = true;` 같은 디버그 도구도 도움이 됩니다. 어떤 위젯이 rebuild되는지 확인할 수 있기 때문입니다. 다만 디버그 모드는 릴리즈 모드보다 느리므로 최종 성능 판단은 프로파일 모드에서 확인하는 것이 더 정확합니다.
 
+<!-- codex-category-inline-links:start -->
+
+지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+
+<!-- codex-category-inline-links:end -->
 ## 정리
 
 Flutter에서 rebuild는 자연스러운 동작입니다. 그러나 build 안에서 API 호출, 무거운 계산, 긴 리스트 전체 생성이 반복되면 성능 문제가 됩니다. 변하지 않는 위젯에는 `const`를 붙이고, 상태 범위를 작게 나누고, 긴 목록은 builder를 사용하고, 무거운 작업은 상태 변경 시점이나 별도 isolate로 분리하는 것이 좋습니다. 성능 개선은 감으로 시작하지 말고 측정으로 위치를 찾은 뒤 적용해야 합니다.
+
+<!-- codex-category-links:start -->
+
+## 이어서 읽어보시면 좋습니다
+
+- [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics)
+- [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute)
+- [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder)
+
+지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+
+<!-- codex-category-links:end -->
