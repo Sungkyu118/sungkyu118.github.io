@@ -1,4 +1,4 @@
-﻿---
+---
 layout: post
 title: Spring Boot AOP
 date: 2024-02-15 22:57:00 +0900
@@ -8,6 +8,7 @@ description: "Spring Boot에서 AOP를 적용해 로깅, 공통 처리, 횡단 �
 image: "/assets/img/og/springboot-series-cover.svg"
 tags: [AOP, Spring Boot AOP, Aspect]
 ---
+
 
 # AOP(Aspect-Oriented Programming)란?
 
@@ -301,3 +302,71 @@ public class LoggingAspect {
 위의 예제에서는 Service 계층의 메소드 실행 전후에 추가 작업을 수행하는 Around Advice를 정의했습니다. `ProceedingJoinPoint`를 사용하여 메소드 실행을 직접 제어하고, 메소드 실행 전후에 원하는 동작을 추가할 수 있습니다.
 <br><br>
 각 Advice에 대한 예제는 위와 같습니다. 원하는 경우 패키지 이름 및 메소드 시그니처를 실제 프로젝트에 맞게 수정하여 사용할 수 있습니다.
+
+<!-- codex-springboot-detail:start -->
+
+## 여기서 한 단계 더 이해해보겠습니다
+
+AOP는 "서비스 메서드가 호출될 때마다 같은 로그를 찍고 싶다", "실행 시간을 공통으로 재고 싶다", "특정 어노테이션이 붙은 메서드만 검사하고 싶다"처럼 여러 클래스에 흩어지는 공통 로직을 분리할 때 큰 힘을 발휘합니다. 처음 배우실 때는 거창한 개념보다 "중복되는 부가 작업을 비즈니스 코드 밖으로 빼는 기술"이라고 이해하시면 훨씬 편합니다.
+
+예를 들어 주문 저장, 회원 수정, 게시글 삭제 같은 서비스 메서드마다 로그를 남기려고 하면 매 메서드에 직접 코드를 넣고 싶어지는데, 그렇게 시작하면 본래 핵심 로직보다 부가 코드가 더 눈에 들어오기 쉬워집니다. 이때 Aspect를 하나 두고 공통 정책을 한 곳에서 관리하면 변경 범위가 줄어들고, 나중에 로깅 형식을 바꾸거나 실행 시간 측정 기준을 바꾸는 일도 훨씬 수월해집니다.
+
+이 주제에서 특히 중요하게 보셔야 하는 부분은 포인트컷으로 적용 대상을 좁히고, 어드바이스에서 실제 공통 로직을 수행하며, Around 어드바이스에서는 `joinPoint.proceed()`를 기준으로 실행 전후 흐름을 잡는 방식 입니다. 처음 읽으실 때는 모든 문장을 외우려고 하기보다, 코드가 어느 계층에 놓이고 어떤 순서로 실행되는지를 천천히 따라가보시면 좋습니다. Spring Boot 학습은 각각의 기술을 따로 외우는 공부라기보다, 여러 조각이 실제 요청 흐름 안에서 어떻게 맞물리는지 이해하는 과정에 가깝습니다.
+
+## 예시 코드로 흐름을 잡아보겠습니다
+
+```java
+package com.example.demo.aop;
+
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
+import org.aspectj.lang.annotation.Aspect;
+import org.springframework.stereotype.Component;
+
+@Slf4j
+@Aspect
+@Component
+public class LoggingAspect {
+
+  @Around("execution(* com.example.demo.service..*(..))")
+  public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+    long start = System.currentTimeMillis();
+    try {
+      Object result = joinPoint.proceed();
+      long end = System.currentTimeMillis();
+      log.info("method={} took={}ms", joinPoint.getSignature().toShortString(), end - start);
+      return result;
+    } catch (Exception ex) {
+      log.error("method={} failed message={}", joinPoint.getSignature().toShortString(), ex.getMessage(), ex);
+      throw ex;
+    }
+  }
+}
+```
+
+위 예시는 AOP을 가장 작게 체험할 수 있는 흐름으로 구성했습니다. 처음에는 코드 한 줄 한 줄의 문법보다, 선언 위치와 실행 시점을 중심으로 읽어보시는 편이 훨씬 이해가 잘 되실 것입니다. 예를 들어 설정 클래스인지, Controller인지, Service인지에 따라 책임이 달라지고, 그 책임이 곧 Spring Boot 구조를 읽는 기준이 됩니다.
+
+또 하나 중요한 점은 '지금 당장 돌아가는 코드'와 '나중에도 유지보수하기 쉬운 코드'는 조금 다를 수 있다는 사실입니다. 그래서 예제를 실행해보신 뒤에는 변수명, 메서드명, 경로, 설정 값을 직접 한두 번 바꿔보시면서 어떤 부분이 고정 규칙이고 어떤 부분이 프로젝트 상황에 따라 달라지는지 구분해보시면 정말 큰 도움이 됩니다.
+
+## 자주 하는 실수와 에러도 같이 보겠습니다
+
+- self-invocation 때문에 같은 클래스 안에서 자기 메서드를 호출할 때는 AOP가 기대대로 적용되지 않는 경우가 많습니다.
+- 포인트컷 범위를 너무 넓게 잡으면 Controller, Service, Repository 전체가 모두 걸리면서 로그가 과하게 쌓일 수 있습니다.
+- Around 어드바이스에서 `joinPoint.proceed()`를 호출하지 않으면 실제 대상 메서드가 실행되지 않는 문제가 생깁니다.
+
+이런 실수들은 대부분 개념을 몰라서라기보다, 실행 순서나 설정 위치를 한 번에 다 보지 못해서 생깁니다. 그래서 에러가 나면 조급하게 코드를 많이 바꾸기보다, 로그와 요청 흐름을 기준으로 '어디까지는 정상이고 어디서부터 어긋났는지'를 차분히 확인해보시는 편이 좋습니다.
+
+## 실무에서는 이렇게 적용하시면 좋습니다
+
+- 처음에는 보안이나 트랜잭션보다 실행 시간 측정, 공통 로깅처럼 부작용이 작은 주제로 연습해보시는 것이 좋습니다.
+- 패키지 기준 포인트컷보다는 특정 어노테이션 기준 포인트컷을 함께 사용하면 적용 범위를 더 안전하게 제어할 수 있습니다.
+- AOP 안에서는 핵심 비즈니스 로직을 넣지 말고, 정말 "공통 처리"만 두시는 습관을 들이시면 유지보수가 쉬워집니다.
+
+처음부터 완벽한 구조를 만들려고 하실 필요는 없습니다. 다만 작은 예제라도 책임 분리, 예외 처리, 설정 관리, 로그 확인 같은 기본 습관을 함께 가져가시면 나중에 프로젝트가 커졌을 때 훨씬 덜 흔들리게 됩니다. 특히 Spring Boot는 편의 기능이 많아서 '왜 이렇게 동작하는지'를 놓치기 쉬우므로, 동작 원리를 설명할 수 있을 정도로 천천히 정리해두시는 것이 좋습니다.
+
+## 마무리 정리
+
+Spring Boot AOP 글을 공부하실 때는 한 번 읽고 끝내기보다, 직접 실행해보고 일부러 에러도 만들어보시고, 설정이나 코드 값을 조금씩 바꿔보시는 방식으로 접근해보시길 권합니다. 그렇게 하시면 단순 요약 글보다 훨씬 오래 기억에 남고, 다음 주제인 데이터 접근, 보안, 테스트, 운영 자동화로 넘어갈 때도 이해가 자연스럽게 이어집니다. 지금 단계에서 가장 중요한 것은 완벽함보다 흐름을 잡는 것이니, 천천히 따라오셔도 충분합니다.
+
+<!-- codex-springboot-detail:end -->
