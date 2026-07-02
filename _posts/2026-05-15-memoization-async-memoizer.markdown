@@ -245,7 +245,7 @@ Future<User> loadUser(String id) {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute), [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+Memoization과 AsyncMemoizer는 같은 작업을 반복하지 않게 해주는 도구이지만, 상태 관리와 성능 문제를 같이 보지 않으면 어디에 써야 하는지 애매해질 수 있습니다. 그래서 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute), [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds) 글을 함께 보시면 좋겠습니다. Riverpod 글은 비동기 결과를 앱 상태로 관리하는 기준을 잡아주고, isolate 글은 반복 실행 문제가 아니라 연산 자체가 무거운 경우를 구분하게 해줍니다. 성능 글까지 같이 보면 캐싱, rebuild, 백그라운드 계산을 각각 언제 선택해야 하는지 더 차분하게 판단할 수 있습니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

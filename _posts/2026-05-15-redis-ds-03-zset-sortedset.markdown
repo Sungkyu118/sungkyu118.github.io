@@ -109,7 +109,7 @@ score가 점수인지, 누적 조회 수인지, 가중치를 섞은 값인지 �
 
 <!-- codex-category-inline-links:start -->
 
-Sorted Set? ?먯닔 湲곕컲 ?뺣젹?대씪???ㅻ챸留뚯쑝濡쒕뒗 媛먯씠 ???ㅼ떎 ???덉뼱?? ?ㅼ젣 ?ъ슜 ?λ㈃??媛숈씠 蹂댁떆???몄씠 ?⑥뵮 醫뗭뒿?덈떎. [Redis for ??궧: Sorted Set?쇰줈 ?ㅼ떆媛??쒖쐞 留뚮뱾湲?(/redis/ranking), [Redis ?댁쁺 ?ы솕: 硫붾え由? eviction, ?ロ궎 ?ш퀬 ?⑦꽩](/redis/memory-eviction-hotkeys), [Redis ?곗씠??援ъ“: String, Hash, List, Set, Sorted Set???몄젣 ?멸퉴](/redis/basis) 湲???④퍡 蹂댁떆硫? ZSET??????궧??媛뺥븳吏肉??꾨땲???댁쁺?먯꽌 ?대뵒??鍮꾩슜??而ㅼ??붿???媛숈씠 媛먯쓣 ?≪쑝?????덉뒿?덈떎. ?뱁엳 ??궧? ??留뚮뱾湲곕낫???ㅻ옒 ?덉젙?곸쑝濡??댁쁺?섎뒗 履쎌씠 ???대졄湲??뚮Ц?? 援ъ“? ?댁쁺 湲??媛숈씠 蹂댁떆??寃껋씠 ?꾩????⑸땲??
+Sorted Set은 점수 기반 정렬이라는 설명만으로는 감이 덜 오실 수 있어서, 실제 사용 장면을 같이 보시는 편이 훨씬 좋습니다. [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking), [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys), [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis) 글을 함께 보시면, ZSET이 왜 랭킹에 강한지뿐 아니라 운영에서 어디서 비용이 커지는지도 같이 감을 잡으실 수 있습니다. 특히 랭킹은 잘 만들기보다 오래 안정적으로 운영하는 쪽이 더 어렵기 때문에, 구조와 운영 글을 같이 보시는 것이 도움이 됩니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리
@@ -123,9 +123,17 @@ Sorted Set은 Redis에서 랭킹을 만들 때 가장 먼저 떠올릴 수 있�
 ## 이어서 읽어보시면 좋습니다
 
 - [Redis for 랭킹: Sorted Set으로 실시간 순위 만들기](/redis/ranking)
+
+  ZSET을 가장 직관적으로 체감할 수 있는 예시는 실시간 랭킹입니다. 점수 업데이트, 순위 조회, 상위 N개 조회가 어떻게 서비스 기능으로 이어지는지 보면 Sorted Set을 왜 별도로 배워야 하는지 아주 자연스럽게 납득할 수 있습니다.
+
 - [Redis 운영 심화: 메모리, eviction, 핫키 사고 패턴](/redis/memory-eviction-hotkeys)
+
+  랭킹이나 정렬 데이터는 트래픽이 몰리기 쉬워 핫키와 메모리 문제로 이어질 수 있습니다. 운영 심화 글을 함께 읽으면 ZSET을 잘 쓰는 것과 오래 안정적으로 운영하는 것이 서로 다른 문제라는 점을 현실적으로 이해하게 됩니다.
+
 - [Redis 데이터 구조: String, Hash, List, Set, Sorted Set을 언제 쓸까](/redis/basis)
 
-지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+  기본 자료구조 글로 돌아가 보면 ZSET이 다른 구조와 어떤 기준으로 구분되는지 다시 정리할 수 있습니다. 특히 String, Hash, List, Set과 비교하면서 보면 Sorted Set을 써야 하는 상황과 쓰지 않아도 되는 상황을 더 차분하게 판단할 수 있습니다.
+
+위 글들은 지금 읽은 내용과 바로 이어지는 흐름으로 묶어두었습니다. 천천히 따라가시면 개념을 따로 외우는 느낌보다, Redis를 실제 서비스 요구사항에 맞게 고르고 운영하는 감각으로 자연스럽게 이어가실 수 있습니다.
 
 <!-- codex-category-links:end -->

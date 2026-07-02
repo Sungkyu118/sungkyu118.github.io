@@ -232,7 +232,7 @@ class _SubmitButtonState extends State<SubmitButton> {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics), [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+VoidCallback과 Function은 문법 차이만 외우면 금방 지나갈 수 있지만, 실제 앱에서는 상태 관리와 테스트, 화면 전환 이벤트를 연결하는 데 계속 등장합니다. 그래서 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics), [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator) 글을 같이 보시면 좋겠습니다. Riverpod 글은 콜백으로만 상태를 끌고 다닐 때의 한계를 보여주고, Widget Test 글은 콜백이 실제로 호출되는지 검증하는 방법을 알려줍니다. BottomNavigationBar 글까지 이어서 보면 이벤트 전달이 작은 버튼 예제를 넘어 화면 구조 전체와 어떻게 연결되는지 이해하기 쉬워집니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

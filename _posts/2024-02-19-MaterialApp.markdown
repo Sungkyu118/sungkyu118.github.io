@@ -189,7 +189,7 @@ class LoginPage extends StatelessWidget {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+MaterialApp은 Flutter 앱의 시작점처럼 보이지만, 실제로는 라우팅, 테마, 화면 전환 방식이 모이는 중요한 자리입니다. 그래서 [BottomNavigationBar: 하단 탭 화면 전환을 안정적으로 구성하기](/flutter/navigator), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder) 글을 같이 읽어보시면 좋겠습니다. BottomNavigationBar 글은 MaterialApp 아래에 실제 화면 구조가 어떻게 쌓이는지 보여주고, go_router 글은 앱이 커졌을 때 라우팅을 분리하는 감각을 잡게 해줍니다. 반응형 레이아웃 글까지 보면 앱의 가장 바깥 구조가 단순한 설정 파일이 아니라 다양한 화면 크기를 받아내는 토대라는 점이 더 선명해집니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

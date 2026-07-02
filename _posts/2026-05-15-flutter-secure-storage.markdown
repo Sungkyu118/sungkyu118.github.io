@@ -194,7 +194,7 @@ Android에서 백업/복원 과정 때문에 암호화 키가 맞지 않아 읽�
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+secure_storage는 토큰을 안전하게 저장하는 도구이지만, 실제 앱에서는 네트워크 요청과 라우팅, 테스트 흐름까지 같이 연결될 때 의미가 더 분명해집니다. 그래서 [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics) 글도 함께 읽어보시면 좋겠습니다. Dio Interceptor 글은 저장한 토큰을 요청에 붙이는 실제 위치를 보여주고, go_router 글은 토큰 유무에 따라 화면을 어디로 보낼지 설명해줍니다. Widget Test 글까지 같이 보면 로그인 상태가 바뀌었을 때 화면이 올바르게 반응하는지도 검증하는 관점을 갖게 됩니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

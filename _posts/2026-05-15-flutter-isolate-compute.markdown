@@ -197,7 +197,7 @@ isolate는 공짜가 아닙니다. 새 isolate를 만들고 데이터를 주고�
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+isolate와 compute는 앱이 느려졌을 때 꺼내는 도구지만, 먼저 rebuild와 비동기 중복 실행 문제를 구분할 수 있어야 제대로 쓸 수 있습니다. 그래서 [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics) 글을 함께 보시면 좋겠습니다. 성능 글은 UI가 멈추는 이유가 꼭 무거운 계산 때문만은 아니라는 점을 잡아주고, Memoization 글은 같은 작업을 반복해서 느려지는 상황을 줄이는 방법을 보여줍니다. Riverpod 글까지 같이 보면 무거운 작업의 결과를 화면 상태로 안전하게 연결하는 흐름까지 이어서 이해할 수 있습니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

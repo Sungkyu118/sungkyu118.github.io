@@ -197,7 +197,7 @@ BottomNavigationBar(
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+BottomNavigationBar를 이해할 때는 탭 UI만 보는 것보다, 앱 전체의 라우팅 구조와 이벤트 전달 방식을 함께 보는 편이 좋습니다. [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback) 글을 이어서 읽어보시면 하단 탭이 앱 구조 안에서 어떤 위치를 차지하는지 훨씬 잘 보입니다. MaterialApp은 화면 이동의 기반을 잡아주고, go_router는 탭을 넘어 더 복잡한 이동 규칙을 다루는 방법을 보여줍니다. Callback 글은 탭 클릭이나 화면 내부 액션을 부모 위젯으로 전달할 때 필요한 기초 감각을 보강해줍니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

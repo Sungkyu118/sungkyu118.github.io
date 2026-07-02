@@ -201,7 +201,7 @@ Windows에서는 대소문자 차이가 느슨하게 보일 수 있지만, 배�
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+이미지 등록은 초반에는 pubspec.yaml에 경로를 쓰는 일처럼 느껴지지만, 화면에 어떻게 배치하고 어떤 크기에서 깨지지 않게 보여줄지까지 같이 생각해야 합니다. 그래서 [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글도 이어서 보시면 좋겠습니다. Container 글은 이미지 주변 스타일과 배경 처리에서 헷갈리는 부분을 잡아주고, LayoutBuilder 글은 이미지가 다양한 화면 폭에서 어떻게 반응해야 하는지 보여줍니다. Sliver 글까지 보면 이미지가 단독 위젯이 아니라 긴 스크롤 화면 안에서 어떤 역할을 하는지도 자연스럽게 연결됩니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

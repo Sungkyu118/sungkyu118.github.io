@@ -206,7 +206,7 @@ bool isDesktop(BoxConstraints constraints) {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp), [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+LayoutBuilder는 화면 크기를 읽는 위젯으로만 보면 단순하지만, 실제로는 앱 구조와 스타일링, 긴 스크롤 화면을 함께 설계할 때 훨씬 자주 쓰입니다. 그래서 [MaterialApp 이해하기: Flutter 앱의 가장 바깥 구조](/flutter/materialapp), [Container와 BoxDecoration: 색상 충돌 에러부터 실전 스타일링까지](/flutter/containercolor), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글을 같이 보시면 좋겠습니다. MaterialApp 글은 반응형 레이아웃이 앱 전체 구조 안에서 어디에 놓이는지 보여주고, Container 글은 크기가 바뀔 때 스타일이 어떻게 반응해야 하는지 감을 줍니다. Sliver 글까지 이어서 보면 단일 위젯의 반응형 처리가 긴 스크롤 화면 전체 구성으로 확장되는 흐름을 이해할 수 있습니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

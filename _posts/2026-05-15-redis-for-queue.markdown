@@ -127,7 +127,7 @@ LPUSH queue:mail '{"userId":42,"template":"welcome"}'
 
 <!-- codex-category-inline-links:start -->
 
-??湲? Redis瑜??먯쿂?????뚯쓽 異쒕컻?먯뿉 媛源앷린 ?뚮Ц?? ?먮즺援ъ“? 硫붿떆吏 ?꾨떖 諛⑹떇源뚯? 媛숈씠 蹂댁뀛???꾩껜 ?먮떒???ъ썙吏묐땲?? [Redis ?먮즺援ъ“ 2: List? Set, ?쒖꽌? 以묐났???ㅻ（??踰?(/redis/ds-lists-sets), [Redis Pub/Sub vs Streams: ?대깽???꾨떖???대뵒???⑥빞 ?좉퉴](/redis/pubsub-vs-streams), [Redis Streams ?ㅼ쟾: ?묒뾽 ?먮줈 ?곕뒗 踰?(/redis/streams-queue) 湲???댁뼱??蹂댁떆硫? "吏湲덉? List濡?異⑸텇?쒖?", "?대깽???꾨떖怨??묒뾽 ?먮? 媛숈? 寃껋쑝濡?蹂대㈃ ?????섎뒗吏", "?몄젣 Streams濡??섏뼱媛???섎뒗吏"媛 ?⑥뵮 紐낇솗?댁쭛?덈떎.
+이 글은 Redis를 큐처럼 쓸 때의 출발점에 가깝기 때문에, 자료구조와 메시지 전달 방식까지 같이 보셔야 전체 판단이 쉬워집니다. [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets), [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams), [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue) 글을 이어서 보시면, "지금은 List로 충분한지", "이벤트 전달과 작업 큐를 같은 것으로 보면 왜 안 되는지", "언제 Streams로 넘어가야 하는지"가 훨씬 명확해집니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리
@@ -141,9 +141,17 @@ Redis List는 간단한 큐를 빠르게 만들기에 좋습니다. 하지만 �
 ## 이어서 읽어보시면 좋습니다
 
 - [Redis 자료구조 2: List와 Set, 순서와 중복을 다루는 법](/redis/ds-lists-sets)
+
+  큐를 Redis로 이해하려면 먼저 List가 순서를 어떻게 다루는지, Set이 중복을 어떻게 바라보는지 알고 있어야 합니다. 이 자료구조 글을 함께 읽으면 큐 예제의 명령어가 단순 암기가 아니라 자료구조의 성질에서 자연스럽게 나온다는 점을 이해할 수 있습니다.
+
 - [Redis Pub/Sub vs Streams: 이벤트 전달을 어디에 써야 할까](/redis/pubsub-vs-streams)
+
+  큐와 이벤트 전달은 비슷해 보이지만 실패 처리와 메시지 보관 기준에서 완전히 다른 선택이 됩니다. Pub/Sub와 Streams 비교 글을 같이 읽으면 Redis로 비동기 처리를 만들 때 작업 큐, 실시간 알림, 이벤트 로그를 구분하는 기준을 더 안전하게 세울 수 있습니다.
+
 - [Redis Streams 실전: 작업 큐로 쓰는 법](/redis/streams-queue)
 
-지금 글과 바로 이어서 읽기 좋은 흐름으로 묶어두었으니, 개념을 비교해보시거나 다음 실습으로 넘어가실 때 차근차근 따라가보시면 좋겠습니다.
+  List 기반 큐를 이해했다면 Streams 큐 글은 자연스러운 다음 단계입니다. 소비자 그룹, pending 메시지, 재처리 같은 개념을 보면 실무에서 왜 단순 push/pop만으로는 부족해지는 순간이 오는지 더 구체적으로 느낄 수 있습니다.
+
+위 글들은 지금 읽은 내용과 바로 이어지는 흐름으로 묶어두었습니다. 천천히 따라가시면 개념을 따로 외우는 느낌보다, Redis를 실제 서비스 요구사항에 맞게 고르고 운영하는 감각으로 자연스럽게 이어가실 수 있습니다.
 
 <!-- codex-category-links:end -->

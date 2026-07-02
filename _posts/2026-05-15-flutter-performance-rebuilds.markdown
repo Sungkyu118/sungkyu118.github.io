@@ -208,7 +208,7 @@ class ProductTile extends StatelessWidget {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+rebuild 최적화는 특정 위젯 하나를 빠르게 만드는 기술이라기보다, 상태 관리와 비동기 작업, 반응형 화면 설계를 함께 조율하는 감각에 가깝습니다. 그래서 [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Flutter isolate와 compute: 무거운 작업으로 UI가 멈출 때](/flutter/isolate-compute), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder) 글을 이어서 보시면 좋겠습니다. Riverpod 글은 어떤 상태 변화가 어떤 위젯을 다시 그리게 하는지 이해하는 데 도움이 되고, isolate 글은 rebuild가 아니라 연산 자체가 무거운 경우를 분리해서 볼 수 있게 해줍니다. LayoutBuilder 글까지 보면 화면 크기 변화로 인한 rebuild를 어떻게 자연스럽게 받아낼지도 함께 정리됩니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

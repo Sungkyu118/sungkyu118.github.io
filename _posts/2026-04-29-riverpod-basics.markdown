@@ -217,7 +217,7 @@ provider 안에서 `BuildContext`를 과하게 사용하려는 것도 좋지 않
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+Riverpod을 처음 배울 때는 Provider 종류를 외우는 것보다, 상태가 화면 성능과 비동기 작업, 테스트에 어떤 영향을 주는지 같이 보는 것이 더 오래 남습니다. 그래서 [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer), [Flutter Widget Test 입문: 버튼 클릭부터 비동기 화면까지](/flutter/widget-test-basics) 글을 함께 보시면 좋겠습니다. 성능 글은 상태 변경이 rebuild로 이어지는 과정을 구체적으로 보여주고, Memoization 글은 같은 요청이 반복되는 문제를 줄이는 관점을 더해줍니다. Widget Test 글까지 보면 상태가 바뀐 뒤 화면이 정말 기대대로 바뀌는지 검증하는 습관까지 같이 잡을 수 있습니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

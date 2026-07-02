@@ -292,7 +292,7 @@ testWidgets('프로필 이름을 표시한다', (tester) async {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+Widget Test는 테스트 문법을 익히는 글로 끝내기보다, 이벤트 전달과 상태 관리, 보안 저장소처럼 실제 앱에서 자주 만나는 흐름과 연결해서 보셔야 효과가 커집니다. 그래서 [VoidCallback과 Function: Flutter 위젯 사이에 이벤트 전달하기](/flutter/callback), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage) 글을 함께 보시면 좋겠습니다. Callback 글은 버튼 클릭이 어디로 전달되는지 이해하게 해주고, Riverpod 글은 상태가 바뀐 뒤 화면을 어떻게 검증할지 감을 줍니다. secure_storage 글까지 이어서 보면 로그인처럼 비동기 저장소가 끼어드는 화면도 어떻게 테스트 관점에서 바라볼지 정리됩니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

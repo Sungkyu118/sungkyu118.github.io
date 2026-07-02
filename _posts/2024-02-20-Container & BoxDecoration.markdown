@@ -181,7 +181,7 @@ Flutter 레이아웃은 "자식이 원하는 크기"와 "부모가 허용하는 
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+Container와 BoxDecoration은 화면을 예쁘게 만드는 문법처럼 보이지만, 실제로는 레이아웃 제약, 이미지 표현, 반응형 크기 계산과 계속 맞물립니다. 그래서 [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images), [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [CustomScrollView와 Sliver: AppBar, 목록, 그리드를 한 스크롤로 묶기](/flutter/customscrollview-slivers) 글을 함께 보시면 좋겠습니다. Image 글은 장식과 이미지가 만날 때 자주 생기는 경로와 렌더링 문제를 잡아주고, LayoutBuilder 글은 화면 크기에 따라 Container가 어떻게 달라져야 하는지 감을 줍니다. Sliver 글까지 이어서 보면 작은 박스 스타일링이 스크롤 화면 전체 설계로 확장되는 흐름을 이해하기 쉬워집니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

@@ -258,7 +258,7 @@ class DashboardPage extends StatelessWidget {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+Sliver는 처음 보면 위젯 이름도 낯설고 구조도 복잡해 보이지만, 사실 반응형 레이아웃과 성능, 이미지 배치가 한 화면 안에서 만나는 지점입니다. 그래서 [LayoutBuilder로 Flutter 반응형 레이아웃 만들기](/flutter/responsive-layoutbuilder), [Flutter 성능 최적화: 불필요한 rebuild 줄이기](/flutter/performance-rebuilds), [Flutter Image 등록 및 사용: assets, pubspec.yaml, 에러 해결](/flutter/images) 글을 같이 읽어보시면 좋겠습니다. LayoutBuilder 글은 스크롤 영역이 화면 크기에 따라 달라지는 기준을 잡아주고, 성능 글은 긴 목록에서 왜 rebuild를 조심해야 하는지 알려줍니다. Image 글까지 연결하면 SliverAppBar나 그리드 이미지가 실제 화면에서 어떻게 안정적으로 렌더링되는지 더 잘 보입니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

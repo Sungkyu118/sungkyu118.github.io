@@ -238,7 +238,7 @@ class UserApi {
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+Dio Interceptor는 요청 코드를 줄이기 위한 도구처럼 보이지만, 실제로는 토큰 저장, 라우팅, 모델 변환까지 한 흐름으로 이어질 때 가장 힘을 발휘합니다. 그래서 [flutter_secure_storage로 토큰 안전하게 저장하기](/flutter/secure-storage), [go_router로 Flutter 라우팅 구성하기: 기본 이동, 파라미터, redirect](/flutter/go-router), [freezed와 json_serializable로 안전한 모델 만들기](/flutter/freezed-json-basics) 글도 함께 보시면 좋겠습니다. secure_storage 글은 인터셉터가 꺼내 쓸 토큰을 어디에 안전하게 둘지 설명해주고, go_router 글은 인증 실패 후 로그인 화면으로 보내는 흐름을 이해하게 도와줍니다. freezed 글까지 같이 보면 서버 응답을 안정적인 모델로 바꾸는 과정까지 이어져서 네트워크 계층을 더 단단하게 설계할 수 있습니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리

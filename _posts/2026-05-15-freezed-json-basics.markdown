@@ -194,7 +194,7 @@ dart run build_runner build --delete-conflicting-outputs
 
 <!-- codex-category-inline-links:start -->
 
-지금 읽고 계신 주제가 아직 조금 추상적으로 느껴지신다면 [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer) 글도 함께 읽어보시면 좋겠습니다. 같은 Flutter 흐름 안에서 앞단의 배경과 다음 단계의 확장 포인트를 같이 보실 수 있어서, 지금 배우는 내용이 실제 프로젝트에서 어디에 연결되는지 훨씬 더 선명하게 이해하실 수 있습니다.
+freezed와 json_serializable은 모델 코드를 편하게 만드는 도구이지만, 네트워크 응답과 상태 관리, 비동기 캐싱까지 연결해서 볼 때 실전 감각이 훨씬 좋아집니다. 그래서 [Dio Interceptor로 토큰, 로그, 에러 처리를 공통화하기](/flutter/dio-interceptor), [Riverpod 기본 사용법: Provider, StateProvider, AsyncValue까지](/flutter/riverpod-basics), [Memoization과 AsyncMemoizer: 같은 비동기 작업 반복 실행 막기](/flutter/memoization-async-memoizer) 글을 같이 보시면 좋겠습니다. Dio 글은 서버 응답이 모델로 들어오는 입구를 보여주고, Riverpod 글은 그 모델이 화면 상태로 흘러가는 방식을 설명해줍니다. Memoization 글까지 이어서 보면 같은 데이터를 반복 요청하지 않도록 모델과 비동기 흐름을 함께 설계하는 감각도 잡을 수 있습니다.
 
 <!-- codex-category-inline-links:end -->
 ## 정리
