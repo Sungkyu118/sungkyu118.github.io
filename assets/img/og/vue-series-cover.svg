@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Vue 입문 시리즈</title>
+  <desc id="desc">Vue 입문 시리즈 포스트 대표 이미지</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="48%" stop-color="#12372f"/>
+      <stop offset="100%" stop-color="#42b883"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="28%" r="50%">
+      <stop offset="0%" stop-color="#86efac" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#86efac" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <g opacity="0.12" fill="none" stroke="#ffffff" stroke-width="2">
+    <path d="M110 105h980v420H110z"/>
+    <path d="M110 205h980M110 305h980M110 405h980"/>
+    <path d="M245 105v420M380 105v420M515 105v420M650 105v420M785 105v420M920 105v420"/>
+  </g>
+  <g transform="translate(780 135)">
+    <path d="M0 0h250L125 216z" fill="#41b883"/>
+    <path d="M50 0h150l-75 130z" fill="#35495e"/>
+    <path d="M85 0h80l-40 70z" fill="#ffffff" opacity="0.96"/>
+  </g>
+  <text x="90" y="205" fill="#bbf7d0" font-family="Segoe UI, Pretendard, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="2">VUE BEGINNER SERIES</text>
+  <text x="88" y="302" fill="#ffffff" font-family="Segoe UI, Pretendard, Arial, sans-serif" font-size="84" font-weight="800">Vue 입문</text>
+  <text x="94" y="374" fill="#dcfce7" font-family="Segoe UI, Pretendard, Arial, sans-serif" font-size="34" font-weight="500">기초 문법부터 반응성까지</text>
+  <text x="94" y="440" fill="#ecfdf5" font-family="Segoe UI, Pretendard, Arial, sans-serif" font-size="28" font-weight="500">친절한 설명, 실습 코드, 에러 해결 중심</text>
+  <rect x="90" y="485" width="430" height="54" rx="27" fill="#ffffff" opacity="0.14"/>
+  <text x="122" y="521" fill="#ffffff" font-family="Segoe UI, Pretendard, Arial, sans-serif" font-size="24" font-weight="700">sungkyu118.github.io</text>
+</svg>
