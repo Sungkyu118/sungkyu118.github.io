@@ -4,3 +4,7 @@
 @import 'main';
 
 /* append your custom style below */
+
+.content > blockquote:first-of-type > p:last-child {
+  white-space: pre-line;
+}
