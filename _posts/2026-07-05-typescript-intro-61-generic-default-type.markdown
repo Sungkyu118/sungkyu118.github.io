@@ -12,7 +12,7 @@ tags: [TypeScript, 제네릭, default type, generic]
 
 > 제네릭에 기본 타입을 둘 수 있게 되면, 사용성이 좋아지면서도 필요한 순간에는 더 구체적으로 확장할 수 있습니다.
 >
-> 이전 글: [TypeScript 입문 60: keyof와 제네릭을 함께 읽는 방법](/typescript/intro-60-keyof-with-generic)
+> 이전 글: [TypeScript 입문 60: keyof와 제네릭을 함께 사용해 안전한 함수를 만들기](/typescript/intro-60-keyof-with-generic)
 > 다음 글: [TypeScript 입문 62: 제네릭 interface와 type alias를 읽고 쓰는 법](/typescript/intro-62-generic-interface-type-alias)
 > 함께 보면 좋은 흐름: 제네릭 심화
 
