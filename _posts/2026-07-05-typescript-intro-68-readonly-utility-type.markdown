@@ -5,7 +5,7 @@ date: 2026-07-05 10:08:00 +0900
 category: TypeScript
 permalink: /typescript/intro-68-readonly-utility-type
 description: "Readonly<T>가 어떤 상황에서 유용한지와 주의점을 설명합니다."
-tags: [TypeScript, Readonly, utility type, 불변성]
+tags: [TypeScript, readonly, utility type, 불변성]
 ---
 
 # TypeScript 입문 68: Readonly<T>로 불변 객체 표현하기
