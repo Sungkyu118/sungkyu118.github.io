@@ -1,7 +1,3 @@
 #sidebar {
   background-image: url('/assets/img/sidebar_background.jpg') !important;
 }
-
-.content > blockquote:first-of-type > p:last-child {
-  white-space: pre-line;
-}
