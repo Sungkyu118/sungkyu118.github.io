@@ -7,9 +7,6 @@ permalink: /typescript/intro-128-non-null-assertion-caution
 description: "non-null assertion 사용 시 자주 생기는 버그를 설명합니다."
 tags: [TypeScript, non-null assertion, strictNullChecks, null]
 ---
-
-# TypeScript 입문 128: non-null assertion 느낌표를 조심해야 하는 이유
-
 > 느낌표 하나로 null 검사를 건너뛰는 습관은 나중에 디버깅 비용을 크게 키울 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 127: type assertion을 남용하면 왜 위험할까요?](/typescript/intro-127-type-assertion-caution)
@@ -95,3 +92,4 @@ console.log(value!.toString())
 ### [TypeScript 입문 121: declare 키워드의 기본 역할 이해하기](/typescript/intro-121-declare-basic)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

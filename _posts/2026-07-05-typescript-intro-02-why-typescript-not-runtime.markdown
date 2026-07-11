@@ -7,9 +7,6 @@ permalink: /typescript/intro-02-why-typescript-not-runtime
 description: "TypeScript가 실행 환경이 아니라 개발 단계의 안전장치라는 점을 예제와 함께 정리합니다."
 tags: [TypeScript, 컴파일, 런타임, JavaScript]
 ---
-
-# TypeScript 입문 2: TypeScript는 런타임 언어가 아니라 타입 검사 도구입니다
-
 > TypeScript가 브라우저나 Node.js에서 직접 실행되는 언어가 아니라 개발 단계에서 코드를 검사해주는 도구라는 점을 분명하게 정리합니다.
 >
 > 이전 글: [TypeScript 입문 1: TypeScript를 왜 배워야 할까요?](/typescript/intro-01-what-is-typescript)
@@ -96,3 +93,4 @@ const price: number = '1000'
 ### [TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?](/typescript/intro-07-type-inference-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

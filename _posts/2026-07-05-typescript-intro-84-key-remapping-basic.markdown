@@ -7,9 +7,6 @@ permalink: /typescript/intro-84-key-remapping-basic
 description: "key remapping으로 key 이름을 변환하는 방법을 설명합니다."
 tags: [TypeScript, key remapping, mapped type, 타입 변환]
 ---
-
-# TypeScript 입문 84: key remapping으로 타입의 key 이름 바꾸기
-
 > key remapping은 mapped type을 한 단계 더 유연하게 확장해주는 기능입니다.
 >
 > 이전 글: [TypeScript 입문 83: mapped type의 기본 구조 이해하기](/typescript/intro-83-mapped-type-basic)
@@ -99,3 +96,4 @@ const getters: GetterUser = {
 ### [TypeScript 입문 80: typeof type operator로 값에서 타입 만들기](/typescript/intro-80-typeof-type-operator)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

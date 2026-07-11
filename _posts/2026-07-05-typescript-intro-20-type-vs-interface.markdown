@@ -7,9 +7,6 @@ permalink: /typescript/intro-20-type-vs-interface
 description: "type과 interface의 차이와 선택 기준을 입문자 관점에서 정리합니다."
 tags: [TypeScript, type, interface, 비교]
 ---
-
-# TypeScript 입문 20: type과 interface는 언제 어떻게 선택해야 할까요?
-
 > type과 interface는 둘 다 중요하지만 무조건 하나만 고집하기보다, 어떤 상황에서 더 읽기 쉬운지 기준을 잡는 것이 중요합니다.
 >
 > 이전 글: [TypeScript 입문 19: interface로 객체 구조를 읽기 좋게 표현하기](/typescript/intro-19-interface-basic)
@@ -104,3 +101,4 @@ interface Point2 {
 ### [TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?](/typescript/intro-07-type-inference-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

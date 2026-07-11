@@ -7,9 +7,6 @@ permalink: /typescript/intro-39-api-response-narrowing
 description: "외부 API 응답을 믿지 않고 안전하게 좁혀야 하는 이유를 설명합니다."
 tags: [TypeScript, API 응답, narrowing, unknown]
 ---
-
-# TypeScript 입문 39: API 응답을 narrowing 없이 믿으면 왜 위험할까요?
-
 > 외부 API 응답은 내가 만든 코드가 아니기 때문에, narrowing 없이 곧바로 믿는 습관이 가장 위험합니다.
 >
 > 이전 글: [TypeScript 입문 38: non-null assertion ! 는 왜 편하지만 위험할까요?](/typescript/intro-38-non-null-assertion-caution)
@@ -100,3 +97,4 @@ console.log(response.name)
 ### [TypeScript 입문 31: Array.isArray로 배열 타입을 안전하게 좁히기](/typescript/intro-31-array-isarray-narrowing)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

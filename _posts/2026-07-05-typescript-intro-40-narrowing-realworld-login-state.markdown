@@ -7,9 +7,6 @@ permalink: /typescript/intro-40-narrowing-realworld-login-state
 description: "로그인 상태 모델을 예제로 narrowing을 실제 서비스 코드처럼 설명합니다."
 tags: [TypeScript, 로그인 상태, discriminated union, narrowing]
 ---
-
-# TypeScript 입문 40: 로그인 상태 예제로 narrowing을 실전처럼 이해하기
-
 > 로그인 상태처럼 여러 화면이 공유하는 상태는 narrowing 패턴을 가장 실전적으로 연습하기 좋은 주제입니다.
 >
 > 이전 글: [TypeScript 입문 39: API 응답을 narrowing 없이 믿으면 왜 위험할까요?](/typescript/intro-39-api-response-narrowing)
@@ -109,3 +106,4 @@ const state: LoginState = {
 ### [TypeScript 입문 31: Array.isArray로 배열 타입을 안전하게 좁히기](/typescript/intro-31-array-isarray-narrowing)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

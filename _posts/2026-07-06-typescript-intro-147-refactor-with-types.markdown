@@ -7,9 +7,6 @@ permalink: /typescript/intro-147-refactor-with-types
 description: "TypeScript를 리팩터링 안전망으로 활용하는 방법을 설명합니다."
 tags: [TypeScript, refactoring, safety, maintainability]
 ---
-
-# TypeScript 입문 147: 리팩터링할 때 TypeScript를 안전망으로 쓰는 법
-
 > TypeScript는 리팩터링을 대신 해주지는 않지만, 위험한 변경을 훨씬 빨리 감지하게 도와줍니다.
 >
 > 이전 글: [TypeScript 입문 146: 타입 이름을 어떻게 지어야 읽기 쉬울까요?](/typescript/intro-146-type-naming-convention)
@@ -98,3 +95,4 @@ function printCustomer(user: User) {
 ### [TypeScript 입문 142: repository와 service 타입을 왜 나눠야 할까요?](/typescript/intro-142-repository-service-type-separation)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

@@ -7,9 +7,6 @@ permalink: /typescript/intro-23-rest-params
 description: "가변 인자를 받는 함수에서 rest parameter 타입을 어떻게 써야 하는지 설명합니다."
 tags: [TypeScript, rest parameter, 함수, 배열]
 ---
-
-# TypeScript 입문 23: rest parameter를 타입으로 안전하게 표현하는 법
-
 > rest parameter는 가변 인자를 다루기 쉽게 해주지만, 배열 타입과 함께 생각하지 않으면 금방 흐려질 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 22: 선택 파라미터와 기본값 파라미터의 차이 이해하기](/typescript/intro-22-optional-default-params)
@@ -99,3 +96,4 @@ function sum(...numbers: string[]) {
 ### [TypeScript 입문 17: union type으로 여러 가능한 값을 표현하기](/typescript/intro-17-union-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

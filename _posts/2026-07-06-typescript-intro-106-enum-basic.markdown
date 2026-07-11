@@ -7,9 +7,6 @@ permalink: /typescript/intro-106-enum-basic
 description: "enum의 기본 문법과 사용할 때 장단점을 설명합니다."
 tags: [TypeScript, enum, 기본 문법, 상수]
 ---
-
-# TypeScript 입문 106: enum의 기본 사용법 이해하기
-
 > enum은 상수 집합을 표현할 때 익숙한 문법이지만, 그만큼 런타임 동작까지 함께 이해하는 것이 중요합니다.
 >
 > 이전 글: [TypeScript 입문 105: 객체 리터럴과 class는 언제 다르게 쓸까요?](/typescript/intro-105-object-literal-vs-class)
@@ -96,3 +93,4 @@ const badRole: Role = 'Admin'
 ### [TypeScript 입문 108: as const로 리터럴 정보를 보존하기](/typescript/intro-108-as-const-basic)
 
 이 글은 지금 읽고 계신 글과 개념적으로 아주 가깝게 이어집니다. 지금 글에서 익힌 문법이나 설계 감각이 다음 글에서 바로 다른 형태로 확장되기 때문에, 단편적인 문법 암기가 아니라 흐름으로 이해하는 데 큰 도움이 됩니다. 특히 TypeScript 입문 단계에서는 비슷해 보이는 도구들 사이의 차이를 빠르게 비교해보는 것이 중요하므로, 이 글을 함께 읽어두시면 어디에서 어떤 선택을 해야 하는지 훨씬 분명하게 감이 잡히실 것입니다.
+

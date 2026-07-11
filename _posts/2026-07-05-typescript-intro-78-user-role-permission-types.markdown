@@ -7,9 +7,6 @@ permalink: /typescript/intro-78-user-role-permission-types
 description: "권한과 역할 타입을 설계할 때 안전하게 나누는 방법을 설명합니다."
 tags: [TypeScript, 권한, 역할, union type]
 ---
-
-# TypeScript 입문 78: 사용자 권한 타입을 안전하게 설계하는 방법
-
 > 권한 타입은 단순 문자열처럼 보여도, 실제로는 누락과 오타를 많이 만들기 쉬운 영역입니다.
 >
 > 이전 글: [TypeScript 입문 77: 게시글 등록, 수정, 조회 타입을 나누는 실전 예제](/typescript/intro-77-post-create-update-read-types)
@@ -91,3 +88,4 @@ type RolePermissions = Record<Role, Permission[]>
 ### [TypeScript 입문 65: utility type은 왜 필요할까요?](/typescript/intro-65-why-utility-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

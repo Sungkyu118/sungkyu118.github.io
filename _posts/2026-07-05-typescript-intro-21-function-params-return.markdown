@@ -7,9 +7,6 @@ permalink: /typescript/intro-21-function-params-return
 description: "함수 선언에서 파라미터와 반환 타입을 왜 적는지부터 차근차근 설명합니다."
 tags: [TypeScript, 함수, 파라미터, 반환 타입]
 ---
-
-# TypeScript 입문 21: 함수 파라미터와 반환 타입을 쓰는 기본 원리
-
 > 함수의 입력과 출력 타입을 명확하게 적어두면, 코드가 길어질수록 의도를 더 쉽게 추적할 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 20: type과 interface는 언제 어떻게 선택해야 할까요?](/typescript/intro-20-type-vs-interface)
@@ -99,3 +96,4 @@ function add(a: number, b: number): string {
 ### [TypeScript 입문 17: union type으로 여러 가능한 값을 표현하기](/typescript/intro-17-union-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

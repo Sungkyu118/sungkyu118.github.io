@@ -7,9 +7,6 @@ permalink: /typescript/intro-115-tsconfig-basic
 description: "tsconfig.json이 TypeScript 프로젝트에서 맡는 역할을 설명합니다."
 tags: [TypeScript, tsconfig, compilerOptions, 설정]
 ---
-
-# TypeScript 입문 115: tsconfig.json의 기본 역할 이해하기
-
 > tsconfig.json은 TypeScript 프로젝트가 어떤 규칙으로 컴파일될지를 한곳에서 정의하는 핵심 파일입니다.
 >
 > 이전 글: [TypeScript 입문 114: barrel file(index.ts)를 쓸 때 주의할 점](/typescript/intro-114-barrel-file-caution)
@@ -101,3 +98,4 @@ tsconfig 구간은 코드 한 줄을 바꾸는 작업보다 체감이 덜할 수
 ### [TypeScript 입문 118: target, module, lib 옵션은 무엇을 바꿀까요?](/typescript/intro-118-target-module-lib-options)
 
 이 글은 지금 읽고 계신 글과 개념적으로 아주 가깝게 이어집니다. 지금 글에서 익힌 문법이나 설계 감각이 다음 글에서 바로 다른 형태로 확장되기 때문에, 단편적인 문법 암기가 아니라 흐름으로 이해하는 데 큰 도움이 됩니다. 특히 TypeScript 입문 단계에서는 비슷해 보이는 도구들 사이의 차이를 빠르게 비교해보는 것이 중요하므로, 이 글을 함께 읽어두시면 어디에서 어떤 선택을 해야 하는지 훨씬 분명하게 감이 잡히실 것입니다.
+

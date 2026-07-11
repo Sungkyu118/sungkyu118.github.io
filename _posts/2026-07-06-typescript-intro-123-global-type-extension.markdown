@@ -7,9 +7,6 @@ permalink: /typescript/intro-123-global-type-extension
 description: "전역 타입 확장 시 충돌과 유지보수 문제를 설명합니다."
 tags: [TypeScript, global, declaration merging, 타입 확장]
 ---
-
-# TypeScript 입문 123: 전역 타입을 확장할 때 주의할 점
-
 > 전역 타입 확장은 편리하지만, 범위를 잘못 넓히면 프로젝트 전체를 혼란스럽게 만들 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 122: d.ts 파일은 왜 필요할까요?](/typescript/intro-122-d-ts-file-basic)
@@ -99,3 +96,4 @@ declare global {
 ### [TypeScript 입문 121: declare 키워드의 기본 역할 이해하기](/typescript/intro-121-declare-basic)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

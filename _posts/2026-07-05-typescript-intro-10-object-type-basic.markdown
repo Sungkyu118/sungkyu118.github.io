@@ -7,12 +7,9 @@ permalink: /typescript/intro-10-object-type-basic
 description: "객체 타입을 선언하고 읽는 방법을 입문자 눈높이에서 자세히 설명합니다."
 tags: [TypeScript, 객체 타입, object, interface]
 ---
-
-# TypeScript 입문 10: 객체 타입을 처음 선언할 때 헷갈리는 부분 정리
-
 > 객체 타입을 선언할 때 어떤 속성이 있고 각 속성이 어떤 타입인지 정확히 표현하는 기본기를 다집니다.
 >
-> 이전 글: [TypeScript 입문 9: 배열 타입은 string[]와 Array<string> 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
+> 이전 글: [TypeScript 입문 9: 배열 타입은 string[]와 Array&lt;string&gt; 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
 > 다음 글: [TypeScript 입문 11: 선택 속성 ? 는 편리하지만 왜 자주 실수를 만들까요?](/typescript/intro-11-optional-property-basic)
 > 함께 보면 좋은 흐름: 기본 타입과 추론
 
@@ -91,7 +88,7 @@ const product: { id: number; name: string } = {
 
 ## 이어서 읽어보시면 좋습니다
 
-### [TypeScript 입문 9: 배열 타입은 string[]와 Array<string> 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
+### [TypeScript 입문 9: 배열 타입은 string[]와 Array&lt;string&gt; 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
@@ -102,3 +99,4 @@ const product: { id: number; name: string } = {
 ### [TypeScript 입문 1: TypeScript를 왜 배워야 할까요?](/typescript/intro-01-what-is-typescript)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

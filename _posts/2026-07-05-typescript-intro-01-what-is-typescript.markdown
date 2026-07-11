@@ -7,9 +7,6 @@ permalink: /typescript/intro-01-what-is-typescript
 description: "TypeScript가 JavaScript 개발에서 어떤 문제를 줄여주는지 입문자 관점에서 자세히 설명합니다."
 tags: [TypeScript, TypeScript 입문, JavaScript, 정적 타입]
 ---
-
-# TypeScript 입문 1: TypeScript를 왜 배워야 할까요?
-
 > 왜 TypeScript가 필요한지, JavaScript만 사용할 때 어떤 종류의 실수가 늦게 발견되는지부터 차근차근 살펴봅니다.
 >
 > 이전 글: 이번 글이 TypeScript 입문 시리즈의 출발점입니다.
@@ -115,3 +112,4 @@ printPrice('1200')
 ### [TypeScript 입문 10: 객체 타입을 처음 선언할 때 헷갈리는 부분 정리](/typescript/intro-10-object-type-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

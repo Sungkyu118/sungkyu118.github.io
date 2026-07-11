@@ -7,9 +7,6 @@ permalink: /typescript/intro-105-object-literal-vs-class
 description: "객체 리터럴과 class를 어떤 상황에서 다르게 써야 하는지 설명합니다."
 tags: [TypeScript, class, object literal, 설계]
 ---
-
-# TypeScript 입문 105: 객체 리터럴과 class는 언제 다르게 쓸까요?
-
 > 모든 객체를 class로 만들 필요는 없습니다. 어떤 구조는 단순 객체 리터럴이 더 읽기 쉽고 유지보수하기 좋습니다.
 >
 > 이전 글: [TypeScript 입문 104: class 메서드에서 this가 꼬이는 이유](/typescript/intro-104-this-binding-in-class)
@@ -103,3 +100,4 @@ class ThemeColor {
 ### [TypeScript 입문 91: class 문법의 기본 구조 이해하기](/typescript/intro-91-class-basic)
 
 이 글은 지금 읽고 계신 글과 개념적으로 아주 가깝게 이어집니다. 지금 글에서 익힌 문법이나 설계 감각이 다음 글에서 바로 다른 형태로 확장되기 때문에, 단편적인 문법 암기가 아니라 흐름으로 이해하는 데 큰 도움이 됩니다. 특히 TypeScript 입문 단계에서는 비슷해 보이는 도구들 사이의 차이를 빠르게 비교해보는 것이 중요하므로, 이 글을 함께 읽어두시면 어디에서 어떤 선택을 해야 하는지 훨씬 분명하게 감이 잡히실 것입니다.
+

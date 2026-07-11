@@ -7,9 +7,6 @@ permalink: /typescript/intro-29-discriminated-union-status
 description: "discriminated union이 왜 실무 상태 모델링에서 강력한지 예제와 함께 설명합니다."
 tags: [TypeScript, discriminated union, 상태, 모델링]
 ---
-
-# TypeScript 입문 29: discriminated union으로 상태를 더 안전하게 모델링하기
-
 > discriminated union은 상태를 문자열 하나로 구분해 전체 분기 처리를 훨씬 안전하게 만드는 강력한 패턴입니다.
 >
 > 이전 글: [TypeScript 입문 28: in 연산자로 객체 속성 존재 여부 확인하며 타입 좁히기](/typescript/intro-28-in-operator-narrowing)
@@ -111,3 +108,4 @@ const state: RequestState = {
 ### [TypeScript 입문 17: union type으로 여러 가능한 값을 표현하기](/typescript/intro-17-union-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

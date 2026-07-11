@@ -7,9 +7,6 @@ permalink: /typescript/intro-100-class-interface-type-choice
 description: "class, interface, type을 어떤 기준으로 나눠 선택할지 설명합니다."
 tags: [TypeScript, class, interface, type, 설계]
 ---
-
-# TypeScript 입문 100: class, interface, type 중 무엇을 선택해야 할까요?
-
 > class, interface, type은 서로 경쟁 관계라기보다 쓰임새가 조금씩 다른 도구라고 보는 편이 좋습니다.
 >
 > 이전 글: [TypeScript 입문 99: override와 super를 안전하게 사용하는 방법](/typescript/intro-99-override-super-basic)
@@ -97,3 +94,4 @@ class UserDto {
 ### [TypeScript 입문 91: class 문법의 기본 구조 이해하기](/typescript/intro-91-class-basic)
 
 이 글은 지금 읽고 계신 글과 개념적으로 아주 가깝게 이어집니다. 지금 글에서 익힌 문법이나 설계 감각이 다음 글에서 바로 다른 형태로 확장되기 때문에, 단편적인 문법 암기가 아니라 흐름으로 이해하는 데 큰 도움이 됩니다. 특히 TypeScript 입문 단계에서는 비슷해 보이는 도구들 사이의 차이를 빠르게 비교해보는 것이 중요하므로, 이 글을 함께 읽어두시면 어디에서 어떤 선택을 해야 하는지 훨씬 분명하게 감이 잡히실 것입니다.
+

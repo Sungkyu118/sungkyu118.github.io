@@ -7,12 +7,9 @@ permalink: /typescript/intro-76-utility-composition-readability
 description: "utility type을 조합하면서도 코드 가독성을 유지하는 기준을 설명합니다."
 tags: [TypeScript, utility type, 가독성, 타입 설계]
 ---
-
-# TypeScript 입문 76: utility type을 조합할 때 가독성을 지키는 법
-
 > utility type을 여러 개 조합할 수는 있지만, 읽는 사람이 이해할 수 있는 구조를 유지하는 것이 더 중요합니다.
 >
-> 이전 글: [TypeScript 입문 75: Awaited<T>로 Promise 결과 타입 꺼내기](/typescript/intro-75-awaited-promise-result)
+> 이전 글: [TypeScript 입문 75: Awaited&lt;T&gt;로 Promise 결과 타입 꺼내기](/typescript/intro-75-awaited-promise-result)
 > 다음 글: [TypeScript 입문 77: 게시글 등록, 수정, 조회 타입을 나누는 실전 예제](/typescript/intro-77-post-create-update-read-types)
 > 함께 보면 좋은 흐름: utility type 이해
 
@@ -84,7 +81,7 @@ type HardToRead = Readonly<Partial<Omit<User, 'id'>>>
 
 ## 이어서 읽어보시면 좋습니다
 
-### [TypeScript 입문 75: Awaited<T>로 Promise 결과 타입 꺼내기](/typescript/intro-75-awaited-promise-result)
+### [TypeScript 입문 75: Awaited&lt;T&gt;로 Promise 결과 타입 꺼내기](/typescript/intro-75-awaited-promise-result)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
@@ -95,3 +92,4 @@ type HardToRead = Readonly<Partial<Omit<User, 'id'>>>
 ### [TypeScript 입문 65: utility type은 왜 필요할까요?](/typescript/intro-65-why-utility-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

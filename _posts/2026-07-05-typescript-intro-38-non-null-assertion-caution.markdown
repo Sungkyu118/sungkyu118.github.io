@@ -7,9 +7,6 @@ permalink: /typescript/intro-38-non-null-assertion-caution
 description: "non-null assertion 연산자가 왜 위험할 수 있는지 예제와 함께 설명합니다."
 tags: [TypeScript, non-null assertion, strictNullChecks, 안전성]
 ---
-
-# TypeScript 입문 38: non-null assertion ! 는 왜 편하지만 위험할까요?
-
 > non-null assertion은 개발 속도를 올려주는 것처럼 보이지만, null 가능성을 진짜 해결한 것은 아니라는 점이 중요합니다.
 >
 > 이전 글: [TypeScript 입문 37: type assertion as 를 사용할 때 꼭 조심해야 할 점](/typescript/intro-37-type-assertion-as-caution)
@@ -95,3 +92,4 @@ if (nickname) {
 ### [TypeScript 입문 31: Array.isArray로 배열 타입을 안전하게 좁히기](/typescript/intro-31-array-isarray-narrowing)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

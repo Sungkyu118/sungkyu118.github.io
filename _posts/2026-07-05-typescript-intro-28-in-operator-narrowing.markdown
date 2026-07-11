@@ -7,9 +7,6 @@ permalink: /typescript/intro-28-in-operator-narrowing
 description: "in 연산자를 사용한 객체 타입 narrowing을 예제와 함께 자세히 설명합니다."
 tags: [TypeScript, in 연산자, 객체 타입, narrowing]
 ---
-
-# TypeScript 입문 28: in 연산자로 객체 속성 존재 여부 확인하며 타입 좁히기
-
 > in 연산자는 객체 유니온을 다룰 때 매우 자주 쓰입니다. 특히 API 응답 형태가 여러 가지일 때 유용합니다.
 >
 > 이전 글: [TypeScript 입문 27: typeof로 원시 타입을 안전하게 좁히기](/typescript/intro-27-typeof-narrowing)
@@ -108,3 +105,4 @@ function printResult(result: ApiSuccess | ApiError) {
 ### [TypeScript 입문 17: union type으로 여러 가능한 값을 표현하기](/typescript/intro-17-union-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

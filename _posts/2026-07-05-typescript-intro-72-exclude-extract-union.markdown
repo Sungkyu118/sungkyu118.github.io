@@ -7,13 +7,10 @@ permalink: /typescript/intro-72-exclude-extract-union
 description: "Exclude와 Extract를 사용해 union 타입을 가공하는 방법을 설명합니다."
 tags: [TypeScript, Exclude, Extract, union type]
 ---
-
-# TypeScript 입문 72: Exclude와 Extract로 union 타입 다루기
-
 > Exclude와 Extract는 union type을 다듬는 데 쓰이는 대표적인 utility type입니다.
 >
-> 이전 글: [TypeScript 입문 71: Record<K, T>로 key-value 객체 만들기](/typescript/intro-71-record-key-value-object)
-> 다음 글: [TypeScript 입문 73: NonNullable<T>로 null과 undefined 제거하기](/typescript/intro-73-nonnullable-basic)
+> 이전 글: [TypeScript 입문 71: Record&lt;K, T&gt;로 key-value 객체 만들기](/typescript/intro-71-record-key-value-object)
+> 다음 글: [TypeScript 입문 73: NonNullable&lt;T&gt;로 null과 undefined 제거하기](/typescript/intro-73-nonnullable-basic)
 > 함께 보면 좋은 흐름: utility type 이해
 
 TypeScript 입문 시리즈가 이 구간으로 넘어오면, 이제 단순히 변수나 함수에 타입을 붙이는 단계를 넘어 "기존 타입을 다시 조합하고 변형하는 법"을 배우게 됩니다. 그래서 이번 61~90 구간은 처음보다 추상적으로 느껴질 수 있습니다. 다만 여전히 핵심은 같습니다. 문법 이름을 외우는 것이 아니라, 이 도구가 어떤 중복을 줄여주고 어떤 실수를 막아주는지 이해하는 것이 더 중요합니다. 이번 글도 그 흐름에 맞춰 예제와 잘못된 예제를 충분히 비교하며 설명하겠습니다.
@@ -81,14 +78,15 @@ const value: BusyStatus = 'loading'
 
 ## 이어서 읽어보시면 좋습니다
 
-### [TypeScript 입문 71: Record<K, T>로 key-value 객체 만들기](/typescript/intro-71-record-key-value-object)
+### [TypeScript 입문 71: Record&lt;K, T&gt;로 key-value 객체 만들기](/typescript/intro-71-record-key-value-object)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
-### [TypeScript 입문 73: NonNullable<T>로 null과 undefined 제거하기](/typescript/intro-73-nonnullable-basic)
+### [TypeScript 입문 73: NonNullable&lt;T&gt;로 null과 undefined 제거하기](/typescript/intro-73-nonnullable-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
 ### [TypeScript 입문 65: utility type은 왜 필요할까요?](/typescript/intro-65-why-utility-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

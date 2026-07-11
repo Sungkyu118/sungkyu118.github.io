@@ -7,9 +7,6 @@ permalink: /typescript/intro-88-infer-basic
 description: "infer를 사용해 타입 내부 값을 추론하는 기본 방법을 설명합니다."
 tags: [TypeScript, infer, conditional type, 고급 타입]
 ---
-
-# TypeScript 입문 88: infer로 타입 안에서 값을 추론하는 방법
-
 > infer를 쓰면 타입 내부 구조에서 일부를 꺼내오는 패턴을 더 자연스럽게 만들 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 87: distributive conditional type은 왜 낯설게 느껴질까요?](/typescript/intro-87-distributive-conditional-type)
@@ -95,3 +92,4 @@ const count: Count = 10
 ### [TypeScript 입문 80: typeof type operator로 값에서 타입 만들기](/typescript/intro-80-typeof-type-operator)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

@@ -7,13 +7,10 @@ permalink: /typescript/intro-65-why-utility-types
 description: "utility type이 중복 타입을 줄여주는 이유를 입문자 관점에서 설명합니다."
 tags: [TypeScript, utility type, 재사용, 타입 설계]
 ---
-
-# TypeScript 입문 65: utility type은 왜 필요할까요?
-
 > utility type은 같은 타입을 여러 방식으로 다시 쓰고 싶을 때 중복을 줄여주는 도구입니다.
 >
 > 이전 글: [TypeScript 입문 64: 제네릭으로 API 응답 래퍼 타입 만들기](/typescript/intro-64-generic-api-response-wrapper)
-> 다음 글: [TypeScript 입문 66: Partial<T>로 수정 요청 타입 만들기](/typescript/intro-66-partial-update-type)
+> 다음 글: [TypeScript 입문 66: Partial&lt;T&gt;로 수정 요청 타입 만들기](/typescript/intro-66-partial-update-type)
 > 함께 보면 좋은 흐름: utility type 이해
 
 TypeScript 입문 시리즈가 이 구간으로 넘어오면, 이제 단순히 변수나 함수에 타입을 붙이는 단계를 넘어 "기존 타입을 다시 조합하고 변형하는 법"을 배우게 됩니다. 그래서 이번 61~90 구간은 처음보다 추상적으로 느껴질 수 있습니다. 다만 여전히 핵심은 같습니다. 문법 이름을 외우는 것이 아니라, 이 도구가 어떤 중복을 줄여주고 어떤 실수를 막아주는지 이해하는 것이 더 중요합니다. 이번 글도 그 흐름에 맞춰 예제와 잘못된 예제를 충분히 비교하며 설명하겠습니다.
@@ -92,10 +89,11 @@ type UserUpdate2 = Partial<User>
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
-### [TypeScript 입문 66: Partial<T>로 수정 요청 타입 만들기](/typescript/intro-66-partial-update-type)
+### [TypeScript 입문 66: Partial&lt;T&gt;로 수정 요청 타입 만들기](/typescript/intro-66-partial-update-type)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
-### [TypeScript 입문 71: Record<K, T>로 key-value 객체 만들기](/typescript/intro-71-record-key-value-object)
+### [TypeScript 입문 71: Record&lt;K, T&gt;로 key-value 객체 만들기](/typescript/intro-71-record-key-value-object)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

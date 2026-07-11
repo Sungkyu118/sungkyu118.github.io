@@ -7,9 +7,6 @@ permalink: /typescript/intro-03-setup-node-npm-typescript
 description: "Node.js 환경에서 TypeScript 프로젝트를 처음 만드는 과정을 하나씩 실습합니다."
 tags: [TypeScript, Node.js, npm, 개발환경]
 ---
-
-# TypeScript 입문 3: Node.js와 npm으로 TypeScript 프로젝트 시작하기
-
 > Node.js와 npm 환경에서 TypeScript 프로젝트를 만드는 가장 기본적인 흐름을 손으로 따라 할 수 있게 설명합니다.
 >
 > 이전 글: [TypeScript 입문 2: TypeScript는 런타임 언어가 아니라 타입 검사 도구입니다](/typescript/intro-02-why-typescript-not-runtime)
@@ -101,3 +98,4 @@ console.log(message)
 ### [TypeScript 입문 1: TypeScript를 왜 배워야 할까요?](/typescript/intro-01-what-is-typescript)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

@@ -7,9 +7,6 @@ permalink: /typescript/intro-44-record-vs-index-signature
 description: "Record와 index signature의 차이를 비교하며 선택 기준을 설명합니다."
 tags: [TypeScript, Record, index signature, 비교]
 ---
-
-# TypeScript 입문 44: Record와 index signature는 무엇이 다를까요?
-
 > Record와 index signature는 비슷해 보여도 읽는 느낌과 사용 맥락이 조금 다릅니다.
 >
 > 이전 글: [TypeScript 입문 43: index signature로 동적인 key를 다루는 방법](/typescript/intro-43-index-signature-basic)
@@ -95,3 +92,4 @@ const result: Record<string, string> = {
 ### [TypeScript 입문 41: 객체 타입의 기본 구조를 다시 탄탄하게 잡기](/typescript/intro-41-object-structure-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

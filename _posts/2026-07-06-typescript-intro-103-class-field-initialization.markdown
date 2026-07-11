@@ -7,9 +7,6 @@ permalink: /typescript/intro-103-class-field-initialization
 description: "클래스 필드 초기화와 strictPropertyInitialization 에러를 설명합니다."
 tags: [TypeScript, strictPropertyInitialization, class, 필드 초기화]
 ---
-
-# TypeScript 입문 103: 클래스 필드 초기화와 strictPropertyInitialization 이해하기
-
 > strictPropertyInitialization 에러는 귀찮은 규칙처럼 보여도, 초기화 누락 버그를 미리 막아주는 역할을 합니다.
 >
 > 이전 글: [TypeScript 입문 102: parameter property로 생성자 코드 줄이기](/typescript/intro-102-parameter-properties-basic)
@@ -105,3 +102,4 @@ class BrokenArticle {
 ### [TypeScript 입문 91: class 문법의 기본 구조 이해하기](/typescript/intro-91-class-basic)
 
 이 글은 지금 읽고 계신 글과 개념적으로 아주 가깝게 이어집니다. 지금 글에서 익힌 문법이나 설계 감각이 다음 글에서 바로 다른 형태로 확장되기 때문에, 단편적인 문법 암기가 아니라 흐름으로 이해하는 데 큰 도움이 됩니다. 특히 TypeScript 입문 단계에서는 비슷해 보이는 도구들 사이의 차이를 빠르게 비교해보는 것이 중요하므로, 이 글을 함께 읽어두시면 어디에서 어떤 선택을 해야 하는지 훨씬 분명하게 감이 잡히실 것입니다.
+

@@ -7,9 +7,6 @@ permalink: /typescript/intro-132-api-response-runtime-validation
 description: "API 응답에 타입만 붙이는 것과 런타임 검증의 차이를 설명합니다."
 tags: [TypeScript, API, runtime validation, unknown]
 ---
-
-# TypeScript 입문 132: API 응답은 왜 런타임 검증이 꼭 필요할까요?
-
 > API 응답에 인터페이스만 붙이는 것과 실제 값을 검증하는 것은 전혀 다른 이야기입니다.
 >
 > 이전 글: [TypeScript 입문 131: asserts 함수를 이용해 타입을 좁히는 방법](/typescript/intro-131-asserts-function-basic)
@@ -97,3 +94,4 @@ const response = { id: '1', name: null } as UserResponse
 ### [TypeScript 입문 129: unknown 데이터를 안전한 타입으로 바꾸는 흐름](/typescript/intro-129-unknown-to-safe-data)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

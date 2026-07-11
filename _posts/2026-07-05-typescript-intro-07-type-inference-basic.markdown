@@ -7,9 +7,6 @@ permalink: /typescript/intro-07-type-inference-basic
 description: "TypeScript의 타입 추론이 편리한 순간과 직접 타입을 적어야 하는 순간을 예제로 설명합니다."
 tags: [TypeScript, 타입 추론, inference, 변수]
 ---
-
-# TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?
-
 > TypeScript가 자동으로 타입을 추론해주는 편리함과, 그래도 명시적으로 타입을 써야 할 순간을 구분하는 연습을 합니다.
 >
 > 이전 글: [TypeScript 입문 6: TypeScript 에러와 JavaScript 실행 에러는 어떻게 다를까요?](/typescript/intro-06-typescript-vs-runtime-errors)
@@ -97,3 +94,4 @@ users.push(10)
 ### [TypeScript 입문 1: TypeScript를 왜 배워야 할까요?](/typescript/intro-01-what-is-typescript)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

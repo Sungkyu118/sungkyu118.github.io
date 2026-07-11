@@ -7,9 +7,6 @@ permalink: /typescript/intro-27-typeof-narrowing
 description: "typeof를 사용해 union 값을 안전하게 다루는 방법과 흔한 실수를 설명합니다."
 tags: [TypeScript, typeof, narrowing, union]
 ---
-
-# TypeScript 입문 27: typeof로 원시 타입을 안전하게 좁히기
-
 > typeof는 가장 먼저 배우는 narrowing 도구입니다. 단순해 보이지만 실제로는 많은 분기 처리의 출발점이 됩니다.
 >
 > 이전 글: [TypeScript 입문 26: narrowing은 왜 TypeScript에서 중요한 핵심일까요?](/typescript/intro-26-narrowing-meaning)
@@ -105,3 +102,4 @@ function printValue(value: string | number) {
 ### [TypeScript 입문 17: union type으로 여러 가능한 값을 표현하기](/typescript/intro-17-union-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

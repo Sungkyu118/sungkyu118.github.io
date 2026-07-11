@@ -7,9 +7,6 @@ permalink: /typescript/intro-30-never-exhaustive-check
 description: "switch 문과 never를 조합해 빠진 케이스를 컴파일 단계에서 잡는 방법을 설명합니다."
 tags: [TypeScript, never, exhaustive check, switch]
 ---
-
-# TypeScript 입문 30: never를 이용해 빠진 분기까지 잡아내는 exhaustive check
-
 > never와 exhaustive check를 이해하면 switch 문에서 빠진 케이스를 사람이 아니라 컴파일러가 먼저 알려주게 만들 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 29: discriminated union으로 상태를 더 안전하게 모델링하기](/typescript/intro-29-discriminated-union-status)
@@ -106,3 +103,4 @@ function printStatus(status: Status) {
 ### [TypeScript 입문 21: 함수 파라미터와 반환 타입을 쓰는 기본 원리](/typescript/intro-21-function-params-return)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

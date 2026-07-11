@@ -7,9 +7,6 @@ permalink: /typescript/intro-148-legacy-js-migration-start
 description: "JavaScript 프로젝트를 TypeScript로 옮길 때 첫 단계를 설명합니다."
 tags: [TypeScript, migration, JavaScript, gradually]
 ---
-
-# TypeScript 입문 148: 기존 JavaScript 프로젝트를 TypeScript로 옮기는 첫 단계
-
 > JavaScript에서 TypeScript로 옮길 때는 문법 습득보다 전략적 순서가 더 중요합니다.
 >
 > 이전 글: [TypeScript 입문 147: 리팩터링할 때 TypeScript를 안전망으로 쓰는 법](/typescript/intro-147-refactor-with-types)
@@ -98,3 +95,4 @@ JavaScript에서 TypeScript로 옮길 때는 문법 습득보다 전략적 순�
 ### [TypeScript 입문 150: TypeScript 입문 이후 다음 학습 로드맵 정리](/typescript/intro-150-typescript-learning-roadmap-next)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

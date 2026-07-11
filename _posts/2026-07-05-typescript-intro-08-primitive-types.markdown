@@ -7,13 +7,10 @@ permalink: /typescript/intro-08-primitive-types
 description: "TypeScript의 가장 기본적인 원시 타입을 정확하게 이해하고 실수 없이 쓰는 방법을 설명합니다."
 tags: [TypeScript, string, number, boolean, 기본 타입]
 ---
-
-# TypeScript 입문 8: string, number, boolean 기본 타입 제대로 쓰기
-
 > 가장 기본적인 원시 타입부터 정확히 이해해두면 뒤에서 등장하는 복잡한 타입도 훨씬 덜 헷갈립니다.
 >
 > 이전 글: [TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?](/typescript/intro-07-type-inference-basic)
-> 다음 글: [TypeScript 입문 9: 배열 타입은 string[]와 Array<string> 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
+> 다음 글: [TypeScript 입문 9: 배열 타입은 string[]와 Array&lt;string&gt; 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
 > 함께 보면 좋은 흐름: 기본 타입과 추론
 
 TypeScript를 처음 배우는 분들은 문법이 많아 보인다는 이유로 겁을 먹기 쉽습니다. 그런데 실제로는 문법을 외우는 것보다, "이 기능이 왜 존재하는지"와 "이 기능이 없으면 어떤 실수가 생기는지"를 먼저 이해하는 쪽이 훨씬 중요합니다. 이번 글에서도 그 관점으로 접근하겠습니다. 코드가 길어 보이더라도 한 줄씩 뜯어보면 충분히 따라갈 수 있으니, 급하게 넘기기보다 작은 예제를 손으로 바꿔보며 읽어보시면 좋습니다.
@@ -91,10 +88,11 @@ const opened: boolean = 'true'
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
-### [TypeScript 입문 9: 배열 타입은 string[]와 Array<string> 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
+### [TypeScript 입문 9: 배열 타입은 string[]와 Array&lt;string&gt; 중 무엇을 써야 할까요?](/typescript/intro-09-array-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
 ### [TypeScript 입문 1: TypeScript를 왜 배워야 할까요?](/typescript/intro-01-what-is-typescript)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

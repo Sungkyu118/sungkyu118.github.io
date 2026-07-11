@@ -7,9 +7,6 @@ permalink: /typescript/intro-63-generic-overuse-caution
 description: "과도한 제네릭이 왜 가독성을 해치는지 예제와 함께 설명합니다."
 tags: [TypeScript, 제네릭, 가독성, generic]
 ---
-
-# TypeScript 입문 63: 제네릭을 너무 많이 쓰면 왜 코드가 어려워질까요?
-
 > 제네릭은 강력하지만, 모든 것을 일반화하려 들면 오히려 코드가 읽히지 않는다는 점을 꼭 기억해야 합니다.
 >
 > 이전 글: [TypeScript 입문 62: 제네릭 interface와 type alias를 읽고 쓰는 법](/typescript/intro-62-generic-interface-type-alias)
@@ -98,3 +95,4 @@ type Name = string
 ### [TypeScript 입문 61: 제네릭 기본 타입을 지정하는 방법](/typescript/intro-61-generic-default-type)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

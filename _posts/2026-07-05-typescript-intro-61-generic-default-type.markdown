@@ -7,9 +7,6 @@ permalink: /typescript/intro-61-generic-default-type
 description: "제네릭 타입 파라미터에 기본 타입을 지정하는 방법과 의미를 설명합니다."
 tags: [TypeScript, 제네릭, default type, generic]
 ---
-
-# TypeScript 입문 61: 제네릭 기본 타입을 지정하는 방법
-
 > 제네릭에 기본 타입을 둘 수 있게 되면, 사용성이 좋아지면서도 필요한 순간에는 더 구체적으로 확장할 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 60: keyof와 제네릭을 함께 사용해 안전한 함수를 만들기](/typescript/intro-60-keyof-with-generic)
@@ -97,3 +94,4 @@ const numberResponse: ResponseData<number> = {
 ### [TypeScript 입문 64: 제네릭으로 API 응답 래퍼 타입 만들기](/typescript/intro-64-generic-api-response-wrapper)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

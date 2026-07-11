@@ -7,9 +7,6 @@ permalink: /typescript/intro-139-event-handler-typing
 description: "이벤트 핸들러 타입을 읽고 적용하는 기초를 설명합니다."
 tags: [TypeScript, event handler, DOM, 함수 타입]
 ---
-
-# TypeScript 입문 139: 이벤트 핸들러 타입을 읽는 기본 연습
-
 > 이벤트 핸들러 타입을 읽는 감각은 프론트엔드 코드를 다룰 때 생각보다 큰 차이를 만듭니다.
 >
 > 이전 글: [TypeScript 입문 138: retry 함수에 타입을 붙이는 실전 예제](/typescript/intro-138-retry-function-typing)
@@ -95,3 +92,4 @@ button?.addEventListener('click', (event: KeyboardEvent) => {
 ### [TypeScript 입문 136: Promise.all 결과 타입을 정확히 이해하기](/typescript/intro-136-promise-all-types)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

@@ -7,9 +7,6 @@ permalink: /typescript/intro-04-tsc-init-tsconfig
 description: "TypeScript 설정 파일인 tsconfig.json이 왜 필요한지와 핵심 옵션을 자세히 설명합니다."
 tags: [TypeScript, tsconfig, tsc, 설정]
 ---
-
-# TypeScript 입문 4: tsc --init으로 tsconfig.json 만들고 읽는 방법
-
 > tsconfig.json이 단순한 설정 파일이 아니라 팀의 타입 규칙을 모아두는 기준점이라는 감각을 잡습니다.
 >
 > 이전 글: [TypeScript 입문 3: Node.js와 npm으로 TypeScript 프로젝트 시작하기](/typescript/intro-03-setup-node-npm-typescript)
@@ -108,3 +105,4 @@ tsconfig.json이 단순한 설정 파일이 아니라 팀의 타입 규칙을 �
 ### [TypeScript 입문 1: TypeScript를 왜 배워야 할까요?](/typescript/intro-01-what-is-typescript)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

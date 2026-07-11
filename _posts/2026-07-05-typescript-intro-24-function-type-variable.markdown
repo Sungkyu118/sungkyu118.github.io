@@ -7,9 +7,6 @@ permalink: /typescript/intro-24-function-type-variable
 description: "함수를 변수에 담고 다른 함수에 넘길 때 함수 타입을 어떻게 표현하는지 설명합니다."
 tags: [TypeScript, 함수 타입, callback, 선언]
 ---
-
-# TypeScript 입문 24: 함수 자체를 타입으로 다루는 방법 배우기
-
 > 함수도 값이기 때문에 변수에 담고 넘길 수 있습니다. 이때 함수 자체의 타입을 읽고 쓰는 감각이 필요합니다.
 >
 > 이전 글: [TypeScript 입문 23: rest parameter를 타입으로 안전하게 표현하는 법](/typescript/intro-23-rest-params)
@@ -97,3 +94,4 @@ handler = (count: number) => {
 ### [TypeScript 입문 17: union type으로 여러 가능한 값을 표현하기](/typescript/intro-17-union-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

@@ -7,9 +7,6 @@ permalink: /typescript/intro-43-index-signature-basic
 description: "index signature를 사용해 동적인 속성 키를 표현하는 방법을 설명합니다."
 tags: [TypeScript, index signature, 객체 타입, 동적 키]
 ---
-
-# TypeScript 입문 43: index signature로 동적인 key를 다루는 방법
-
 > 동적 key를 다루는 순간부터 객체 타입 설계는 더 어려워집니다. 이때 index signature를 이해해야 합니다.
 >
 > 이전 글: [TypeScript 입문 42: readonly 속성으로 의도하지 않은 변경 막기](/typescript/intro-42-readonly-property-basic)
@@ -98,3 +95,4 @@ const errors: ErrorMap = {
 ### [TypeScript 입문 41: 객체 타입의 기본 구조를 다시 탄탄하게 잡기](/typescript/intro-41-object-structure-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

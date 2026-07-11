@@ -7,9 +7,6 @@ permalink: /typescript/intro-112-named-export-vs-default-export
 description: "named export와 default export의 차이와 선택 기준을 설명합니다."
 tags: [TypeScript, named export, default export, module]
 ---
-
-# TypeScript 입문 112: named export와 default export 차이 이해하기
-
 > named export와 default export 선택은 개인 취향 문제가 아니라, 협업 가독성과 자동 리팩터링 경험에도 영향을 줍니다.
 >
 > 이전 글: [TypeScript 입문 111: export와 import의 기본 흐름 이해하기](/typescript/intro-111-export-import-basic)
@@ -94,3 +91,4 @@ import { formatDate } from './date'
 ### [TypeScript 입문 114: barrel file(index.ts)를 쓸 때 주의할 점](/typescript/intro-114-barrel-file-caution)
 
 이 글은 지금 읽고 계신 글과 개념적으로 아주 가깝게 이어집니다. 지금 글에서 익힌 문법이나 설계 감각이 다음 글에서 바로 다른 형태로 확장되기 때문에, 단편적인 문법 암기가 아니라 흐름으로 이해하는 데 큰 도움이 됩니다. 특히 TypeScript 입문 단계에서는 비슷해 보이는 도구들 사이의 차이를 빠르게 비교해보는 것이 중요하므로, 이 글을 함께 읽어두시면 어디에서 어떤 선택을 해야 하는지 훨씬 분명하게 감이 잡히실 것입니다.
+

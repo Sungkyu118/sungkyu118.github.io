@@ -7,9 +7,6 @@ permalink: /typescript/intro-46-intersection-type-object
 description: "intersection type으로 여러 객체 타입을 합치는 기본 패턴을 설명합니다."
 tags: [TypeScript, intersection type, 객체 타입, 조합]
 ---
-
-# TypeScript 입문 46: intersection type으로 객체 타입 합치기
-
 > intersection type은 여러 조건을 동시에 만족하는 객체를 표현할 때 유용합니다.
 >
 > 이전 글: [TypeScript 입문 45: excess property checking은 왜 발생할까요?](/typescript/intro-45-excess-property-checking)
@@ -101,3 +98,4 @@ const user: UserWithTimestamp = {
 ### [TypeScript 입문 41: 객체 타입의 기본 구조를 다시 탄탄하게 잡기](/typescript/intro-41-object-structure-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

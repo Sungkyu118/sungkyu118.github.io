@@ -7,9 +7,6 @@ permalink: /typescript/intro-131-asserts-function-basic
 description: "asserts 함수를 사용해 타입을 보장하는 방법을 설명합니다."
 tags: [TypeScript, asserts, type guard, 함수]
 ---
-
-# TypeScript 입문 131: asserts 함수를 이용해 타입을 좁히는 방법
-
 > asserts 함수는 검증 코드를 더 선언적으로 만들면서 이후 타입 흐름도 깔끔하게 정리해줍니다.
 >
 > 이전 글: [TypeScript 입문 130: 커스텀 type guard를 실전처럼 작성하는 방법](/typescript/intro-130-custom-type-guard-practice)
@@ -99,3 +96,4 @@ function assertUser(value: unknown): asserts value {
 ### [TypeScript 입문 129: unknown 데이터를 안전한 타입으로 바꾸는 흐름](/typescript/intro-129-unknown-to-safe-data)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

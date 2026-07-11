@@ -7,9 +7,6 @@ permalink: /typescript/intro-58-generic-inference
 description: "제네릭 타입 추론이 언제 잘 되고 언제 명시가 필요한지 설명합니다."
 tags: [TypeScript, 제네릭, 타입 추론, inference]
 ---
-
-# TypeScript 입문 58: 제네릭 타입 추론은 어떻게 동작할까요?
-
 > 제네릭 타입 추론은 자동으로 잘 되는 경우도 많지만, 언제 한계에 부딪히는지도 알아두어야 합니다.
 >
 > 이전 글: [TypeScript 입문 57: 함수에 제네릭 타입 파라미터 붙이기](/typescript/intro-57-generic-function-basic)
@@ -94,3 +91,4 @@ const result = identity<string>('hello')
 ### [TypeScript 입문 56: 제네릭은 왜 필요한지 배열 예제로 이해하기](/typescript/intro-56-generic-why-needed)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

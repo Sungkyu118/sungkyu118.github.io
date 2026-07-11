@@ -7,9 +7,6 @@ permalink: /typescript/intro-143-dto-domain-viewmodel-difference
 description: "DTO, Domain, ViewModel을 왜 나눠야 하는지 설명합니다."
 tags: [TypeScript, DTO, Domain, ViewModel, architecture]
 ---
-
-# TypeScript 입문 143: DTO, Domain, ViewModel을 구분하는 이유
-
 > DTO, Domain, ViewModel을 구분하는 순간 코드가 길어 보일 수 있지만, 변경 비용은 오히려 낮아집니다.
 >
 > 이전 글: [TypeScript 입문 142: repository와 service 타입을 왜 나눠야 할까요?](/typescript/intro-142-repository-service-type-separation)
@@ -98,3 +95,4 @@ type UserViewModel = UserDto
 ### [TypeScript 입문 145: 공용 타입을 너무 크게 만들면 생기는 문제](/typescript/intro-145-shared-type-overuse-caution)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

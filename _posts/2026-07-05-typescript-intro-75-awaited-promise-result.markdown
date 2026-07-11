@@ -7,12 +7,9 @@ permalink: /typescript/intro-75-awaited-promise-result
 description: "Awaited<T>로 Promise가 resolve한 결과 타입을 얻는 방법을 설명합니다."
 tags: [TypeScript, Awaited, Promise, utility type]
 ---
-
-# TypeScript 입문 75: Awaited<T>로 Promise 결과 타입 꺼내기
-
 > Promise를 다룰 때 실제로 필요한 것은 Promise 자체보다 안쪽 결과 타입인 경우가 많습니다.
 >
-> 이전 글: [TypeScript 입문 74: ReturnType<T>와 Parameters<T>로 함수 타입 재사용하기](/typescript/intro-74-returntype-parameters-basic)
+> 이전 글: [TypeScript 입문 74: ReturnType&lt;T&gt;와 Parameters&lt;T&gt;로 함수 타입 재사용하기](/typescript/intro-74-returntype-parameters-basic)
 > 다음 글: [TypeScript 입문 76: utility type을 조합할 때 가독성을 지키는 법](/typescript/intro-76-utility-composition-readability)
 > 함께 보면 좋은 흐름: utility type 이해
 
@@ -78,7 +75,7 @@ const user: User = {
 
 ## 오늘 내용 정리
 
-이번 글에서는 Awaited<T>로 Promise 결과 타입 꺼내기 주제를 중심으로, 왜 이 개념이 필요한지, 어떤 코드에서 도움이 되는지, 그리고 초보자가 어디서 자주 실수하는지를 함께 살펴봤습니다. 지금 단계에서는 정의를 외우는 것보다 예제 코드를 조금씩 바꿔보면서 결과 타입이 어떻게 달라지는지 확인하는 쪽이 더 중요합니다. 가능하시면 기본 예제와 잘못된 예제를 직접 손으로 입력해보시고, TypeScript가 어떤 부분을 허용하고 어떤 부분을 막는지 비교해보시면 좋겠습니다.
+이번 글에서는 Awaited&lt;T&gt;로 Promise 결과 타입 꺼내기 주제를 중심으로, 왜 이 개념이 필요한지, 어떤 코드에서 도움이 되는지, 그리고 초보자가 어디서 자주 실수하는지를 함께 살펴봤습니다. 지금 단계에서는 정의를 외우는 것보다 예제 코드를 조금씩 바꿔보면서 결과 타입이 어떻게 달라지는지 확인하는 쪽이 더 중요합니다. 가능하시면 기본 예제와 잘못된 예제를 직접 손으로 입력해보시고, TypeScript가 어떤 부분을 허용하고 어떤 부분을 막는지 비교해보시면 좋겠습니다.
 
 ## 공식 문서와 같이 확인하면 좋은 부분
 
@@ -88,7 +85,7 @@ const user: User = {
 
 ## 이어서 읽어보시면 좋습니다
 
-### [TypeScript 입문 74: ReturnType<T>와 Parameters<T>로 함수 타입 재사용하기](/typescript/intro-74-returntype-parameters-basic)
+### [TypeScript 입문 74: ReturnType&lt;T&gt;와 Parameters&lt;T&gt;로 함수 타입 재사용하기](/typescript/intro-74-returntype-parameters-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
 
@@ -99,3 +96,4 @@ const user: User = {
 ### [TypeScript 입문 65: utility type은 왜 필요할까요?](/typescript/intro-65-why-utility-types)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

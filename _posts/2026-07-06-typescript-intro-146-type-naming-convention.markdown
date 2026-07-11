@@ -7,9 +7,6 @@ permalink: /typescript/intro-146-type-naming-convention
 description: "타입 이름을 일관되게 짓는 기본 규칙을 설명합니다."
 tags: [TypeScript, naming, convention, readability]
 ---
-
-# TypeScript 입문 146: 타입 이름을 어떻게 지어야 읽기 쉬울까요?
-
 > 좋은 타입 이름은 코드 설명문 역할을 합니다. 이름만 잘 지어도 읽는 속도가 크게 달라집니다.
 >
 > 이전 글: [TypeScript 입문 145: 공용 타입을 너무 크게 만들면 생기는 문제](/typescript/intro-145-shared-type-overuse-caution)
@@ -98,3 +95,4 @@ type Data = {
 ### [TypeScript 입문 142: repository와 service 타입을 왜 나눠야 할까요?](/typescript/intro-142-repository-service-type-separation)
 
 이 글은 지금 읽고 계신 글과 실무 맥락에서 매우 자연스럽게 이어집니다. 지금 글에서 배운 판단 기준을 바로 다른 상황에 적용해볼 수 있기 때문에, 단순히 개념을 하나 더 늘리는 느낌보다 실제로 문제를 해결하는 흐름으로 이해가 확장됩니다. 특히 TypeScript는 비슷한 도구가 많아서 차이를 비교해보는 과정이 중요한데, 이 글을 함께 읽어두시면 어디에서 어떤 선택이 더 안전한지 훨씬 또렷하게 감이 잡히실 것입니다.
+

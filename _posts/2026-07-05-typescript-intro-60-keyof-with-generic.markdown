@@ -7,9 +7,6 @@ permalink: /typescript/intro-60-keyof-with-generic
 description: "keyof와 제네릭을 조합해 안전하게 객체 값을 읽는 패턴을 설명합니다."
 tags: [TypeScript, keyof, 제네릭, 객체 타입]
 ---
-
-# TypeScript 입문 60: keyof와 제네릭을 함께 사용해 안전한 함수를 만들기
-
 > keyof와 제네릭을 조합하면 객체 값을 안전하게 읽는 헬퍼 함수를 만들 수 있습니다.
 >
 > 이전 글: [TypeScript 입문 59: generic constraint로 허용 범위를 제한하기](/typescript/intro-59-generic-constraint-basic)
@@ -98,3 +95,4 @@ const age = getValue(user, 'age')
 ### [TypeScript 입문 57: 함수에 제네릭 타입 파라미터 붙이기](/typescript/intro-57-generic-function-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계나 인접 개념으로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

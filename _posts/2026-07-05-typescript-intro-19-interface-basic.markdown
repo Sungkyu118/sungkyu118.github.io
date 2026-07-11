@@ -7,9 +7,6 @@ permalink: /typescript/intro-19-interface-basic
 description: "interface를 사용해 객체 구조를 표현하는 기본 방법과 장점을 설명합니다."
 tags: [TypeScript, interface, 객체 구조, 설계]
 ---
-
-# TypeScript 입문 19: interface로 객체 구조를 읽기 좋게 표현하기
-
 > interface는 객체 구조를 읽기 좋게 표현하는 대표 도구입니다. 특히 여러 곳에서 같은 구조를 공유할 때 강점을 보입니다.
 >
 > 이전 글: [TypeScript 입문 18: type alias로 반복되는 타입에 이름 붙이기](/typescript/intro-18-type-alias)
@@ -108,3 +105,4 @@ const product: Product = {
 ### [TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?](/typescript/intro-07-type-inference-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

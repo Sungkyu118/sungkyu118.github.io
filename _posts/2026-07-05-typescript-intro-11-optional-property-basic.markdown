@@ -7,9 +7,6 @@ permalink: /typescript/intro-11-optional-property-basic
 description: "선택 속성의 의미와 undefined 처리에서 자주 생기는 실수를 실제 예제로 설명합니다."
 tags: [TypeScript, 선택 속성, optional, 객체 타입]
 ---
-
-# TypeScript 입문 11: 선택 속성 ? 는 편리하지만 왜 자주 실수를 만들까요?
-
 > 선택 속성은 편리하지만 undefined를 함께 데리고 오기 때문에, 사용하는 쪽의 방어 코드까지 같이 생각해야 합니다.
 >
 > 이전 글: [TypeScript 입문 10: 객체 타입을 처음 선언할 때 헷갈리는 부분 정리](/typescript/intro-10-object-type-basic)
@@ -101,3 +98,4 @@ console.log(user.email.toLowerCase())
 ### [TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?](/typescript/intro-07-type-inference-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+

@@ -7,9 +7,6 @@ permalink: /typescript/intro-13-any-danger
 description: "any를 남용했을 때 타입 시스템이 어떻게 무력화되는지 예제와 함께 설명합니다."
 tags: [TypeScript, any, 타입 안정성, 에러]
 ---
-
-# TypeScript 입문 13: any는 왜 편해 보이지만 위험할까요?
-
 > any는 에러를 없애주는 해결책처럼 보이지만, 사실은 타입 시스템 전체를 잠시 꺼버리는 선택에 가깝습니다.
 >
 > 이전 글: [TypeScript 입문 12: undefined와 null을 안전하게 다루는 법](/typescript/intro-12-undefined-null-safety)
@@ -99,3 +96,4 @@ function printLength(value: string) {
 ### [TypeScript 입문 7: 타입 추론은 어디까지 믿어도 될까요?](/typescript/intro-07-type-inference-basic)
 
 이 글은 지금 읽고 계신 글과 직접 이어지는 이유가 분명합니다. 지금 글에서 잡은 감각을 바로 다음 단계로 확장해주기 때문에, 개념을 따로따로 외우는 대신 흐름으로 이해하는 데 도움이 됩니다. 특히 TypeScript 입문 단계에서는 한 문법을 배운 뒤 곧바로 연결되는 예제를 이어서 보는 것이 중요하므로, 이 글을 함께 읽어두시면 실수 포인트를 훨씬 빨리 줄일 수 있습니다.
+
